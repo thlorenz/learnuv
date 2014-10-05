@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-from subprocess import call
 import os
 
 script_dir = os.path.dirname(__file__)
 root_dir   = os.path.join(os.path.abspath(script_dir), '..')
 deps_dir   = os.path.join(root_dir, 'deps')
 libuv_dir  = os.path.join(deps_dir, 'libuv')
+logh_dir  = os.path.join(deps_dir, 'log')
 build_dir  = os.path.join(root_dir, 'build')
 gyp_dir    = os.path.join(build_dir, 'gyp')
 
@@ -28,3 +28,6 @@ run('git clone --depth 1 --branch v1.0.0-rc1 https://github.com/joyent/libuv.git
 # gyp
 mkdirp(build_dir)
 run('git clone https://git.chromium.org/external/gyp.git ' + gyp_dir)
+
+# log.h
+run ('git clone --depth 1 https://github.com/thlorenz/log.h ' + logh_dir) 

@@ -1,4 +1,8 @@
 {
+  'target_defaults': { 
+    'include_dirs': [ './deps/log', './src' ],
+    'sources': [ './deps/log/log.h', './src/learnuv.h' ],
+  },
   'targets': [
     {
       'target_name': 'learnuv_ex01',

@@ -5,7 +5,10 @@
     "main" : "index.js",
     "scripts" : {
       "clean": "rm -rf build && rm -rf deps",
-      "preinstall": "python scripts/install-dependencies.py"
+      "preinstall": "python scripts/install-dependencies.py",
+      "xcode": "./gyp_learnuv.py -f xcode",
+      "ninja": "./gyp_learnuv.py -f ninja && ninja -C out/Debug",
+      "make": "./gyp_learnuv.py -f make && make -C out"
     },
     "repository" : {
       "type" : "git",

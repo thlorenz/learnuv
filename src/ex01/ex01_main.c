@@ -1,23 +1,18 @@
-#include <stdio.h>
-#include "uv.h"
-
-void idle_cb(uv_idle_t* handle) {
-  static int64_t count = -1;
-  count++;
-  if ((count % 10000) == 0) fprintf(stderr, ".");
-  if (count >= 10e6) uv_idle_stop(handle);
-}
+#include "learnuv.h"
 
 int main() {
-  uv_idle_t idle_handle;
-
-  uv_loop_t *loop = uv_default_loop();
-  uv_idle_init(loop, &idle_handle);
-  uv_idle_start(&idle_handle, idle_cb);
-
-  fprintf(stderr, "\nidling ...\n");
-  uv_run(loop, UV_RUN_DEFAULT);
-
+  int err;
+  
+  double uptime;
+  err = uv_uptime(&uptime);
+  log_info("Uptime %f", uptime);
+  CHECK(err, "uv_uptime");
+  
+  size_t resident_set_memory;
+  /* omit below two lines for question - grep code for the CHECK */
+  err = uv_resident_set_memory(&resident_set_memory);
+  CHECK(err, "uv_resident_set_memory");
+  log_info("RSS: %ld", resident_set_memory);
+  
   return 0;
 }
-
