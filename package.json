@@ -15,9 +15,6 @@
     "dependencies" : {
     },
     "devDependencies" : {
-      "nave": "~0.4.3",
-      "tape": "~1.0.4",
-      "tap": "~0.4.3"
     },
     "keywords": [] ,
     "author" : {
