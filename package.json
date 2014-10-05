@@ -4,11 +4,8 @@
     "description" : " Learn uv for fun and profit, a self guided workshop to the library that powers Node.js.",
     "main" : "index.js",
     "scripts" : {
-      "test-main" :  "tap test/*.js",
-      "test-0.8"  :  "nave use 0.8 npm run test-main",
-      "test-0.10" :  "nave use 0.10 npm run test-main",
-      "test-all": "npm run test-main && npm run test-0.8 && npm run test-0.10",
-      "test"      :  "if [ -e $TRAVIS ]; then npm run test-all; else npm run test-main; fi"
+      "clean": "rm -rf build && rm -rf deps",
+      "preinstall": "python scripts/install-dependencies.py"
     },
     "repository" : {
       "type" : "git",

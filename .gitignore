@@ -13,3 +13,7 @@ results
 
 npm-debug.log
 node_modules
+deps
+build
+out
+*.xcodeproj
