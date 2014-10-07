@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+'use strict';
+
+var Workshopper = require('workshopper')
+  , path        = require('path')
+  , menu        = require('./exercises/menu')
+  , hooray      = require('workshopper-hooray')
+  , more        = require('workshopper-more')
+  , log         = require('workshopper/print-text')
+  , appname     = 'learnuv'
+
+function fpath (f) {
+  return path.join(__dirname, f)
+}
+
+Workshopper.prototype._printUsage = function printUsage() {
+  log.file(this.appName, this.appDir, path.join(__dirname, './workshopper/usage.txt'))
+}
+
+var ws = new Workshopper({
+    name        : appname 
+  , title       : 'LEARNUV FOR FUN AND PROFIT!'
+  , subtitle    : '\x1b[23mSelect an exercise and hit \x1b[3mEnter\x1b[23m to begin'
+  , exerciseDir : fpath('./exercises/')
+  , appDir      : __dirname
+  , footerFile  : path.join(__dirname, 'workshopper', 'footer.md')
+  , helpFile    : path.join(__dirname, 'workshopper', 'help.txt')
+  , menu        : { fs: 'green', bg: 'black' }
+  , commands    : [
+      { name    : 'more'
+      , menu    : false
+      , short   : 'm'
+      , handler : more
+      }
+    ]
+  , onComplete: hooray
+})
+
+/* vim ft:javascript */

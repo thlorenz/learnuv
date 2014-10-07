@@ -39,8 +39,10 @@ const char* path_join(const char* p1, const char* p2) {
 
 const char* getconfig() {
   const char* home = gethome();
-  const char *result = path_join(home, ".learnuv");
+  const char* config = path_join(home, ".config");
+  const char* result = path_join(config, "learnuv");
   free((void*)home);
+  free((void*)config);
   return result;
 }
 
