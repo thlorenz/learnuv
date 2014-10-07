@@ -34,7 +34,7 @@ ninja -C out/Debug
 
 ### Make
 
-Works on Linux and OXS.
+Works on Linux and OSX.
 
 ```sh
 ./gyp_learnuv.py -f make
