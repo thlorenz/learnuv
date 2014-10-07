@@ -2,6 +2,10 @@
 
 Learn uv for fun and profit, a self guided workshop to [the library](https://github.com/joyent/libuv) that powers Node.js.
 
+## Status
+
+Currently under construction, but **ready for alpha testers** (a few exercises are implemented already).
+
 ## Installation
 
 Requires [Python](https://www.python.org/downloads/) 2.6 or 2.7 to be installed.
