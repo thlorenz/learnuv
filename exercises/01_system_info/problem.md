@@ -30,7 +30,7 @@ fashion as we did for `uv_uptime`. Once you obtained the value report it as foll
 log_report("RSS: %ld", resident_set_memory);
 ```
 
-After you successfully ran your program run `npm run verify` in order to verify your result. Do the same for all
+After you successfully ran your program run `./learnuv verify` in order to verify your result. Do the same for all
 upcoming exercises as well.
 
 pointer:http://www.cprogramming.com/tutorial/c/lesson6.html

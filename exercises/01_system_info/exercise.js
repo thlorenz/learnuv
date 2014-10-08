@@ -22,7 +22,6 @@ function checkUptimeRSS(expected, actual) {
   return true
 }
 
-exercise.c_file = '01_system_info.c';
 exercise.detectDiff = checkUptimeRSS;
 exercise.requireSubmission = false;
 exercise.addSetup(checkFileContent.bind(null, exercise));  

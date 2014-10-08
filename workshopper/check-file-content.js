@@ -40,7 +40,7 @@ module.exports = function checkFileContent(exercise, mode, cb) {
   if (mode !== 'verify') cb(new Error('You can only verify your excercise. Run it directly on the terminal or via Xcode.'));
 
   var dir      = exercise.workshopper.dataDir
-    , filename = exercise.c_file
+    , filename = exercise.id + '.c'
     , fullPath = path.join(dir, filename)
 
   fs.exists(fullPath, function (itdoes) {

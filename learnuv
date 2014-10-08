@@ -25,7 +25,7 @@ var ws = new Workshopper({
   , appDir      : __dirname
   , footerFile  : path.join(__dirname, 'workshopper', 'footer.md')
   , helpFile    : path.join(__dirname, 'workshopper', 'help.txt')
-  , menu        : { fs: 'green', bg: 'black' }
+  , menu        : { fg: 'green', bg: 0 }
   , commands    : [
       { name    : 'more'
       , menu    : false

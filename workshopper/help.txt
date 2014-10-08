@@ -1,17 +1,20 @@
 {yellow}{bold}Having trouble with a {appname} exercise?{/bold}{/yellow}
 
-  A team of expert helper elves is eagerly waiting to assist you in
-  mastering the basics of Node.js, simply go to:
-    https://github.com/nodeschool/discussions/issues
-  and add a {bold}New Issue{/bold} and let us know what you're having trouble
-  with. There are no {italic}dumb{/italic} questions!
+  Trouble with C in general? Either of the below should get you started:
+    - http://www.cprogramming.com/tutorial.html
+    - http://www.learn-c.org/
+    - or this book: http://www.amazon.com/dp/0131103628/ 
 
-  If you're looking for general help with libuv, the #libuv
-  channel on Freenode IRC is usually a great place to find someone
-  willing to help. 
+  Trouble understanding livuv? Review either of the below:
+    - http://nikhilm.github.io/uvbook/ (although examples are outdated this is still an awesome resource)
+    - https://github.com/thlorenz/libuv-dox (provides docs and updated examples)
+    - https://github.com/joyent/libuv/blob/master/include/uv.h (header file which will answer all your questions if you're patient)
+
+  If you're looking for general help with libuv and like to chat?
+    - the #libuv channel on Freenode IRC is usually a great place to find someone willing to help
 
 {yellow}{bold}Found a bug with {appname} or just want to contribute?{/bold}{/yellow}
 
   The official repository for {appname} is:
     https://github.com/thlorenz/learnuv/
-logFeel free to file a bug report or (preferably) a pull request.
+  Feel free to file a bug report or (preferably) a pull request.
