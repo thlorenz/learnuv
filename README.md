@@ -34,7 +34,7 @@ ninja -C out/Debug
 
 ### Make
 
-Works on Linux and OXS.
+Works on Linux and OSX.
 
 ```sh
 ./gyp_learnuv.py -f make
@@ -54,6 +54,12 @@ open learnuv.xcodeproj
 ### Visual Studio
 
 Works on Windows only. **TODO** need to adapt [vcbuild.bat](https://github.com/joyent/libuv/blob/master/vcbuild.bat).
+
+## Running
+
+```
+./learnuv
+```
 
 ## License
 

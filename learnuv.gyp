@@ -6,7 +6,8 @@
     'dependencies' : [ './deps/libuv/uv.gyp:libuv' ],
   },
   'targets': [ 
-    { 'target_name': '01_system_info', 'sources': [ './src/01_system_info.c' ] },
-    { 'target_name': '02_idle', 'sources': [ './src/02_idle.c' ] },
+    { 'target_name': '01_system_info' , 'sources': [ './src/01_system_info.c' ] },
+    { 'target_name': '02_idle'        , 'sources': [ './src/02_idle.c' ] },
+    { 'target_name': '03_fs_readsync' , 'sources': [ './src/03_fs_readsync.c' ] },
   ]
 }

@@ -1,5 +1,5 @@
-#ifndef __COMMON_H__
-#define __COMMON_H__
+#ifndef __LEARNUV_H__
+#define __LEARNUV_H__
 
 /* Uncomment the below line when using a terminal that doesn't support ANSI Escape Codes */
 /* #define LOG_NOCOLORS 1 */
