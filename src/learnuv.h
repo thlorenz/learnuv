@@ -16,6 +16,10 @@
 
 #define MAX_REPORT_LEN 1024
 
+#ifndef __MAGIC_FILE__
+#define __MAGIC_FILE__ "Please run ./gyp_learnuv.py in order to have all defines properly initialized"
+#endif
+
 #define CHECK(r, msg) if (r) {                                                 \
   log_error("%s: [%s(%d): %s]\n", msg, uv_err_name((r)), r, uv_strerror((r))); \
   exit(1);                                                                     \

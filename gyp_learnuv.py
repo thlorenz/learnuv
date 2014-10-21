@@ -16,7 +16,8 @@ except ImportError:
 CC = os.environ.get('CC', 'cc')
 script_dir = os.path.dirname(__file__)
 learnuv_root = os.path.normpath(script_dir)
-uv_root = os.path.join(os.path.abspath(learnuv_root), 'deps', 'libuv')
+full_learnuv_root=os.path.abspath(learnuv_root)
+uv_root = os.path.join(full_learnuv_root, 'deps', 'libuv')
 output_dir = os.path.join(os.path.abspath(learnuv_root), 'out')
 
 sys.path.insert(0, os.path.join(learnuv_root, 'build', 'gyp', 'pylib'))
@@ -106,6 +107,10 @@ if __name__ == '__main__':
   # so gyp must be run with --no-parallel
   if not gyp_parallel_support:
     args.append('--no-parallel')
+
+  args.append('-Droot=' + full_learnuv_root)
+  args.append('-Dmagic_file=' + os.path.join(full_learnuv_root, 'magic', 'file.txt'))
+
 
   gyp_args = list(args)
   print gyp_args
