@@ -18,24 +18,24 @@ void read_cb(uv_fs_t* read_req) {
   log_report("%s", read_req->bufs->base);
   log_info("%s", read_req->bufs->base);
 
+  free(read_req->bufs->base);
+
   /* 5. Close the file descriptor */
   uv_fs_t close_req;
   r = uv_fs_close(uv_default_loop(), &close_req, context->open_req->result, NULL);
   if (r < 0) CHECK(abs(r), "uv_fs_close");
 
-  free(read_req->bufs->base);
-
+  /* cleanup all requests and context */
   uv_fs_req_cleanup(context->open_req);
   uv_fs_req_cleanup(read_req);
   uv_fs_req_cleanup(&close_req);
-
   free(context);
 }
 
 void init(uv_loop_t *loop) {
   int r;
 
-  /* No more globals, we need to malloc each request and pass it around for later reference */
+  /* No more globals, we need to malloc each request and pass it around for later cleanup */
   uv_fs_t *open_req = malloc(sizeof(uv_fs_t));
   uv_fs_t *read_req = malloc(sizeof(uv_fs_t));
 
@@ -51,8 +51,10 @@ void init(uv_loop_t *loop) {
   char *buf = malloc(buf_len);
   uv_buf_t iov = uv_buf_init(buf, buf_len);
 
-  /* 3. allow us to access the context inside read_cb */
+  /* allow us to access the context inside read_cb */
   read_req->data = context;
+
+  /* 3. Read from the file into the buffer */
   r = uv_fs_read(loop, read_req, open_req->result, &iov, 1, 0, read_cb);
   if (r < 0) CHECK(abs(r), "uv_fs_read");
 }

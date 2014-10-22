@@ -15,5 +15,6 @@
     { 'target_name': '03_fs_readsync'          , 'sources': [ './src/03_fs_readsync.c' ] }          ,
     { 'target_name': '04_fs_readasync'         , 'sources': [ './src/04_fs_readasync.c' ] }         ,
     { 'target_name': '05_fs_readasync_context' , 'sources': [ './src/05_fs_readasync_context.c' ] } ,
+    { 'target_name': '06_fs_allasync'          , 'sources': [ './src/06_fs_allasync.c' ] }          ,
   ]
 }
