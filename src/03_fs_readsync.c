@@ -1,10 +1,8 @@
 #include "learnuv.h"
-/* do not change the first line of this file as it will affect the result */
 
 #define BUF_SIZE 37
 static const char *filename = __MAGIC_FILE__;
 
-  //const char *filename = path_join(getconfig(), "magic_file.txt");
 int main() {
   int r;
   uv_loop_t *loop = uv_default_loop();
@@ -27,6 +25,16 @@ int main() {
   log_report("%s", buf);
 
   log_info("%s", buf);
+
+  /* 5. Close the file descriptor */
+  uv_fs_t close_req;
+  r = uv_fs_close(loop, &close_req, open_req.result, NULL);
+  if (r < 0) CHECK(abs(r), "uv_fs_close");
+
+  /* always clean up your requests when you no longer need them to free unused memory */
+  uv_fs_req_cleanup(&open_req);
+  uv_fs_req_cleanup(&read_req);
+  uv_fs_req_cleanup(&close_req);
 
   uv_run(loop, UV_RUN_DEFAULT);
 
