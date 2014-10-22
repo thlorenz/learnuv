@@ -17,7 +17,24 @@ git clone https://github.com/thlorenz/learnuv && cd learnuv
 npm install
 ```
 
+## Getting Started
+
+```sh
+./learnuv help
+```
+
 ## Building
+
+**learnuv** comes with build commands that you can use instead of the manual steps explained further below.
+
+- **./learnuv ninja**
+    Compile your sources with ninja, stored inside `./out/Debug`
+- **./learnuv make**
+    Compile your sources with make, stored inside `./out/Debug`
+- **./learnuv xcode**
+    Generate a learnuv Xcode project, named `./learnuv.xcodeproj`
+
+### Windows Caveats
 
 Ninja and Make do not work on windows except via [cygwin](https://www.cygwin.com/).
 

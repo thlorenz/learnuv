@@ -7,7 +7,12 @@ var Workshopper = require('workshopper')
   , hooray      = require('workshopper-hooray')
   , more        = require('workshopper-more')
   , log         = require('workshopper/print-text')
+  , spawn       = require('child_process').spawn
   , appname     = 'learnuv'
+
+if (process.argv[2] === 'ninja')  return spawn('npm', [ 'run', 'ninja' ], { stdio: 'inherit' });
+if (process.argv[2] === 'make')   return spawn('npm', [ 'run', 'make' ], { stdio: 'inherit' });
+if (process.argv[2] === 'xcode')  return spawn('npm', [ 'run', 'xcode' ], { stdio: 'inherit' });
 
 function fpath (f) {
   return path.join(__dirname, f)
