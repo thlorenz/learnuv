@@ -9,7 +9,7 @@ typedef struct context_struct {
 
 void read_cb(uv_fs_t* read_req) {
   int r;
-  if (read_req->result < 0) CHECK(abs(read_req->result), "uv_fs_read callback");
+  if (read_req->result < 0) CHECK(read_req->result, "uv_fs_read callback");
 
   /* extracting our context from the read_req */
   context_t* context = read_req->data;
@@ -44,7 +44,7 @@ void init(uv_loop_t *loop) {
 
   /* 1. Open file */
   r = uv_fs_open(loop, open_req, filename, O_RDONLY, S_IRUSR, NULL);
-  if (r < 0) CHECK(abs(r), "uv_fs_open");
+  if (r < 0) CHECK(r, "uv_fs_open");
 
   /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds lenght property */
   size_t buf_len = sizeof(char) * BUF_SIZE;
@@ -56,7 +56,7 @@ void init(uv_loop_t *loop) {
 
   /* 3. Read from the file into the buffer */
   r = uv_fs_read(loop, read_req, open_req->result, &iov, 1, 0, read_cb);
-  if (r < 0) CHECK(abs(r), "uv_fs_read");
+  if (r < 0) CHECK(r, "uv_fs_read");
 }
 
 int main() {

@@ -21,7 +21,7 @@
 #endif
 
 #define CHECK(r, msg) if (r) {                                                 \
-  log_error("%s: [%s(%d): %s]\n", msg, uv_err_name((r)), r, uv_strerror((r))); \
+  log_error("%s: [%s(%d): %s]\n", msg, uv_err_name((r)), (int) r, uv_strerror((r))); \
   exit(1);                                                                     \
 }
 

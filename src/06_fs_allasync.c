@@ -15,7 +15,7 @@ typedef struct context_struct {
 
 void open_cb(uv_fs_t* open_req) {
   int r;
-  if (open_req->result < 0) CHECK(abs(open_req->result), "uv_fs_open callback");
+  if (open_req->result < 0) CHECK(open_req->result, "uv_fs_open callback");
 
   context_t* context = open_req->data;
 
@@ -31,12 +31,12 @@ void open_cb(uv_fs_t* open_req) {
 
   /* 3. Read from the file into the buffer */
   r = uv_fs_read(uv_default_loop(), read_req, open_req->result, &iov, 1, 0, read_cb);
-  if (r < 0) CHECK(abs(r), "uv_fs_read");
+  if (r < 0) CHECK(r, "uv_fs_read");
 }
 
 void read_cb(uv_fs_t* read_req) {
   int r;
-  if (read_req->result < 0) CHECK(abs(read_req->result), "uv_fs_read callback");
+  if (read_req->result < 0) CHECK(read_req->result, "uv_fs_read callback");
 
   context_t* context = read_req->data;
 
@@ -52,11 +52,11 @@ void read_cb(uv_fs_t* read_req) {
 
   /* 5. Close the file descriptor */
   r = uv_fs_close(uv_default_loop(), close_req, context->open_req->result, close_cb);
-  if (r < 0) CHECK(abs(r), "uv_fs_close");
+  if (r < 0) CHECK(r, "uv_fs_close");
 }
 
 void close_cb(uv_fs_t* close_req) {
-  if (close_req->result < 0) CHECK(abs(close_req->result), "uv_fs_close callback");
+  if (close_req->result < 0) CHECK(close_req->result, "uv_fs_close callback");
 
   context_t* context = close_req->data;
 
@@ -79,7 +79,7 @@ void init(uv_loop_t *loop) {
 
   /* 1. Open file */
   r = uv_fs_open(loop, open_req, filename, O_RDONLY, S_IRUSR, open_cb);
-  if (r < 0) CHECK(abs(r), "uv_fs_open");
+  if (r < 0) CHECK(r, "uv_fs_open");
 }
 
 int main() {
