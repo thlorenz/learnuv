@@ -10,9 +10,12 @@ var Workshopper = require('workshopper')
   , spawn       = require('child_process').spawn
   , appname     = 'learnuv'
 
-if (process.argv[2] === 'ninja')  return spawn('npm', [ 'run', 'ninja' ], { stdio: 'inherit' });
-if (process.argv[2] === 'make')   return spawn('npm', [ 'run', 'make' ], { stdio: 'inherit' });
-if (process.argv[2] === 'xcode')  return spawn('npm', [ 'run', 'xcode' ], { stdio: 'inherit' });
+if (process.argv[2] && process.argv[2].toLowerCase() === 'ninja')
+  return spawn('npm', [ 'run', 'ninja' ], { stdio: 'inherit' });
+if (process.argv[2] && process.argv[2].toLowerCase() === 'make')
+  return spawn('npm', [ 'run', 'make' ], { stdio: 'inherit' });
+if (process.argv[2] && process.argv[2].toLowerCase() === 'xcode')
+  return spawn('npm', [ 'run', 'xcode' ], { stdio: 'inherit' });
 
 function fpath (f) {
   return path.join(__dirname, f)
@@ -23,7 +26,7 @@ Workshopper.prototype._printUsage = function printUsage() {
 }
 
 var ws = new Workshopper({
-    name        : appname 
+    name        : appname
   , title       : 'LEARNUV FOR FUN AND PROFIT!'
   , subtitle    : '\x1b[23mSelect an exercise and hit \x1b[3mEnter\x1b[23m to begin'
   , exerciseDir : fpath('./exercises/')
