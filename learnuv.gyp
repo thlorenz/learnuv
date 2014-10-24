@@ -1,7 +1,7 @@
 {
   'target_defaults': { 
     'type'         : 'executable',
-    'include_dirs' : [ './deps/log', './src' ],
+    'include_dirs' : [ './deps/log', './src', './deps/libuv/test' ],
     'sources'      : [ './deps/log/log.h', './src/learnuv.h' ],
     'dependencies' : [ './deps/libuv/uv.gyp:libuv' ],
     'defines'      : [ 
@@ -16,5 +16,6 @@
     { 'target_name': '04_fs_readasync'         , 'sources': [ './src/04_fs_readasync.c' ] }         ,
     { 'target_name': '05_fs_readasync_context' , 'sources': [ './src/05_fs_readasync_context.c' ] } ,
     { 'target_name': '06_fs_allasync'          , 'sources': [ './src/06_fs_allasync.c' ] }          ,
+    { 'target_name': '07_tcp_echo_server'      , 'sources': [ './src/07_tcp_echo_server.c' ] }      ,
   ]
 }

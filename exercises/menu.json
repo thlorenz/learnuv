@@ -1,4 +1,5 @@
 [
     "01 SYSTEM INFO"
   , "02 IDLE"
+  , "07 TCP ECHO SERVER"
 ]

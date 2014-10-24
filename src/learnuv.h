@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "log.h"
 #include "uv.h"
+#include "task.h" /* MAKE_VALGRIND_HAPPY */
 
 #include <libgen.h>
 #include <unistd.h>
