@@ -32,7 +32,7 @@ int main() {
   r = uv_fs_open(loop, &open_req, filename, O_RDONLY, S_IRUSR, NULL);
   if (r < 0) CHECK(r, "uv_fs_open");
 
-  /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds lenght property */
+  /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds length field */
   char buf[BUF_SIZE];
   uv_buf_t iov = uv_buf_init(buf, sizeof(buf));
 

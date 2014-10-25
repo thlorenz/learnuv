@@ -46,7 +46,7 @@ void init(uv_loop_t *loop) {
   r = uv_fs_open(loop, open_req, filename, O_RDONLY, S_IRUSR, NULL);
   if (r < 0) CHECK(r, "uv_fs_open");
 
-  /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds lenght property */
+  /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds length field */
   size_t buf_len = sizeof(char) * BUF_SIZE;
   char *buf = malloc(buf_len);
   uv_buf_t iov = uv_buf_init(buf, buf_len);
