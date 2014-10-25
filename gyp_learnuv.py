@@ -5,6 +5,7 @@ import platform
 import os
 import subprocess
 import sys
+from os.path import expanduser
 
 try:
   import multiprocessing.synchronize
@@ -13,12 +14,14 @@ except ImportError:
   gyp_parallel_support = False
 
 
-CC = os.environ.get('CC', 'cc')
-script_dir = os.path.dirname(__file__)
-learnuv_root = os.path.normpath(script_dir)
-full_learnuv_root=os.path.abspath(learnuv_root)
-uv_root = os.path.join(full_learnuv_root, 'deps', 'libuv')
-output_dir = os.path.join(os.path.abspath(learnuv_root), 'out')
+CC                = os.environ.get('CC', 'cc')
+script_dir        = os.path.dirname(__file__)
+learnuv_root      = os.path.normpath(script_dir)
+full_learnuv_root = os.path.abspath(learnuv_root)
+uv_root           = os.path.join(full_learnuv_root, 'deps', 'libuv')
+output_dir        = os.path.join(os.path.abspath(learnuv_root), 'out')
+home              = os.path.abspath(expanduser("~"))
+learnuv_config    = os.path.join(home, '.config', 'learnuv')
 
 sys.path.insert(0, os.path.join(learnuv_root, 'build', 'gyp', 'pylib'))
 try:
@@ -110,7 +113,8 @@ if __name__ == '__main__':
 
   args.append('-Droot=' + full_learnuv_root)
   args.append('-Dmagic_file=' + os.path.join(full_learnuv_root, 'magic', 'file.txt'))
-
+  args.append('-Dhome=' + home)
+  args.append('-Dlearnuv_config=' + learnuv_config)
 
   gyp_args = list(args)
   print gyp_args

@@ -28,22 +28,12 @@ int usleep(double x) {
 
 #define MAX_REPORT_LEN 1024
 
-#ifndef __MAGIC_FILE__
-#define __MAGIC_FILE__ "Please run ./gyp_learnuv.py in order to have all defines properly initialized"
-#endif
-
 #define CHECK(r, msg) if (r) {                                                 \
   log_error("%s: [%s(%d): %s]\n", msg, uv_err_name((r)), (int) r, uv_strerror((r))); \
   exit(1);                                                                     \
 }
 
 static char first_report = 1;
-
-/* todo - most likely doesn't work on windows, so investigate http://stackoverflow.com/a/9543049/97443 */
-static const char* gethome() {
-  struct passwd *pw = getpwuid(getuid());
-  return strdup(pw->pw_dir);
-}
 
 const char* path_join(const char* p1, const char* p2) {
   char *result = malloc(strlen(p1) + strlen(p2) + 1 + 1);
@@ -53,22 +43,10 @@ const char* path_join(const char* p1, const char* p2) {
   return result;
 }
 
-const char* getconfig() {
-  const char* home = gethome();
-  const char* config = path_join(home, ".config");
-  const char* result = path_join(config, "learnuv");
-  free((void*)home);
-  free((void*)config);
-  return result;
-}
-
 const char* full_report_path(char* ex_file) {
   /* todo - basename may not be available on Windows, consider http://stackoverflow.com/a/7180746/97443 */
   const char* filename = basename(ex_file);
-  const char* config = getconfig();
-  const char *result = path_join(config, filename);
-  free((void*)config);
-  return result;
+  return path_join(__LEARNUV_CONFIG__, filename);
 }
 
 int write_report(const char* path, const char* msg) {

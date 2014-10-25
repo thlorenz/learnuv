@@ -25,7 +25,9 @@
     'dependencies' : [ './deps/libuv/uv.gyp:libuv' ],
     'defines'      : [ 
       '__ROOT__="<(root)"',
-      '__MAGIC_FILE__="<(magic_file)"'
+      '__MAGIC_FILE__="<(magic_file)"',
+      '__HOME__="<(home)"',
+      '__LEARNUV_CONFIG__="<(learnuv_config)"'
     ]
   },
   'targets': [ 
