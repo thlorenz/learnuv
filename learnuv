@@ -1,19 +1,40 @@
 #!/usr/bin/env node
 'use strict';
 
-var Workshopper = require('workshopper')
-  , path        = require('path')
-  , menu        = require('./exercises/menu')
-  , hooray      = require('workshopper-hooray')
-  , more        = require('workshopper-more')
-  , log         = require('workshopper/print-text')
-  , spawn       = require('child_process').spawn
-  , appname     = 'learnuv'
+var Workshopper    = require('workshopper')
+  , path           = require('path')
+  , menu           = require('./exercises/menu')
+  , hooray         = require('workshopper-hooray')
+  , more           = require('workshopper-more')
+  , log            = require('workshopper/print-text')
+  , spawn          = require('child_process').spawn
+  , srcdir         = path.join(__dirname, 'src')
+  , appname        = 'learnuv'
+  , learnuv_config = path.join(process.env.HOME || process.env.USERPROFILE, '.config', appname)
+  , currentJSON    = path.join(learnuv_config, 'current.json')
+
+function getCurrentTarget() {
+  var currentKey
+  try {
+    currentKey = require(currentJSON);
+    return currentKey.toLowerCase().replace(/ /g, '_');
+  } catch(e) {
+    console.error('Please run ./learnuv first and select an exercise');
+    process.exit();
+  }
+}
+
+function buildCurrentTarget(tool) {
+  process.env.CURRENT_TARGET = getCurrentTarget();
+  spawn('npm', [ 'run', tool ], { stdio: 'inherit', env: process.env })
+}
 
 if (process.argv[2] && process.argv[2].toLowerCase() === 'ninja')
-  return spawn('npm', [ 'run', 'ninja' ], { stdio: 'inherit' });
+  return buildCurrentTarget('ninja');
+
 if (process.argv[2] && process.argv[2].toLowerCase() === 'make')
-  return spawn('npm', [ 'run', 'make' ], { stdio: 'inherit' });
+  return buildCurrentTarget('make');
+
 if (process.argv[2] && process.argv[2].toLowerCase() === 'xcode')
   return spawn('npm', [ 'run', 'xcode' ], { stdio: 'inherit' });
 
