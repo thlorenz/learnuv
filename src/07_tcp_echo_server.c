@@ -68,7 +68,7 @@ static void alloc_cb(uv_handle_t *handle, size_t size, uv_buf_t *buf) {
 }
 
 static void read_cb(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf) {
-  int r, i;
+  int r;
   uv_shutdown_t *shutdown_req;
 
   /* Errors or EOF */

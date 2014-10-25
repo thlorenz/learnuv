@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rm -rf build && rm -rf deps",
     "preinstall": "python scripts/install-dependencies.py",
-    "xcode": "./gyp_learnuv.py -f xcode",
-    "ninja": "./gyp_learnuv.py -f ninja && ninja -C out/Debug",
-    "make": "./gyp_learnuv.py -f make && make -C out"
+    "xcode": "LDFLAGS='-lncurses' ./gyp_learnuv.py -f xcode",
+    "ninja": "LDFLAGS='-lncurses' ./gyp_learnuv.py -f ninja && ninja -C out/Debug",
+    "make": "LDFLAGS='-lncurses' /gyp_learnuv.py -f make && make -C out"
   },
   "repository": {
     "type": "git",

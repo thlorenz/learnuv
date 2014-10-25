@@ -17,5 +17,19 @@
     { 'target_name': '05_fs_readasync_context' , 'sources': [ './src/05_fs_readasync_context.c' ] } ,
     { 'target_name': '06_fs_allasync'          , 'sources': [ './src/06_fs_allasync.c' ] }          ,
     { 'target_name': '07_tcp_echo_server'      , 'sources': [ './src/07_tcp_echo_server.c' ] }      ,
+    { 'target_name': '08_horse_race',
+      'sources': [ './src/08_horse_race.c' ],
+      'conditions': [ 
+        ['OS=="linux"', {
+          'cflags': [ '-pthread, -lncurses' ],
+          'ldflags': [ '-pthread, -lncurses' ],
+        }],
+        # TODO: why do these flags not get applied? For now we are fixing it in package.json by setting env var LDFLAGS
+        ['OS!="linux"', {
+          'cflags': [ '-lncurses' ],
+          'ldflags': [ '-lncurses' ],
+        }],
+        ]
+    }
   ]
 }
