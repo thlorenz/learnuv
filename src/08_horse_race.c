@@ -86,6 +86,17 @@ void progress_cb(uv_async_t* async) {
   draw_horse(horse);
 }
 
+#ifndef usleep
+#include <math.h>
+int usleep(double x) {
+  double res = 0.0;
+  for (double i = 0; i < (x * 100); i++) {
+    res += fmin(i, res);
+  }
+  return res;
+}
+#endif
+
 void race_cb(uv_work_t* work_req) {
   horse_t *horse = work_req->data;
   double speed = 10;

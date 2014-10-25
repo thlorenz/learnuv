@@ -20,16 +20,10 @@
     { 'target_name': '08_horse_race',
       'sources': [ './src/08_horse_race.c' ],
       'conditions': [ 
-        ['OS=="linux"', {
-          'cflags': [ '-pthread, -lncurses' ],
-          'ldflags': [ '-pthread, -lncurses' ],
-        }],
-        # TODO: why do these flags not get applied? For now we are fixing it in package.json by setting env var LDFLAGS
-        ['OS!="linux"', {
-          'cflags': [ '-lncurses' ],
+        ['OS in "freebsd openbsd solaris android linux mac"', {
           'ldflags': [ '-lncurses' ],
-        }],
-        ]
+        }]
+      ]
     }
   ]
 }
