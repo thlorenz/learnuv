@@ -1,5 +1,24 @@
 {
   'target_defaults': { 
+    'conditions': [
+      ['OS != "win"', {
+        'defines': [
+          '_LARGEFILE_SOURCE',
+          '_FILE_OFFSET_BITS=64',
+        ],
+        'conditions': [
+          ['OS=="solaris"', {
+            'cflags': [ '-pthreads' ],
+          }],
+          ['OS not in "solaris android"', {
+            'cflags': [ '-pthread' ],
+          }],
+        ],
+      }],
+    ],
+    'xcode_settings': {
+      'MACOSX_DEPLOYMENT_TARGET': '10.7',
+    },
     'type'         : 'executable',
     'include_dirs' : [ './deps/log', './src', './deps/libuv/test' ],
     'sources'      : [ './deps/log/log.h', './src/learnuv.h' ],
@@ -22,8 +41,13 @@
       'conditions': [ 
         ['OS in "freebsd openbsd solaris android linux mac"', {
           'ldflags': [ '-lncurses' ],
-        }]
-      ]
+        }],
+      ],
+      'xcode_settings': {
+        'OTHER_LDFLAGS': [
+          '-lncurses'
+        ],
+      }
     }
   ]
 }
