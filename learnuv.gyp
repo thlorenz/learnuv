@@ -46,6 +46,7 @@
           '-lncurses'
         ],
       }
-    }
+    },
+    { 'target_name': 'interactive_horse_race'      , 'sources': [ './src/interactive_horse_race/tcp_server.c' ] }      ,
   ]
 }
