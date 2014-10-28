@@ -12,6 +12,7 @@ typedef struct {
   int       id;
   int       slot;
   luv_server_t* server;
+  void* data;
 } luv_client_t;
 
 typedef struct {
@@ -33,12 +34,14 @@ struct luv_server_s {
   luv_client_t* clients[MAX_CLIENTS];
   int           num_clients;
   int           ids;
+  void*         data;
   /* events */
   luv_onclient_connected onclient_connected;
   luv_onclient_disconnected onclient_disconnected;
   luv_onclient_msg onclient_msg;
 };
 
+void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg);
 void luv_server_broadcast(luv_server_t*, char*);
 void luv_server_destroy(luv_server_t*);
 void luv_server_start(luv_server_t*, uv_loop_t*);

@@ -133,23 +133,28 @@ static void onclient_msg_processed(luv_client_msg_t* msg, char* response) {
   free(msg->buf);
 }
 
-void luv_server_broadcast(luv_server_t* self, char* msg) {
-  int i, len, r;
+void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg) {
+  int r, len;
   uv_write_t* write_req;
-  luv_client_t* client;
 
+  if (client == NULL) {
+    log_warn("Client %d was not properly initialized, cannot send message to it.", client->id);
+    return;
+  }
 
   len = strlen(msg);
   uv_buf_t buf = uv_buf_init(msg, len);
+  write_req = malloc(sizeof(uv_write_t));
+  r = uv_write(write_req, (uv_stream_t*) client, &buf, 1, write_cb);
+  CHECK(r, "uv_write");
+}
+
+void luv_server_broadcast(luv_server_t* self, char* msg) {
+  int i, len, r;
+  luv_client_t* client;
+
   for (i = 0; i < self->num_clients; i++) {
-    client = self->clients[i];
-    if (client == NULL) {
-      log_warn("Client %d was not properly initialized, cannot send message to it.", i);
-      continue;
-    }
-    write_req = malloc(sizeof(uv_write_t));
-    r = uv_write(write_req, (uv_stream_t*) client, &buf, 1, write_cb);
-    CHECK(r, "uv_write");
+    luv_server_send(self, self->clients[i], msg);
   }
 }
 
