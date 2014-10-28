@@ -3,7 +3,7 @@
 
 #include "learnuv.h"
 
-#define MAX_CLIENTS 5
+#define MAX_CLIENTS 2
 
 typedef struct luv_server_s luv_server_t;
 
