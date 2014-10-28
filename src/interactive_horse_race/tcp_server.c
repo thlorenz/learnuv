@@ -1,40 +1,4 @@
-#include "learnuv.h"
-
-#define MAX_CLIENTS 5
-
-typedef struct luv_server_s luv_server_t;
-
-typedef struct {
-  uv_tcp_t  connection;
-  int       id;
-  int       slot;
-  luv_server_t* server;
-} luv_client_t;
-
-typedef struct {
-  char*           buf;
-  size_t          len;
-  luv_client_t*   client;
-} luv_client_msg_t;
-
-typedef void (*luv_onclient_msg_processed)(luv_client_msg_t*, const char*);
-typedef void (*luv_onclient_msg)(luv_client_msg_t*, luv_onclient_msg_processed);
-typedef void (*luv_onclient_connected)(luv_client_t*, int);
-typedef void (*luv_onclient_disconnected)(luv_client_t*, int);
-
-/* server inherits uv_tcp_t since its the first field */
-struct luv_server_s {
-  uv_tcp_t      tcp;
-  const char*   host;
-  int           port;
-  luv_client_t* clients[MAX_CLIENTS];
-  int           num_clients;
-  int           ids;
-  /* events */
-  luv_onclient_connected onclient_connected;
-  luv_onclient_disconnected onclient_disconnected;
-  luv_onclient_msg onclient_msg;
-};
+#include "tcp_server.h"
 
 /* forward declarations */
 static void close_cb(uv_handle_t* client);
@@ -43,7 +7,7 @@ static void shutdown_cb(uv_shutdown_t*, int);
 
 static void alloc_cb(uv_handle_t*, size_t, uv_buf_t*);
 static void read_cb(uv_stream_t*, ssize_t, const uv_buf_t*);
-static void onclient_msg_processed(luv_client_msg_t*, const char*);
+static void onclient_msg_processed(luv_client_msg_t*, char*);
 
 static void close_cb(uv_handle_t* client) {
   free(client);
@@ -158,7 +122,7 @@ static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
   server->onclient_msg(msg, onclient_msg_processed);
 }
 
-static void onclient_msg_processed(luv_client_msg_t* msg, const char* response) {
+static void onclient_msg_processed(luv_client_msg_t* msg, char* response) {
   int r;
   uv_write_t* write_req = malloc(sizeof(uv_write_t));
 
@@ -173,6 +137,7 @@ void luv_server_broadcast(luv_server_t* self, char* msg) {
   int i, len, r;
   uv_write_t* write_req;
   luv_client_t* client;
+
 
   len = strlen(msg);
   uv_buf_t buf = uv_buf_init(msg, len);
@@ -238,45 +203,4 @@ luv_server_t* luv_server_create(
   CHECK(r, "uv_tcp_bind");
 
   return self;
-}
-
-/**
- * Client
- */
-
-#define HOST  "0.0.0.0" // localhost
-#define PORT  7000
-
-void onclient_connected(luv_client_t* client, int total_connections) {
-  log_info("New player, %d total now.", total_connections);
-  luv_server_broadcast(client->server, "Welcome player\n");
-}
-
-void onclient_disconnected(luv_client_t* client, int total_connections) {
-  log_info("Player %d quit, %d total now.", client->id, total_connections);
-  luv_server_broadcast(client->server, "Player quit :(\n");
-}
-
-void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respond) {
-  log_info("Got message %s from client %d", msg->buf, msg->client->id);
-  respond(msg, "RaceTrack: WRONG");
-}
-
-int main(void) {
-  uv_loop_t *loop = uv_default_loop();
-
-  log_info("Creating server");
-  luv_server_t *server = luv_server_create(
-      loop
-    , HOST
-    , PORT
-    , onclient_connected
-    , onclient_disconnected
-    , onclient_msg);
-
-  log_info("Starting server");
-  luv_server_start(server, loop);
-
-  uv_run(loop, UV_RUN_DEFAULT);
-  return 0;
 }

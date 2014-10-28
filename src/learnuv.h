@@ -28,14 +28,14 @@ int usleep(double x) {
 
 #define MAX_REPORT_LEN 1024
 
-#define CHECK(r, msg) if (r) {                                                 \
+#define CHECK(r, msg) if (r) {                                                       \
   log_error("%s: [%s(%d): %s]\n", msg, uv_err_name((r)), (int) r, uv_strerror((r))); \
-  exit(1);                                                                     \
+  exit(1);                                                                           \
 }
 
 static char first_report = 1;
 
-const char* path_join(const char* p1, const char* p2) {
+static const char* path_join(const char* p1, const char* p2) {
   char *result = malloc(strlen(p1) + strlen(p2) + 1 + 1);
   strcpy(result, p1);
   strcat(result, "/");
@@ -43,13 +43,13 @@ const char* path_join(const char* p1, const char* p2) {
   return result;
 }
 
-const char* full_report_path(char* ex_file) {
+static const char* full_report_path(char* ex_file) {
   /* todo - basename may not be available on Windows, consider http://stackoverflow.com/a/7180746/97443 */
   const char* filename = basename(ex_file);
   return path_join(__LEARNUV_CONFIG__, filename);
 }
 
-int write_report(const char* path, const char* msg) {
+static int write_report(const char* path, const char* msg) {
   /* overwrite file every time we run the exercise, but allow multiple reports */
   const char* mode = first_report ? "w+" : "a";
   first_report = 0;

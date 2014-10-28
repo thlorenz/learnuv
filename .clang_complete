@@ -1,3 +1,4 @@
 -Ideps/libuv/include/
+-Ideps/libuv/test/
 -Ideps/log/
 -Isrc/
