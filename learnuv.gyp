@@ -50,9 +50,10 @@
     { 'target_name': 'interactive_horse_race', 
       'include_dirs': [ './src/interactive_horse_race/' ],
       'sources': [ 
-        './src/interactive_horse_race/tcp_server.h',
+        './src/interactive_horse_race/interactive_horse_race.h',
+        './src/interactive_horse_race/interactive_horse_race.c',
         './src/interactive_horse_race/tcp_server.c',
-        './src/interactive_horse_race/interactive_horse_race.c' 
+        './src/interactive_horse_race/track.c',
       ] 
     },
   ]

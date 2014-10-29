@@ -1,7 +1,21 @@
-#ifndef __TCP_SERVER_H__
-#define __TCP_SERVER_H__
+#ifndef __INTERACTIVE_HORSE_RACE_H__
+#define __INTERACTIVE_HORSE_RACE_H__
+
+/*
+ * Config
+ */
+
+/* set to 0 in order to not draw but log messages instead */
+#define DRAW 0
+#if DRAW == 1
+#define LOGLEVEL 0
+#endif
 
 #include "learnuv.h"
+
+/*
+ * TCP server
+ */
 
 #define MAX_CLIENTS 2
 
@@ -53,5 +67,44 @@ luv_server_t* luv_server_create(
   , luv_onclient_connected onclient_connected
   , luv_onclient_disconnected onclient_disconnected
   , luv_onclient_msg onclient_msg);
+
+/*
+ * Track
+ */
+
+typedef struct {
+  char* name;
+  int color;
+  int track;
+  int speed;
+  int position;
+} luv_horse_t;
+
+
+/*
+ * Game
+ */
+
+typedef struct {
+  char* question;
+  char* answer;
+} luv_question_t;
+
+typedef struct {
+  luv_client_t *client;
+  luv_horse_t *horse;
+  int color;
+  int track;
+  int speed;
+  int position;
+} luv_player_t;
+
+typedef struct {
+  luv_server_t* server;
+  int in_progress;
+  int question_asked;
+  luv_question_t question;
+  int time_to_answer;
+} luv_game_t;
 
 #endif

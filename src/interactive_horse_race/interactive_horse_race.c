@@ -1,24 +1,14 @@
-#include "tcp_server.h"
+#include "interactive_horse_race.h"
 #include <math.h>
 
 #define TIME_TO_ANSWER 1E7 * 3
 #define MAX_MSG 256
+#define TRACKS MAX_CLIENTS
+#define to_s(x) #x
+#define THREADS to_s(TRACKS)
 
 #define HOST  "0.0.0.0" // localhost
 #define PORT  7000
-
-typedef struct {
-  char* question;
-  char* answer;
-} luv_question_t;
-
-typedef struct {
-  luv_client_t *client;
-  int color;
-  int track;
-  int speed;
-  int position;
-} luv_player_t;
 
 #define NUM_QUESTIONS 4
 const luv_question_t questions[NUM_QUESTIONS] = {
@@ -28,21 +18,12 @@ const luv_question_t questions[NUM_QUESTIONS] = {
   { "111 in DECIMAL"                            , "7" }
 };
 
-typedef struct {
-  luv_server_t* server;
-  int in_progress;
-  int question_asked;
-  luv_question_t question;
-  int time_to_answer;
-} luv_game_t;
-
-
 luv_question_t get_question() {
   int i = rand() % NUM_QUESTIONS;
   return questions[i];
 }
 
-void question_handler(uv_idle_t* handle) {
+static void question_handler(uv_idle_t* handle) {
   luv_game_t *game = handle->data;
   luv_server_t *server = game->server;
 
@@ -66,7 +47,6 @@ void question_handler(uv_idle_t* handle) {
   sprintf(msg, "\n%s\n ? ", game->question.question);
   luv_server_broadcast(server, msg);
 }
-
 
 static void onclient_connected(luv_client_t* client, int total_connections) {
   luv_server_t *server = client->server;
@@ -103,6 +83,11 @@ static void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respo
   luv_game_t *game = server->data;
   luv_player_t *player = client->data;
 
+  if (!game->in_progress) {
+    respond(msg, "Be patient, the game hasn't started yet.\n");
+    return;
+  }
+
   char *correct = game->question.answer;
   char *given = msg->buf;
   int correct_len = strlen(correct);
@@ -125,6 +110,10 @@ static void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respo
 
 int main(void) {
   uv_loop_t *loop = uv_default_loop();
+
+  /* Ensure that each horse gets its own thread, the default libuv threadpool size is 4 */
+  setenv("UV_THREADPOOL_SIZE", THREADS, 1);
+
   srand(time(NULL));
 
   log_info("Creating server");

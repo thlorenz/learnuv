@@ -19,7 +19,8 @@
 #include <math.h>
 int usleep(double x) {
   double res = 0.0;
-  for (double i = 0; i < (x * 100); i++) {
+  double i;
+  for (i = 0; i < (x * 100); i++) {
     res += fmin(i, res);
   }
   return res;

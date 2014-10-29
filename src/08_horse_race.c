@@ -89,8 +89,9 @@ void progress_cb(uv_async_t* async) {
 void race_cb(uv_work_t* work_req) {
   horse_t *horse = work_req->data;
   double speed = 10;
+  int i;
 
-  for (int i = 0; i < TRACK_WIDTH; i++) {
+  for (i = 0; i < TRACK_WIDTH; i++) {
     horse->position++;
 
     /* send progress report so we can redraw the position of the horse */
