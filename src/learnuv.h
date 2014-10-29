@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "log.h"
 #include "uv.h"
 #include "task.h" /* MAKE_VALGRIND_HAPPY */
@@ -14,18 +15,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
-
-#ifdef __linux__
-#include <math.h>
-int usleep(double x) {
-  double res = 0.0;
-  double i;
-  for (i = 0; i < (x * 100); i++) {
-    res += fmin(i, res);
-  }
-  return res;
-}
-#endif
 
 #define MAX_REPORT_LEN 1024
 
