@@ -7,7 +7,7 @@
 #define to_s(x) #x
 #define THREADS to_s(TRACKS)
 
-#define HOST  "0.0.0.0" // localhost
+#define HOST  "0.0.0.0" /* localhost */
 #define PORT  7000
 
 #define NUM_QUESTIONS 4
@@ -52,7 +52,7 @@ static void onclient_connected(luv_client_t* client, int total_connections) {
   luv_server_t *server = client->server;
   luv_game_t *game = server->data;
 
-  // todo: update track if client gets moved to different slot
+  /* todo: update track if client gets moved to different slot */
   luv_player_t *player = malloc(sizeof(luv_player_t));
   client->data = player;
   player->client = client;

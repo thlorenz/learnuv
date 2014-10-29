@@ -1,9 +1,9 @@
 #include "learnuv.h"
 #include <math.h>
 
-const static char* HOST    = "0.0.0.0"; // localhost
+const static char* HOST    = "0.0.0.0"; /* localhost */
 const static int   PORT    = 7000;
-const static int   NBUFS   = 1;         // number of buffers we write at once
+const static int   NBUFS   = 1;         /* number of buffers we write at once */
 
 static uv_tcp_t tcp_server;
 
