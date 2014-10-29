@@ -23,6 +23,14 @@
   exit(1);                                                                           \
 }
 
+#ifndef __MAGIC_FILE__
+#define __MAGIC_FILE__ "Please build using using ./learnuv make or similar."
+#endif
+
+#ifndef __LEARNUV_CONFIG__
+#define __LEARNUV_CONFIG__ "Please build using using ./learnuv make or similar."
+#endif
+
 static char first_report = 1;
 
 static const char* path_join(const char* p1, const char* p2) {
