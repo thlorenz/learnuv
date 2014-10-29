@@ -8,7 +8,7 @@ typedef struct context_struct {
 } context_t;
 
 void read_cb(uv_fs_t* read_req) {
-  int r;
+  int r = 0;
   if (read_req->result < 0) CHECK(read_req->result, "uv_fs_read callback");
 
   /* extracting our context from the read_req */
@@ -33,7 +33,7 @@ void read_cb(uv_fs_t* read_req) {
 }
 
 void init(uv_loop_t *loop) {
-  int r;
+  int r = 0;
 
   /* No more globals, we need to malloc each request and pass it around for later cleanup */
   uv_fs_t *open_req = malloc(sizeof(uv_fs_t));

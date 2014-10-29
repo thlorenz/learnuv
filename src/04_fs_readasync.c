@@ -25,7 +25,7 @@ void read_cb(uv_fs_t* read_req) {
 }
 
 int main() {
-  int r;
+  int r = 0;
   uv_loop_t *loop = uv_default_loop();
 
   /* 1. Open file */

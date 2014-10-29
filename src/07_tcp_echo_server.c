@@ -34,7 +34,7 @@ static void shutdown_cb(uv_shutdown_t* req, int status) {
 static void onconnection(uv_stream_t *server, int status) {
   CHECK(status, "onconnection");
 
-  int r;
+  int r = 0;
   uv_shutdown_t *shutdown_req;
 
   /* 4. Accept client connection */
@@ -68,7 +68,7 @@ static void alloc_cb(uv_handle_t *handle, size_t size, uv_buf_t *buf) {
 }
 
 static void read_cb(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf) {
-  int r;
+  int r = 0;
   uv_shutdown_t *shutdown_req;
 
   /* Errors or EOF */
@@ -120,7 +120,7 @@ static void write_cb(uv_write_t *req, int status) {
 }
 
 int main() {
-  int r;
+  int r = 0;
   uv_loop_t *loop = uv_default_loop();
 
   /* 1. Initialize TCP server */

@@ -4,7 +4,7 @@
 static const char *filename = __MAGIC_FILE__;
 
 int main() {
-  int r;
+  int r = 0;
   uv_loop_t *loop = uv_default_loop();
 
   /* 1. Open file */

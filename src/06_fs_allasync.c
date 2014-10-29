@@ -14,7 +14,7 @@ typedef struct context_struct {
 } context_t;
 
 void open_cb(uv_fs_t* open_req) {
-  int r;
+  int r = 0;
   if (open_req->result < 0) CHECK(open_req->result, "uv_fs_open callback");
 
   context_t* context = open_req->data;
@@ -35,7 +35,7 @@ void open_cb(uv_fs_t* open_req) {
 }
 
 void read_cb(uv_fs_t* read_req) {
-  int r;
+  int r = 0;;
   if (read_req->result < 0) CHECK(read_req->result, "uv_fs_read callback");
 
   context_t* context = read_req->data;
