@@ -6,7 +6,7 @@
  */
 
 /* set to 0 in order to not draw but log messages instead */
-#define DRAW 0
+#define DRAW 1
 #if DRAW == 1
 #define LOGLEVEL 0
 #endif

@@ -70,8 +70,10 @@ static void horse_draw(luv_horse_t *self) {
 static void add_player(uv_loop_t* loop, luv_player_t* player) {
   luv_horse_t *horse = horses + player->track;
   player->horse = horse;
+  player->horse->position = 0;
 
-  if (!DRAW) log_info("Queued horse %s on track: %d", horse->name, horse->track);
+  log_info("Queued horse %s on track: %d", horse->name, horse->track);
+  horse_draw(player->horse);
 }
 
 static void update_player(luv_player_t* player, int remainder) {
@@ -79,9 +81,10 @@ static void update_player(luv_player_t* player, int remainder) {
 
   if (remainder >= player->speed) return;
 
-  /* todo: find better algo for this so both progresses don't happen right after each other */
-  log_info("Horse %s progresses", player->horse->name);
   player->horse->position++;
+  /* todo: find better algo for this so both progresses don't happen right after each other */
+  log_info("Horse %s progresses to position", player->horse->name, player->horse->position);
+  horse_draw(player->horse);
 }
 
 void track_handler(uv_idle_t* handle) {
