@@ -13,6 +13,9 @@
 
 #include "learnuv.h"
 
+#define DELAY        1E7 / 3
+#define MAX_SPEED    20
+
 /*
  * TCP server
  */
@@ -100,7 +103,7 @@ typedef struct {
   int question_asked;
   luv_question_t question;
   int time_to_answer;
-  int ticks;
+  int delay;
 } luv_game_t;
 
 /*

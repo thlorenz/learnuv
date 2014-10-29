@@ -8,7 +8,6 @@
 #define HORSE_WIDTH  29
 #define HORSE_HEIGHT 11
 #define TRACK_WIDTH  110
-#define FACTOR       1E7
 
 const static char* horse_pic[HORSE_HEIGHT] = {
   "                 ,***,    ",
@@ -69,36 +68,39 @@ static void horse_draw(luv_horse_t *self) {
 
 static void add_player(uv_loop_t* loop, luv_player_t* player) {
   luv_horse_t *horse = horses + player->track;
+  horse->position = 0;
   player->horse = horse;
-  player->horse->position = 0;
+  player->speed = 0;
 
   log_info("Queued horse %s on track: %d", horse->name, horse->track);
-  horse_draw(player->horse);
+  if (DRAW) horse_draw(player->horse);
 }
 
-static void update_player(luv_player_t* player, int remainder) {
+static void update_player(int rand_num, luv_player_t* player) {
   luv_horse_t *horse = player->horse;
 
-  if (remainder >= player->speed) return;
-
+  if (rand_num > player->speed) return;
   player->horse->position++;
   /* todo: find better algo for this so both progresses don't happen right after each other */
-  log_info("Horse %s progresses to position", player->horse->name, player->horse->position);
-  horse_draw(player->horse);
+  log_info("Horse %s progresses to position %d.", player->horse->name, player->horse->position);
+  if (DRAW) horse_draw(player->horse);
 }
 
 void track_handler(uv_idle_t* handle) {
   int i;
   luv_game_t *game = handle->data;
+
   if (!game->in_progress) return;
+  if (--(game->delay) > 0) return;
+
+  game->delay = DELAY;
 
   luv_server_t *server = game->server;
 
   luv_client_t **clients = server->clients;
-  int remainder = game->ticks++ % (int)FACTOR;
-
+  int rand_num = (rand() % MAX_SPEED) + 1;
   for (i = 0; i < server->num_clients; i++)
-    update_player(clients[i]->data, remainder);
+    update_player(rand_num, clients[i]->data);
 
 }
 

@@ -2,7 +2,7 @@
 #include <math.h>
 
 #define TIME_TO_ANSWER 1E7 * 3
-#define MAX_MSG 256
+#define MAX_MSG 1024
 #define TRACKS MAX_CLIENTS
 #define to_s(x) #x
 #define THREADS to_s(TRACKS)
@@ -28,6 +28,7 @@ static void start_game(uv_loop_t* loop, luv_game_t* game) {
   log_info("Initializing track");
   track_init(loop, game->server->clients, game->server->num_clients);
   game->in_progress = 1;
+  game->delay = DELAY;
 }
 
 static void question_handler(uv_idle_t* handle) {
@@ -109,7 +110,7 @@ static void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respo
     game->question_asked = 0;
   } else {
     player->speed = fmax(0, player->speed - 1);
-    sprintf(res, "Your answer is wrong! Your speed is now %d\n", player->speed);
+    sprintf(res, "Your answer is wrong! Your speed is now %d\n\n%s\n ? ",player->speed, game->question.question);
   }
 
   respond(msg, res);
@@ -136,7 +137,7 @@ int main(void) {
   luv_server_start(server, loop);
 
   log_info("Initializing game loop");
-  luv_game_t game = { .server = server, .ticks = 0 };
+  luv_game_t game = { .server = server, .delay = DELAY };
   server->data = &game;
 
   uv_idle_t question_handle;
