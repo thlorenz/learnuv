@@ -72,6 +72,18 @@ luv_server_t* luv_server_create(
   , luv_onclient_msg onclient_msg);
 
 /*
+ * Questions
+ */
+
+typedef struct {
+  char* question;
+  char* answer;
+} luv_question_t;
+
+void luv_questions_init();
+luv_question_t luv_questions_get();
+
+/*
  * Game
  */
 
@@ -82,11 +94,6 @@ typedef struct {
   int position;
 } luv_horse_t;
 
-
-typedef struct {
-  char* question;
-  char* answer;
-} luv_question_t;
 
 typedef struct {
   luv_client_t *client;

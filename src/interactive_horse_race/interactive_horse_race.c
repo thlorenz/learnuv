@@ -1,7 +1,8 @@
 #include "interactive_horse_race.h"
 #include <math.h>
+#include <string.h>
 
-#define TIME_TO_ANSWER 1E7 * 3
+#define TIME_TO_ANSWER 1E7 * 4
 #define MAX_MSG 1024
 #define TRACKS MAX_CLIENTS
 #define to_s(x) #x
@@ -9,20 +10,6 @@
 
 #define HOST  "0.0.0.0" /* localhost */
 #define PORT  7000
-
-#define NUM_QUESTIONS 4
-const luv_question_t questions[NUM_QUESTIONS] = {
-  { "You wake up in a forrest and are surrounded by vines. A gate is to the north." , "N" }     ,
-  { "What is the library that powers Node.js"   , "libuv" } ,
-  { "1011 1111 in HEX"                          , "BF" }    ,
-  { "111 in DECIMAL"                            , "7" }
-};
-
-
-luv_question_t get_question() {
-  int i = rand() % NUM_QUESTIONS;
-  return questions[i];
-}
 
 static void start_game(uv_loop_t* loop, luv_game_t* game) {
   log_info("Initializing track");
@@ -47,7 +34,7 @@ static void question_handler(uv_idle_t* handle) {
     game->question_asked = 0;
   }
 
-  game->question = get_question();
+  game->question = luv_questions_get();
   game->question_asked = 1;
   game->time_to_answer = TIME_TO_ANSWER;
 
@@ -103,7 +90,7 @@ static void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respo
 
   char res[MAX_MSG];
 
-  if (!strncmp(correct, given, fmin(correct_len, given_len))) {
+  if (!strncasecmp(correct, given, fmin(correct_len, given_len))) {
     player->speed++;
 
     sprintf(res, "Your answer is correct! Your speed is now %d\n", player->speed);
@@ -123,6 +110,8 @@ int main(void) {
   setenv("UV_THREADPOOL_SIZE", THREADS, 1);
 
   srand(time(NULL));
+  log_info("Initializing questions");
+  luv_questions_init();
 
   log_info("Creating server");
   luv_server_t *server = luv_server_create(

@@ -55,6 +55,7 @@
         './src/interactive_horse_race/interactive_horse_race.c',
         './src/interactive_horse_race/tcp_server.c',
         './src/interactive_horse_race/track.c',
+        './src/interactive_horse_race/questions.c',
       ],
       'conditions': [ 
         ['OS in "freebsd openbsd solaris android linux mac"', {
