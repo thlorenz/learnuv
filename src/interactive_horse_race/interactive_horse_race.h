@@ -69,21 +69,16 @@ luv_server_t* luv_server_create(
   , luv_onclient_msg onclient_msg);
 
 /*
- * Track
+ * Game
  */
 
 typedef struct {
   char* name;
   int color;
   int track;
-  int speed;
   int position;
 } luv_horse_t;
 
-
-/*
- * Game
- */
 
 typedef struct {
   char* question;
@@ -105,6 +100,14 @@ typedef struct {
   int question_asked;
   luv_question_t question;
   int time_to_answer;
+  int ticks;
 } luv_game_t;
+
+/*
+ * Track
+ */
+
+void track_handler(uv_idle_t*);
+void track_init(uv_loop_t*, luv_client_t**, int);
 
 #endif

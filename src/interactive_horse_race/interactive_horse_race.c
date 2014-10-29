@@ -18,9 +18,16 @@ const luv_question_t questions[NUM_QUESTIONS] = {
   { "111 in DECIMAL"                            , "7" }
 };
 
+
 luv_question_t get_question() {
   int i = rand() % NUM_QUESTIONS;
   return questions[i];
+}
+
+static void start_game(uv_loop_t* loop, luv_game_t* game) {
+  log_info("Initializing track");
+  track_init(loop, game->server->clients, game->server->num_clients);
+  game->in_progress = 1;
 }
 
 static void question_handler(uv_idle_t* handle) {
@@ -31,7 +38,7 @@ static void question_handler(uv_idle_t* handle) {
     if (server->num_clients < MAX_CLIENTS) return;
     log_info("Starting the race");
     luv_server_broadcast(server, "\nAll tracks filled, let the race begin!\n");
-    game->in_progress = 1;
+    start_game(handle->loop, game);
   }
   if (game->question_asked) {
     if (--game->time_to_answer > 0) return;
@@ -129,13 +136,18 @@ int main(void) {
   luv_server_start(server, loop);
 
   log_info("Initializing game loop");
-  luv_game_t game = { .server = server };
+  luv_game_t game = { .server = server, .ticks = 0 };
   server->data = &game;
 
-  uv_idle_t idle_handle;
-  uv_idle_init(loop, &idle_handle);
-  idle_handle.data = &game;
-  uv_idle_start(&idle_handle, question_handler);
+  uv_idle_t question_handle;
+  uv_idle_init(loop, &question_handle);
+  question_handle.data = &game;
+  uv_idle_start(&question_handle, question_handler);
+
+  uv_idle_t track_handle;
+  uv_idle_init(loop, &track_handle);
+  track_handle.data = &game;
+  uv_idle_start(&track_handle, track_handler);
 
   uv_run(loop, UV_RUN_DEFAULT);
   return 0;
