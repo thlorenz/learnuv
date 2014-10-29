@@ -39,6 +39,7 @@
       'conditions': [ 
         ['OS in "freebsd openbsd solaris android linux mac"', {
           'ldflags': [ '-lncurses' ],
+          'cflags': [ '--std=gnu99' ],
         }],
       ],
       'xcode_settings': {
