@@ -1,9 +1,9 @@
 #include "learnuv.h"
 #include <math.h>
 
-const static char* HOST    = "0.0.0.0"; // localhost
+const static char* HOST    = "0.0.0.0"; /* localhost */
 const static int   PORT    = 7000;
-const static int   NBUFS   = 1;         // number of buffers we write at once
+const static int   NBUFS   = 1;         /* number of buffers we write at once */
 
 static uv_tcp_t tcp_server;
 
@@ -34,13 +34,13 @@ static void shutdown_cb(uv_shutdown_t* req, int status) {
 static void onconnection(uv_stream_t *server, int status) {
   CHECK(status, "onconnection");
 
-  int r;
+  int r = 0;
   uv_shutdown_t *shutdown_req;
 
   /* 4. Accept client connection */
   log_info("Accepting Connection");
 
-  /* 4.1. Init client connection */
+  /* 4.1. Init client connection using `server->loop`, passing the client handle */
   uv_tcp_t *client = malloc(sizeof(uv_tcp_t));
   r = uv_tcp_init(server->loop, client);
   CHECK(r, "uv_tcp_init");
@@ -68,7 +68,7 @@ static void alloc_cb(uv_handle_t *handle, size_t size, uv_buf_t *buf) {
 }
 
 static void read_cb(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf) {
-  int r, i;
+  int r = 0;
   uv_shutdown_t *shutdown_req;
 
   /* Errors or EOF */
@@ -94,6 +94,8 @@ static void read_cb(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf) {
   if (!strncmp("QUIT", buf->base, fmin(nread, 4))) {
     log_info("Closing the server");
     free(buf->base);
+    /* Before exiting we need to properly close the server via uv_close */
+    /* We can do this synchronously */
     uv_close((uv_handle_t*) &tcp_server, NULL);
     log_info("Closed server, exiting");
     exit(0);
@@ -120,7 +122,7 @@ static void write_cb(uv_write_t *req, int status) {
 }
 
 int main() {
-  int r;
+  int r = 0;
   uv_loop_t *loop = uv_default_loop();
 
   /* 1. Initialize TCP server */
