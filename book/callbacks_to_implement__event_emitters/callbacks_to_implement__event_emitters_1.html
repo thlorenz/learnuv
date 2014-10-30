@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>c  | what is libuv</title>
+        <title>Callbacks to implement  Event Emitters 1 | what is libuv</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.1.1">
@@ -17,10 +17,10 @@
         
     
     
-    <link rel="next" href="../pointers_/pointers__0.html" />
+    <link rel="next" href="../the_end/the_end_0.html" />
     
     
-    <link rel="prev" href="../programming_model/programming_model_1.html" />
+    <link rel="prev" href="../callbacks_to_implement__event_emitters/callbacks_to_implement__event_emitters_0.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book" data-level="5" data-basepath=".." data-revision="1414708034244">
+    <div class="book" data-level="11.1" data-basepath=".." data-revision="1414708034244">
     
 
 <div class="book-summary">
@@ -172,7 +172,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="5" data-path="c_/c__0.html">
+        <li class="chapter " data-level="5" data-path="c_/c__0.html">
             
                 
                     <a href="../c_/c__0.html">
@@ -329,7 +329,7 @@
                 
     
         
-        <li class="chapter " data-level="11.1" data-path="callbacks_to_implement__event_emitters/callbacks_to_implement__event_emitters_1.html">
+        <li class="chapter active" data-level="11.1" data-path="callbacks_to_implement__event_emitters/callbacks_to_implement__event_emitters_1.html">
             
                 
                     <a href="../callbacks_to_implement__event_emitters/callbacks_to_implement__event_emitters_1.html">
@@ -454,13 +454,26 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_3">
+                    <section class="normal" id="section-gitbook_4">
                     
-                        <h1 id="c">c</h1>
-<ul>
-<li>some features in C heavily used</li>
-<li>look at some in detail</li>
-</ul>
+                        <h1 id="callbacks-to-implement--event-emitters">Callbacks to implement  Event Emitters</h1>
+<pre><code class="lang-c">luv_server_t* luv_server_create(
+      uv_loop_t *loop
+    , <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* host
+    , <span class="hljs-keyword">int</span> port
+    , luv_onclient_connected onclient_connected
+    , luv_onclient_disconnected onclient_disconnected
+    , luv_onclient_msg onclient_msg) {
+
+  luv_server_t *self          = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(luv_server_t));
+  self-&gt;host                  = host;
+  self-&gt;port                  = port;
+  self-&gt;num_clients           = <span class="hljs-number">0</span>;
+  self-&gt;onclient_connected    = onclient_connected;
+  self-&gt;onclient_disconnected = onclient_disconnected;
+  self-&gt;onclient_msg          = onclient_msg;
+}
+</code></pre>
 
                     
                     </section>
@@ -471,10 +484,10 @@
         </div>
 
         
-        <a href="../programming_model/programming_model_1.html" class="navigation navigation-prev " aria-label="Previous page: programming model 1"><i class="fa fa-angle-left"></i></a>
+        <a href="../callbacks_to_implement__event_emitters/callbacks_to_implement__event_emitters_0.html" class="navigation navigation-prev " aria-label="Previous page: Callbacks to implement  Event Emitters"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../pointers_/pointers__0.html" class="navigation navigation-next " aria-label="Next page: pointers "><i class="fa fa-angle-right"></i></a>
+        <a href="../the_end/the_end_0.html" class="navigation navigation-next " aria-label="Next page: The End"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
