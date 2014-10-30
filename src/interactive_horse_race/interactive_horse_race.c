@@ -45,7 +45,6 @@ static void question_handler(uv_idle_t* handle) {
 
 static void onclient_connected(luv_client_t* client, int total_connections) {
   luv_server_t *server = client->server;
-  luv_game_t *game = server->data;
 
   /* todo: update track if client gets moved to different slot */
   luv_player_t *player = malloc(sizeof(luv_player_t));
@@ -58,8 +57,9 @@ static void onclient_connected(luv_client_t* client, int total_connections) {
   sprintf(msg, "Welcome player %d!\nWe now have a total of %d players.\n", client->id, total_connections);
 
   luv_server_broadcast(client->server, msg);
+
   char client_msg[MAX_MSG];
-  sprintf(msg, "Welcome to the game, you are on track %d\n", player->track + 1);
+  sprintf(client_msg, "Welcome to the game, you are on track %d\n", player->track + 1);
   luv_server_send(server, client, msg);
 }
 
@@ -140,5 +140,7 @@ int main(void) {
   uv_idle_start(&track_handle, track_handler);
 
   uv_run(loop, UV_RUN_DEFAULT);
+
+  MAKE_VALGRIND_HAPPY();
   return 0;
 }

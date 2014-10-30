@@ -80,9 +80,8 @@ static void update_player(int rand_num, luv_player_t* player) {
   luv_horse_t *horse = player->horse;
 
   if (rand_num > player->speed) return;
-  player->horse->position++;
-  /* todo: find better algo for this so both progresses don't happen right after each other */
-  log_info("Horse %s progresses to position %d.", player->horse->name, player->horse->position);
+  horse->position++;
+  log_info("Horse %s progresses to position %d.", horse->name, horse->position);
   if (DRAW) horse_draw(player->horse);
 }
 

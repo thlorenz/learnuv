@@ -13,14 +13,14 @@
 
 #include "learnuv.h"
 
-#define DELAY        1E7 / 3
+#define DELAY        1E6
 #define MAX_SPEED    20
 
 /*
  * TCP server
  */
 
-#define MAX_CLIENTS 2
+#define MAX_CLIENTS 5
 
 typedef struct luv_server_s luv_server_t;
 

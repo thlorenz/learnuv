@@ -150,8 +150,7 @@ void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg) {
 }
 
 void luv_server_broadcast(luv_server_t* self, char* msg) {
-  int i, len, r;
-  luv_client_t* client;
+  int i;
 
   for (i = 0; i < self->num_clients; i++) {
     luv_server_send(self, self->clients[i], msg);
