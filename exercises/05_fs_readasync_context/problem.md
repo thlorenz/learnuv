@@ -3,10 +3,6 @@
 In this exercise we introduce a technique that allows you to keep track of your requests via a `context`.
 In this case our context only has one field, but lets start small shall we?
 
-Look closely at the code and realize that the first field inside our `context_t` is a `uv_fs_t` and thus is inheriting
-from it. 
-We are not making use of this fact in this exercise, but will do so in the future.
-
 None of our requests are global anymore, only our `context` is.
 
 ### malloc
@@ -37,8 +33,6 @@ In order to access the context once the `read_cb` callback is invoked, we attach
 
 Then inside the `read_cb` we get our context back from that `data` field: `context_t* context = read_req->data`. This is
 a common technique used in libraries using libuv and even in libuv itself.
-
-Since we are doing anything else synchronously we only need that one field in our context for now.
 
 **Make sure to fully understand this technique** before moving to the next exercise as we will build up on it.
 
