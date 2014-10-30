@@ -22,6 +22,7 @@ void read_cb(uv_fs_t* read_req) {
 
   /* 5. Close the file descriptor (synchronously) */
   uv_fs_t close_req;
+  r = uv_fs_close(uv_default_loop(), &close_req, context->open_req->result, NULL);
   if (r < 0) CHECK(abs(r), "uv_fs_close");
 
   /* cleanup all requests and context */
@@ -42,14 +43,19 @@ void init(uv_loop_t *loop) {
   context->open_req  = open_req;
 
   /* 1. Open file */
+  r = uv_fs_open(loop, open_req, filename, O_RDONLY, S_IRUSR, NULL);
   if (r < 0) CHECK(r, "uv_fs_open");
 
   /* 2. Create buffer and initialize it to turn it into a a uv_buf_t */
+  size_t buf_len = sizeof(char) * BUF_SIZE;
+  char *buf = malloc(buf_len);
+  uv_buf_t iov = uv_buf_init(buf, buf_len);
 
   /* allow us to access the context inside read_cb */
   read_req->data = context;
 
   /* 3. Read from the file into the buffer */
+  r = uv_fs_read(loop, read_req, open_req->result, &iov, 1, 0, read_cb);
   if (r < 0) CHECK(r, "uv_fs_read");
 }
 
