@@ -2,5 +2,6 @@
     "01 SYSTEM INFO"
   , "02 IDLE"
   , "03 FS READSYNC"
+  , "04 FS READASYNC"
   , "07 TCP ECHO SERVER"
 ]

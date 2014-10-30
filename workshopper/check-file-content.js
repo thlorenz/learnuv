@@ -44,7 +44,10 @@ module.exports = function checkFileContent(exercise, mode, cb) {
     , fullPath = path.join(dir, filename)
 
   fs.exists(fullPath, function (itdoes) {
-    if (!itdoes) return cb(new Error('It looks like you did not run the current exercise yet, I could not find a report file for ' + exercise.name + '.'))
+    if (!itdoes) return cb(
+      new Error('It looks like you did not run the current exercise yet and/or forgot to write a report.\n                  ' + 
+                'learnuv could not find a report file for ' + exercise.name + '.')
+    )
     diffFiles(path.join(exercise.dir, 'expected.txt'), fullPath, exercise.detectDiff || detectDiff, cb); 
   })
 }
