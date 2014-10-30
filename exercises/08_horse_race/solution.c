@@ -95,6 +95,7 @@ void race_cb(uv_work_t* work_req) {
     horse->position++;
 
     /* 3. Send progress report so we can redraw the position of the horse every time its position changed */
+    uv_async_send(&horse->async);
 
     speed += ((rand() % 5) - 2);
 
@@ -121,8 +122,10 @@ void add_horse(uv_loop_t* loop, int track) {
   horse->async.data = horse;
 
   /* 1. Init async worker (attached to our horse) passing a callback to report progress */
+  uv_async_init(loop, &horse->async, progress_cb);
 
   /* 2. Queue work for our worker passing the right callbacks */
+  uv_queue_work(loop, (uv_work_t*) work_req, race_cb, finished_race_cb);
 
   if (!DRAW) log_info("Queued horse %s on track: %d", horse->name, horse->track);
 }
