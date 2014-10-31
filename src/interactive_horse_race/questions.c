@@ -2,14 +2,21 @@
 
 #define MATH_QUESTIONS_LEN 256
 #define CONVERSION_QUESTIONS_LEN 64
-#define CANNED_QUESTIONS_LEN 2
+#define CANNED_QUESTIONS_LEN 9
 
 luv_question_t math_questions[MATH_QUESTIONS_LEN];
 luv_question_t conversion_questions[CONVERSION_QUESTIONS_LEN];
 
 const luv_question_t canned_questions[CANNED_QUESTIONS_LEN] = {
   { "You wake up in a forrest and are surrounded by vines. A gate is to the north." , "N" }     ,
-  { "What is the library that powers Node.js"   , "libuv" }
+  { "What is the library that powers Node.js"   , "libuv" },
+  { "What is the language libuv is implemented in", "C" },
+  { "What is the language v8 is implemented in", "C++" },
+  { "At what conference was learnuv first used as a workshopper", "campjs" },
+  { "What is the first name of the campjs curator", "Tim" },
+  { "What is the first name of the Node.js creator", "Ryan" },
+  { "C function used to allocate memory", "malloc" },
+  { "C function used to release memory", "free" },
 };
 
 static luv_question_t get_canned_question() {
@@ -71,7 +78,7 @@ static void init_conversion_questions() {
     a = malloc(sizeof(char) * 256);
 
     sprintf(q, "%d converted to HEXADECIMAL", i);
-    sprintf(a, "%xH", i);
+    sprintf(a, "%x", i);
 
     question = &conversion_questions[i];
     question->question = q;
@@ -80,7 +87,7 @@ static void init_conversion_questions() {
     q = malloc(sizeof(char) * 256);
     a = malloc(sizeof(char) * 256);
 
-    sprintf(q, "%xH converted to DECIMAL", i);
+    sprintf(q, "0x%x converted to DECIMAL", i);
     sprintf(a, "%d", i);
 
     question = &conversion_questions[i + 1];
