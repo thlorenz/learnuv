@@ -16,6 +16,6 @@ node_modules
 
 build/
 deps/
-gitbook/
+./gitbook
 learnuv.xcodeproj/
 out/
