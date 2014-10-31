@@ -90,7 +90,7 @@ struct uv_tcp_s {
 void read_cb(uv_fs_t* read_req);
 ```
 - *callback style* code without *closures* is hard
-- all you have access here is the `read_req`
+- all may access here is the `read_req`
 
 # Keeping Track
 
@@ -108,7 +108,7 @@ void read_cb(uv_fs_t* read_req);
 
 # Callbacks to implement  Event Emitters
 
-- **libuv** has callbacks that are meant to be invoked more than once
+- when working with **libuv** you may encounter callbacks that are meant to be invoked more than once
 - this allows us to build simple event emitters
 
 ```c
