@@ -90,7 +90,7 @@ struct uv_tcp_s {
 void read_cb(uv_fs_t* read_req);
 ```
 - *callback style* code without *closures* is hard
-- all may access here is the `read_req`
+- all you may access here is the `read_req`
 
 # Keeping Track
 
@@ -109,7 +109,7 @@ void read_cb(uv_fs_t* read_req);
 # Callbacks to implement  Event Emitters
 
 - when working with **libuv** you may encounter callbacks that are meant to be invoked more than once
-- this allows us to build simple event emitters
+- this allows us to build simple event emitters *supporting one subscriber per event*
 
 ```c
 struct luv_server_s {
@@ -123,7 +123,7 @@ struct luv_server_s {
 };
 ```
 
-# Callbacks to implement  Event Emitters
+# Callbacks to implement Event Emitters
 
 ```c
 luv_server_t* luv_server_create(
@@ -146,6 +146,6 @@ luv_server_t* luv_server_create(
 
 # The End
 
-Now and have fun with the workshop.
+Now go and have fun with the workshop.
 
 You might wanna build and run the `interactive_horse_race` just to get yourself motivated ;)
