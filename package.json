@@ -4,7 +4,9 @@
   "description": " Learn uv for fun and profit, a self guided workshop to the library that powers Node.js.",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf build && rm -rf deps",
+    "clean-deps": "rm -rf build && rm -rf deps",
+    "clean": "rm -rf out",
+    "pack": "./scripts/pack.sh",
     "preinstall": "python scripts/install-dependencies.py",
     "xcode": "./gyp_learnuv.py -f xcode",
     "ninja": "./gyp_learnuv.py -f ninja && ninja -C out/Debug $CURRENT_TARGET",
