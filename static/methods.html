@@ -1,0 +1,3207 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060) -->
+<html lang="en" class=""><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>libuv-dox/methods.md at master · thlorenz/libuv-dox</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="thlorenz/libuv-dox" name="twitter:title"><meta content="libuv-dox - Documenting types and methods of libuv, mostly by reading &amp;#39;uv.h&amp;#39;." name="twitter:description"><meta content="https://avatars1.githubusercontent.com/u/192891?v=2&amp;s=400" name="twitter:image:src">
+<meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="https://avatars1.githubusercontent.com/u/192891?v=2&amp;s=400" property="og:image"><meta content="thlorenz/libuv-dox" property="og:title"><meta content="https://github.com/thlorenz/libuv-dox" property="og:url"><meta content="libuv-dox - Documenting types and methods of libuv, mostly by reading &#39;uv.h&#39;." property="og:description">
+
+      <meta name="browser-stats-url" content="/_stats">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="https://github.com/_sockets">
+    <meta name="pjax-timeout" content="1000">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient="">
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="github" name="octolytics-app-id"><meta content="65A8FFFC:5280:783398:54541E33" name="octolytics-dimension-request_id"><meta content="192891" name="octolytics-actor-id"><meta content="thlorenz" name="octolytics-actor-login"><meta content="8d8ba7f8d809a16f9db3019b98cbfea4a76645ba486e1c6d003908c8e149d28f" name="octolytics-actor-hash">
+    
+    <meta content="Rails, view, blob#show" name="analytics-event">
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="VFF4EtpBHmKBz6ljvV0Q4/G8Y1Tb7r8c+ka5xNyiZXl6bhk+68/JTULCgInxahzQLr16YhAifFC46l9vdIO0WA==" name="csrf-token">
+
+    <link href="./methods_files/github-208780c72d87b50a0c3b932094adabe0ed787e29f3a60ddf60b7a8c0b66aeaff.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./methods_files/github2-c009dbdc08ab7d5eda945f5f7a2d624e96c5afb53096b7e00af8f7db21cd0d4d.css" media="all" rel="stylesheet" type="text/css">
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="dc0e38a179332e206422f29bc58880a7">
+
+      
+  <meta name="description" content="libuv-dox - Documenting types and methods of libuv, mostly by reading &#39;uv.h&#39;.">
+  <meta name="go-import" content="github.com/thlorenz/libuv-dox git https://github.com/thlorenz/libuv-dox.git">
+
+  <meta content="192891" name="octolytics-dimension-user_id"><meta content="thlorenz" name="octolytics-dimension-user_login"><meta content="15384504" name="octolytics-dimension-repository_id"><meta content="thlorenz/libuv-dox" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="15384504" name="octolytics-dimension-repository_network_root_id"><meta content="thlorenz/libuv-dox" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/thlorenz/libuv-dox/commits/master.atom" rel="alternate" title="Recent Commits to libuv-dox:master" type="application/atom+xml">
+
+  <style type="text/css"></style><script src="chrome-extension://gjfoekeijnfcemfgihckkhhoiehljdmd/lib/embed_injected.js"></script></head>
+
+
+  <body class="logged_in  env-production macintosh vis-public page-blob">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" ga-data-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <form accept-charset="UTF-8" action="https://github.com/thlorenz/libuv-dox/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/thlorenz/libuv-dox/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+  <input type="text" class="js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" data-global-scope-placeholder="Search GitHub" data-repo-scope-placeholder="Search" tabindex="1" autocapitalize="off">
+  <div class="scope-badge">This repository</div>
+</form>
+      </div>
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item explore">
+          <a class="header-nav-link" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
+        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+          </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">Help</a>
+        </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name" href="https://github.com/thlorenz" data-ga-click="Header, go to profile, text:username">
+      <img alt="Thorsten Lorenz" class="avatar" data-user="192891" height="20" src="./methods_files/192891" width="20">
+      <span class="css-truncate">
+        <span class="css-truncate-target">thlorenz</span>
+      </span>
+    </a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="#" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      
+<ul class="dropdown-menu">
+  <li>
+    <a href="https://github.com/new"><span class="octicon octicon-repo"></span> New repository</a>
+  </li>
+  <li>
+    <a href="https://github.com/organizations/new"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+    <li class="dropdown-divider"></li>
+    <li class="dropdown-header">
+      <span title="thlorenz/libuv-dox">This repository</span>
+    </li>
+      <li>
+        <a href="https://github.com/thlorenz/libuv-dox/issues/new"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+      <li>
+        <a href="https://github.com/thlorenz/libuv-dox/settings/collaboration"><span class="octicon octicon-person"></span> New collaborator</a>
+      </li>
+</ul>
+
+    </div>
+  </li>
+
+  <li class="header-nav-item">
+        <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+        <span class="octicon octicon-inbox"></span>
+</a>
+  </li>
+
+  <li class="header-nav-item">
+    <a class="header-nav-link tooltipped tooltipped-s" href="https://github.com/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
+      <span class="octicon octicon-gear"></span>
+    </a>
+  </li>
+
+  <li class="header-nav-item">
+    <form accept-charset="UTF-8" action="https://github.com/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="0qO/Oc6E15FneGGwyYMq7v8Zz+LGBR/Rk2Fme24NUZj/XL3tBqlOGlfTdMP5RTy5Av/aRg24XdwTVS7GxfW8XA=="></div>
+      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
+        <span class="octicon octicon-sign-out"></span>
+      </button>
+</form>  </li>
+
+</ul>
+
+
+    
+  </div>
+</div>
+
+      
+
+        
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container">
+      
+    </div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+<ul class="pagehead-actions">
+
+    <li class="subscription">
+      <form accept-charset="UTF-8" action="https://github.com/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="FG82Zk8ChD/8tyEm3EHdHFrsP43DD6wZn2OxbHbWa+ZXChcfNxU+LCG1cCrUnqcuW7tLUjuAh6f5kIa++l4MKQ=="></div>  <input id="repository_id" name="repository_id" type="hidden" value="15384504">
+
+    <div class="select-menu js-menu-container js-select-menu">
+      <a class="social-count js-social-count" href="https://github.com/thlorenz/libuv-dox/watchers">
+        4
+      </a>
+      <a href="https://github.com/thlorenz/libuv-dox/subscription" class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0" aria-haspopup="true">
+        <span class="js-select-button">
+          <span class="octicon octicon-eye"></span>
+          Watch
+        </span>
+      </a>
+
+      <div class="select-menu-modal-holder">
+        <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notifications</span>
+            <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+          </div> <!-- /.select-menu-header -->
+
+          <div class="select-menu-list js-navigation-container" role="menu">
+
+            <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input checked="checked" id="do_included" name="do" type="radio" value="included">
+                <h4>Not watching</h4>
+                <span class="description">Be notified when participating or @mentioned.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye"></span>
+                  Watch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_subscribed" name="do" type="radio" value="subscribed">
+                <h4>Watching</h4>
+                <span class="description">Be notified of all conversations.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye"></span>
+                  Unwatch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_ignore" name="do" type="radio" value="ignore">
+                <h4>Ignoring</h4>
+                <span class="description">Never be notified.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-mute"></span>
+                  Stop ignoring
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+          </div> <!-- /.select-menu-list -->
+
+        </div> <!-- /.select-menu-modal -->
+      </div> <!-- /.select-menu-modal-holder -->
+    </div> <!-- /.select-menu -->
+
+</form>
+    </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <form accept-charset="UTF-8" action="https://github.com/thlorenz/libuv-dox/unstar" class="js-toggler-form starred js-unstar-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="qmWqX9ImlRo31LdoEhhNejvTQx8f26B96AlY3RwoQWKnEYd58dtH15YSRn8D+kGpjhuflcZ8h0JSTpAjbmYyKg=="></div>
+      <button class="minibutton with-count js-toggler-target star-button" aria-label="Unstar this repository" title="Unstar thlorenz/libuv-dox">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/thlorenz/libuv-dox/stargazers">
+          78
+        </a>
+</form>
+    <form accept-charset="UTF-8" action="https://github.com/thlorenz/libuv-dox/star" class="js-toggler-form unstarred js-star-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="334hRgb79DL66VFbQCBoueCQrNZU0ZPBI4KCiehFf1RY40N89CG+rYitJLeXEPEsP7xq1LbHRKfoIpNLhldDhg=="></div>
+      <button class="minibutton with-count js-toggler-target star-button" aria-label="Star this repository" title="Star thlorenz/libuv-dox">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/thlorenz/libuv-dox/stargazers">
+          78
+        </a>
+</form>  </div>
+
+  </li>
+
+
+        <li>
+          <a href="https://github.com/thlorenz/libuv-dox/fork" class="minibutton with-count js-toggler-target fork-button tooltipped-n" title="Fork your own copy of thlorenz/libuv-dox to your account" aria-label="Fork your own copy of thlorenz/libuv-dox to your account" rel="facebox nofollow">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+          <a href="https://github.com/thlorenz/libuv-dox/network" class="social-count">10</a>
+        </li>
+
+</ul>
+
+        <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="https://github.com/thlorenz" class="url fn" itemprop="url" rel="author"><span itemprop="title">thlorenz</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="https://github.com/thlorenz/libuv-dox" class="js-current-repository js-repo-home-link" data-pjax-container-selector="#js-repo-pjax-container">libuv-dox</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline  ">
+        <div class="repository-sidebar clearfix">
+            
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders" role="navigation" data-issue-count-url="/thlorenz/libuv-dox/issues/counts" data-pjax-container-selector="#js-repo-pjax-container">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="https://github.com/thlorenz/libuv-dox" aria-label="Code" class="selected js-selected-navigation-item sunken-menu-item" data-hotkey="g c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /thlorenz/libuv-dox">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Issues">
+        <a href="https://github.com/thlorenz/libuv-dox/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /thlorenz/libuv-dox/issues">
+          <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+          <span class="js-issue-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull Requests">
+      <a href="https://github.com/thlorenz/libuv-dox/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-hotkey="g p" data-selected-links="repo_pulls /thlorenz/libuv-dox/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+          <span class="js-pull-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>    </li>
+
+
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="https://github.com/thlorenz/libuv-dox/pulse/weekly" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="pulse /thlorenz/libuv-dox/pulse/weekly">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="https://github.com/thlorenz/libuv-dox/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_graphs repo_contributors /thlorenz/libuv-dox/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>    </li>
+  </ul>
+
+
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+      <li class="tooltipped tooltipped-w" aria-label="Settings">
+        <a href="https://github.com/thlorenz/libuv-dox/settings" aria-label="Settings" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_settings /thlorenz/libuv-dox/settings">
+          <span class="octicon octicon-tools"></span> <span class="full-word">Settings</span>
+          <img alt="" class="mini-loader" height="16" src="./methods_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+    </ul>
+</nav>
+
+              <div class="only-with-full-nav">
+                
+  
+<div class="clone-url " data-protocol-type="http" data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=push">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group">
+    <input type="text" class="input-mini input-monospace js-url-field" value="https://github.com/thlorenz/libuv-dox.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="https://github.com/thlorenz/libuv-dox.git" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url open" data-protocol-type="ssh" data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=push">
+  <h3><span class="text-emphasized">SSH</span> clone URL</h3>
+  <div class="input-group">
+    <input type="text" class="input-mini input-monospace js-url-field" value="git@github.com:thlorenz/libuv-dox.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="git@github.com:thlorenz/libuv-dox.git" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url " data-protocol-type="subversion" data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=push">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group">
+    <input type="text" class="input-mini input-monospace js-url-field" value="https://github.com/thlorenz/libuv-dox" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="https://github.com/thlorenz/libuv-dox" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>,
+      <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>,
+      or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <span class="octicon octicon-question"></span>
+  </a>
+</p>
+
+  <a href="http://mac.github.com/" data-url="github-mac://openRepo/https://github.com/thlorenz/libuv-dox" class="minibutton sidebar-button js-conduit-rewrite-url" title="Save thlorenz/libuv-dox to your computer and use it in GitHub Desktop." aria-label="Save thlorenz/libuv-dox to your computer and use it in GitHub Desktop.">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+
+                <a href="https://github.com/thlorenz/libuv-dox/archive/master.zip" class="minibutton sidebar-button" aria-label="Download the contents of thlorenz/libuv-dox as a zip file" title="Download the contents of thlorenz/libuv-dox as a zip file" rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+          
+
+<a href="https://github.com/thlorenz/libuv-dox/blob/436ff5635931966086bcb78f189ca5d2c0cba1c1/methods.md" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+<!-- blob contrib key: blob_contributors:v21:30c697c9d9fbeef5bc2a53f44349e0f4 -->
+
+<div class="file-navigation">
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <span class="minibutton select-menu-button js-menu-target css-truncate" data-hotkey="w" data-master-branch="master" data-ref="master" title="master" role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <span class="octicon octicon-git-branch"></span>
+    <i>branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+      </div> <!-- /.select-menu-header -->
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Find or create a branch…" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Find or create a branch…">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" class="js-select-menu-tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" class="js-select-menu-tab">Tags</a>
+            </li>
+          </ul>
+        </div><!-- /.select-menu-tabs -->
+      </div><!-- /.select-menu-filters -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item selected">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="./methods_files/methods.html" data-name="master" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="master">master</a>
+            </div> <!-- /.select-menu-item -->
+        </div>
+
+          <form accept-charset="UTF-8" action="https://github.com/thlorenz/libuv-dox/branches" class="js-create-branch select-menu-item select-menu-new-item-form js-navigation-item js-new-item-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="X+eraKAeAbxkrIBpJNOTo77RacNZuyZGYzr8fheTv6Yrt5kzdux5m9fG+UODRGVya0ZymFMFeqYQtICw5jOYCQ=="></div>
+            <span class="octicon octicon-git-branch select-menu-item-icon"></span>
+            <div class="select-menu-item-text">
+              <h4>Create branch: <span class="js-new-item-name"></span></h4>
+              <span class="description">from ‘master’</span>
+            </div>
+            <input type="hidden" name="name" id="name" class="js-new-item-value">
+            <input type="hidden" name="branch" id="branch" value="master">
+            <input type="hidden" name="path" id="path" value="methods.md">
+          </form> <!-- /.select-menu-item -->
+
+      </div> <!-- /.select-menu-list -->
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div> <!-- /.select-menu-list -->
+
+    </div> <!-- /.select-menu-modal -->
+  </div> <!-- /.select-menu-modal-holder -->
+</div> <!-- /.select-menu -->
+
+  <div class="button-group right">
+    <a href="https://github.com/thlorenz/libuv-dox/find/master" class="js-show-file-finder minibutton empty-icon tooltipped tooltipped-s" data-pjax="" data-hotkey="t" aria-label="Quickly jump between files">
+      <span class="octicon octicon-list-unordered"></span>
+    </a>
+    <button class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="methods.md" aria-label="Copy to clipboard" data-copied-hint="Copied!">
+      <span class="octicon octicon-clippy"></span>
+    </button>
+  </div>
+
+  <div class="breadcrumb">
+    <span class="repo-root js-repo-root"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://github.com/thlorenz/libuv-dox" class="" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">libuv-dox</span></a></span></span><span class="separator"> / </span><strong class="final-path">methods.md</strong>
+  </div>
+</div>
+
+
+  <div class="commit file-history-tease">
+    <div class="file-history-tease-header">
+        <img alt="Thorsten Lorenz" class="avatar" data-user="192891" height="24" src="./methods_files/192891(1)" width="24">
+        <span class="author"><a href="https://github.com/thlorenz" rel="author">thlorenz</a></span>
+        <time datetime="2013-12-25T04:54:42Z" is="relative-time" title="Dec 24, 2013, 8:54 PM PST">on Dec 25, 2013</time>
+        <div class="commit-title">
+            <a href="https://github.com/thlorenz/libuv-dox/commit/3e45a62ab00fc942f16fd96ede0391e51d177218" class="message" data-pjax="true" title="correcting buffers dox">correcting buffers dox</a>
+        </div>
+    </div>
+
+    <div class="participation">
+      <p class="quickstat">
+        <a href="#blob_contributors_box" rel="facebox">
+          <strong>1</strong>
+           contributor
+        </a>
+      </p>
+      
+    </div>
+    <div id="blob_contributors_box" style="display:none">
+      <h2 class="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list">
+          <li class="facebox-user-list-item">
+            <img alt="Thorsten Lorenz" data-user="192891" height="24" src="./methods_files/192891(1)" width="24">
+            <a href="https://github.com/thlorenz">thlorenz</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="file-box">
+  <div class="file">
+    <div class="meta clearfix">
+      <div class="info file-name">
+          <span>2287 lines (1820 sloc)</span>
+          <span class="meta-divider"></span>
+        <span>54.01 kb</span>
+      </div>
+      <div class="actions">
+        <div class="button-group">
+          <a href="https://github.com/thlorenz/libuv-dox/raw/master/methods.md" class="minibutton " id="raw-url">Raw</a>
+            <a href="https://github.com/thlorenz/libuv-dox/blame/master/methods.md" class="minibutton js-update-url-with-hash">Blame</a>
+          <a href="https://github.com/thlorenz/libuv-dox/commits/master/methods.md" class="minibutton " rel="nofollow">History</a>
+        </div><!-- /.button-group -->
+
+          <a class="octicon-button tooltipped tooltipped-nw js-conduit-openfile-check" href="http://mac.github.com/" data-url="github-mac://openRepo/https://github.com/thlorenz/libuv-dox?branch=master&amp;filepath=methods.md" aria-label="Open this file in GitHub for Mac" data-failed-title="Your version of GitHub for Mac is too old to open this file. Try checking for updates.">
+              <span class="octicon octicon-device-desktop"></span>
+          </a>
+
+              <a class="octicon-button js-update-url-with-hash" href="https://github.com/thlorenz/libuv-dox/edit/master/methods.md" aria-label="Edit this file" data-method="post" rel="nofollow" data-hotkey="e"><span class="octicon octicon-pencil"></span></a>
+
+            <a class="octicon-button danger" href="https://github.com/thlorenz/libuv-dox/delete/master/methods.md" aria-label="Delete this file" data-method="post" data-test-id="delete-blob-file" rel="nofollow">
+          <span class="octicon octicon-trashcan"></span>
+        </a>
+      </div><!-- /.actions -->
+    </div>
+      <div id="readme" class="blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><p><strong>Table of Contents</strong>  <em>generated with <a href="http://doctoc.herokuapp.com/">DocToc</a></em></p>
+
+<ul class="task-list">
+<li>
+<a href="#loop">loop</a>
+
+<ul class="task-list">
+<li><a href="#uv_loop_new"><code>uv_loop_new</code></a></li>
+<li><a href="#uv_loop_delete"><code>uv_loop_delete</code></a></li>
+<li><a href="#uv_default_loop"><code>uv_default_loop</code></a></li>
+<li><a href="#uv_run"><code>uv_run</code></a></li>
+<li><a href="#uv_loop_alive"><code>uv_loop_alive</code></a></li>
+<li><a href="#uv_stop"><code>uv_stop</code></a></li>
+<li><a href="#examples">Examples</a></li>
+<li>
+<a href="#reference-count">reference count</a>
+
+<ul class="task-list">
+<li><a href="#uv_ref"><code>uv_ref</code></a></li>
+<li><a href="#uv_unref"><code>uv_unref</code></a></li>
+<li><a href="#uv_has_ref"><code>uv_has_ref</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#time">time</a>
+
+<ul class="task-list">
+<li><a href="#uv_update_time"><code>uv_update_time</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#backend---embedding-loop-in-another-loop">backend - embedding loop in another loop</a>
+
+<ul class="task-list">
+<li><a href="#uv_backend"><code>uv_backend</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#handles">handles</a>
+
+<ul class="task-list">
+<li><a href="#uv_handle_size"><code>uv_handle_size</code></a></li>
+<li><a href="#uv_is_active"><code>uv_is_active</code></a></li>
+<li><a href="#uv_walk"><code>uv_walk</code></a></li>
+<li><a href="#uv_close"><code>uv_close</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#requests">requests</a>
+
+<ul class="task-list">
+<li><a href="#uv_req_size"><code>uv_req_size</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#buffers">buffers</a>
+
+<ul class="task-list">
+<li><a href="#uv_buf_init"><code>uv_buf_init</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#streams">streams</a>
+
+<ul class="task-list">
+<li><a href="#uv_listen"><code>uv_listen</code></a></li>
+<li><a href="#uv_accept"><code>uv_accept</code></a></li>
+<li><a href="#uv_read_start"><code>uv_read_start</code></a></li>
+<li><a href="#uv_read_stop"><code>uv_read_stop</code></a></li>
+<li><a href="#uv_read2_start"><code>uv_read2_start</code></a></li>
+<li><a href="#uv_write"><code>uv_write</code></a></li>
+<li><a href="#uv_write2"><code>uv_write2</code></a></li>
+<li><a href="#uv_try_write"><code>uv_try_write</code></a></li>
+<li><a href="#uv_is_readable"><code>uv_is_readable</code></a></li>
+<li><a href="#uv_is_writable"><code>uv_is_writable</code></a></li>
+<li><a href="#uv_stream_set_blocking"><code>uv_stream_set_blocking</code></a></li>
+<li><a href="#uv_is_closing"><code>uv_is_closing</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#tcp">tcp</a>
+
+<ul class="task-list">
+<li><a href="#uv_tcp_init"><code>uv_tcp_init</code></a></li>
+<li><a href="#uv_tcp_open"><code>uv_tcp_open</code></a></li>
+<li><a href="#uv_tcp_nodelay"><code>uv_tcp_nodelay</code></a></li>
+<li><a href="#uv_tcp_keepalive"><code>uv_tcp_keepalive</code></a></li>
+<li><a href="#uv_tcp_simultaneous_accepts"><code>uv_tcp_simultaneous_accepts</code></a></li>
+<li><a href="#uv_tcp_bind"><code>uv_tcp_bind</code></a></li>
+<li><a href="#uv_tcp_getsockname"><code>uv_tcp_getsockname</code></a></li>
+<li><a href="#uv_tcp_getpeername"><code>uv_tcp_getpeername</code></a></li>
+<li><a href="#uv_tcp_connect"><code>uv_tcp_connect</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#udp">udp</a>
+
+<ul class="task-list">
+<li><a href="#uv_udp_init"><code>uv_udp_init</code></a></li>
+<li><a href="#uv_udp_open"><code>uv_udp_open</code></a></li>
+<li><a href="#uv_udp_bind"><code>uv_udp_bind</code></a></li>
+<li><a href="#uv_udp_getsockname"><code>uv_udp_getsockname</code></a></li>
+<li><a href="#uv_udp_set_membership"><code>uv_udp_set_membership</code></a></li>
+<li><a href="#uv_udp_set_multicast_loop"><code>uv_udp_set_multicast_loop</code></a></li>
+<li><a href="#uv_udp_set_multicast_ttl"><code>uv_udp_set_multicast_ttl</code></a></li>
+<li><a href="#uv_udp_set_broadcast"><code>uv_udp_set_broadcast</code></a></li>
+<li><a href="#uv_udp_set_ttl"><code>uv_udp_set_ttl</code></a></li>
+<li><a href="#uv_udp_send"><code>uv_udp_send</code></a></li>
+<li><a href="#uv_udp_recv_start"><code>uv_udp_recv_start</code></a></li>
+<li><a href="#uv_udp_recv_stop"><code>uv_udp_recv_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#tty">tty</a>
+
+<ul class="task-list">
+<li><a href="#uv_tty_init"><code>uv_tty_init</code></a></li>
+<li><a href="#uv_tty_set_mode"><code>uv_tty_set_mode</code></a></li>
+<li><a href="#uv_tty_reset_mode"><code>uv_tty_reset_mode</code></a></li>
+<li><a href="#uv_tty_get_winsize"><code>uv_tty_get_winsize</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#pipe">pipe</a>
+
+<ul class="task-list">
+<li><a href="#uv_pipe_init"><code>uv_pipe_init</code></a></li>
+<li><a href="#uv_pipe_open"><code>uv_pipe_open</code></a></li>
+<li><a href="#uv_pipe_bind"><code>uv_pipe_bind</code></a></li>
+<li><a href="#uv_pipe_connect"><code>uv_pipe_connect</code></a></li>
+<li><a href="#uv_pipe_pending_instances"><code>uv_pipe_pending_instances</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#poll">poll</a>
+
+<ul class="task-list">
+<li><a href="#uv_poll_init"><code>uv_poll_init</code></a></li>
+<li><a href="#uv_poll_init_socket"><code>uv_poll_init_socket</code></a></li>
+<li><a href="#uv_poll_start"><code>uv_poll_start</code></a></li>
+<li><a href="#uv_poll_stop"><code>uv_poll_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#prepare">prepare</a>
+
+<ul class="task-list">
+<li><a href="#uv_prepare_init"><code>uv_prepare_init</code></a></li>
+<li><a href="#uv_prepare_start"><code>uv_prepare_start</code></a></li>
+<li><a href="#uv_prepare_stop"><code>uv_prepare_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#idle">idle</a>
+
+<ul class="task-list">
+<li><a href="#uv_idle_init"><code>uv_idle_init</code></a></li>
+<li><a href="#uv_idle_start"><code>uv_idle_start</code></a></li>
+<li><a href="#uv_idle_stop"><code>uv_idle_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#async">async</a>
+
+<ul class="task-list">
+<li><a href="#uv_async_init"><code>uv_async_init</code></a></li>
+<li><a href="#uv_async_send"><code>uv_async_send</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#timer">timer</a>
+
+<ul class="task-list">
+<li><a href="#uv_timer_init"><code>uv_timer_init</code></a></li>
+<li><a href="#uv_timer_start"><code>uv_timer_start</code></a></li>
+<li><a href="#uv_timer_stop"><code>uv_timer_stop</code></a></li>
+<li><a href="#uv_timer_again"><code>uv_timer_again</code></a></li>
+<li><a href="#uv_timer_set_repeat"><code>uv_timer_set_repeat</code></a></li>
+<li><a href="#uv_timer_get_repeat"><code>uv_timer_get_repeat</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#addrinfo">addrinfo</a>
+
+<ul class="task-list">
+<li><a href="#uv_getaddrinfo"><code>uv_getaddrinfo</code></a></li>
+<li><a href="#uv_freeaddrinfo"><code>uv_freeaddrinfo</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#process">process</a>
+
+<ul class="task-list">
+<li><a href="#uv_spawn"><code>uv_spawn</code></a></li>
+<li><a href="#uv_process_kill"><code>uv_process_kill</code></a></li>
+<li><a href="#uv_kill"><code>uv_kill</code></a></li>
+<li><a href="#uv_setup_args"><code>uv_setup_args</code></a></li>
+<li><a href="#uv_get_process_title"><code>uv_get_process_title</code></a></li>
+<li><a href="#uv_set_process_title"><code>uv_set_process_title</code></a></li>
+<li><a href="#uv_resident_set_memory"><code>uv_resident_set_memory</code></a></li>
+<li><a href="#uv_uptime"><code>uv_uptime</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#work-queue">work queue</a>
+
+<ul class="task-list">
+<li><a href="#uv_queue_work"><code>uv_queue_work</code></a></li>
+<li><a href="#uv_cancel"><code>uv_cancel</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#cpu-info">cpu info</a>
+
+<ul class="task-list">
+<li><a href="#uv_cpu_info"><code>uv_cpu_info</code></a></li>
+<li><a href="#uv_free_cpu_info"><code>uv_free_cpu_info</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#interface-addresses">interface addresses</a>
+
+<ul class="task-list">
+<li><a href="#uv_interface_addresses"><code>uv_interface_addresses</code></a></li>
+<li><a href="#uv_free_interface_addresses"><code>uv_free_interface_addresses</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#file-system">file system</a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_req_cleanup"><code>uv_fs_req_cleanup</code></a></li>
+<li><a href="#uv_fs_close"><code>uv_fs_close</code></a></li>
+<li>
+<a href="#uv_fs_open"><code>uv_fs_open</code></a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_t-req-passed-to-callback"><code>uv_fs_t *req</code> passed to callback</a></li>
+</ul>
+</li>
+<li>
+<a href="#uv_fs_read"><code>uv_fs_read</code></a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_t-req-passed-to-callback-1"><code>uv_fs_t *req</code> passed to callback</a></li>
+</ul>
+</li>
+<li><a href="#uv_fs_unlink"><code>uv_fs_unlink</code></a></li>
+<li>
+<a href="#uv_fs_write"><code>uv_fs_write</code></a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_t-req-passed-to-callback-2"><code>uv_fs_t *req</code> passed to callback</a></li>
+</ul>
+</li>
+<li><a href="#uv_fs_mkdir"><code>uv_fs_mkdir</code></a></li>
+<li><a href="#uv_fs_rmdir"><code>uv_fs_rmdir</code></a></li>
+<li><a href="#uv_fs_readdir"><code>uv_fs_readdir</code></a></li>
+<li><a href="#uv_fs_stat"><code>uv_fs_stat</code></a></li>
+<li><a href="#uv_fs_fstat"><code>uv_fs_fstat</code></a></li>
+<li><a href="#uv_fs_rename"><code>uv_fs_rename</code></a></li>
+<li><a href="#uv_fs_fsync"><code>uv_fs_fsync</code></a></li>
+<li><a href="#uv_fs_fdatasync"><code>uv_fs_fdatasync</code></a></li>
+<li><a href="#uv_fs_ftruncate"><code>uv_fs_ftruncate</code></a></li>
+<li><a href="#uv_fs_sendfile"><code>uv_fs_sendfile</code></a></li>
+<li><a href="#uv_fs_chmod"><code>uv_fs_chmod</code></a></li>
+<li><a href="#uv_fs_utime"><code>uv_fs_utime</code></a></li>
+<li><a href="#uv_fs_futime"><code>uv_fs_futime</code></a></li>
+<li><a href="#uv_fs_lstat"><code>uv_fs_lstat</code></a></li>
+<li><a href="#uv_fs_link"><code>uv_fs_link</code></a></li>
+<li><a href="#uv_fs_symlink"><code>uv_fs_symlink</code></a></li>
+<li><a href="#uv_fs_readlink"><code>uv_fs_readlink</code></a></li>
+<li><a href="#uv_fs_fchmod"><code>uv_fs_fchmod</code></a></li>
+<li><a href="#uv_fs_chown"><code>uv_fs_chown</code></a></li>
+<li><a href="#uv_fs_fchown"><code>uv_fs_fchown</code></a></li>
+<li><a href="#uv_guess_handle"><code>uv_guess_handle</code></a></li>
+<li>
+<a href="#fs-poll">fs poll</a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_poll_init"><code>uv_fs_poll_init</code></a></li>
+<li><a href="#uv_fs_poll_start"><code>uv_fs_poll_start</code></a></li>
+<li><a href="#uv_fs_poll_stop"><code>uv_fs_poll_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#fs-event">fs event</a>
+
+<ul class="task-list">
+<li><a href="#uv_fs_event_init"><code>uv_fs_event_init</code></a></li>
+<li><a href="#uv_fs_event_start"><code>uv_fs_event_start</code></a></li>
+<li><a href="#uv_fs_event_stop"><code>uv_fs_event_stop</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#signal">signal</a>
+
+<ul class="task-list">
+<li><a href="#uv_signal_init"><code>uv_signal_init</code></a></li>
+<li><a href="#uv_signal_start"><code>uv_signal_start</code></a></li>
+<li><a href="#uv_signal_stop"><code>uv_signal_stop</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#load-average">load average</a>
+
+<ul class="task-list">
+<li><a href="#uv_loadavg"><code>uv_loadavg</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#errors">errors</a>
+
+<ul class="task-list">
+<li><a href="#uv_strerror"><code>uv_strerror</code></a></li>
+<li><a href="#uv_err_name"><code>uv_err_name</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#utilities">utilities</a>
+
+<ul class="task-list">
+<li>
+<a href="#ip-address-conversion">ip address conversion</a>
+
+<ul class="task-list">
+<li><a href="#uv_ip4_addr"><code>uv_ip4_addr</code></a></li>
+<li><a href="#uv_ip6_addr"><code>uv_ip6_addr</code></a></li>
+<li><a href="#uv_ip4_name"><code>uv_ip4_name</code></a></li>
+<li><a href="#uv_ip6_name"><code>uv_ip6_name</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#ntop-and-pton">ntop and pton</a>
+
+<ul class="task-list">
+<li><a href="#uv_inet_ntop"><code>uv_inet_ntop</code></a></li>
+<li><a href="#uv_inet_pton"><code>uv_inet_pton</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#path">path</a>
+
+<ul class="task-list">
+<li><a href="#uv_exepath"><code>uv_exepath</code></a></li>
+<li><a href="#uv_cwd"><code>uv_cwd</code></a></li>
+<li><a href="#uv_chdir"><code>uv_chdir</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#memory">memory</a>
+
+<ul class="task-list">
+<li><a href="#uv_get_free_memory"><code>uv_get_free_memory</code></a></li>
+<li><a href="#uv_get_total_memory"><code>uv_get_total_memory</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#time-1">time</a>
+
+<ul class="task-list">
+<li><a href="#uv_hrtime"><code>uv_hrtime</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#stdio">stdio</a>
+
+<ul class="task-list">
+<li><a href="#uv_disable_stdio_inheritance"><code>uv_disable_stdio_inheritance</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#dynamic-library-access">dynamic library access</a>
+
+<ul class="task-list">
+<li><a href="#uv_dlopen"><code>uv_dlopen</code></a></li>
+<li><a href="#uv_dlclose"><code>uv_dlclose</code></a></li>
+<li><a href="#uv_dlsym"><code>uv_dlsym</code></a></li>
+<li><a href="#uv_dlerror"><code>uv_dlerror</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#mutex">mutex</a>
+
+<ul class="task-list">
+<li><a href="#uv_mutex_init"><code>uv_mutex_init</code></a></li>
+<li><a href="#uv_mutex_destroy"><code>uv_mutex_destroy</code></a></li>
+<li><a href="#uv_mutex_lock"><code>uv_mutex_lock</code></a></li>
+<li><a href="#uv_mutex_trylock"><code>uv_mutex_trylock</code></a></li>
+<li><a href="#uv_mutex_unlock"><code>uv_mutex_unlock</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#rwlock">rwlock</a>
+
+<ul class="task-list">
+<li><a href="#uv_rwlock_init"><code>uv_rwlock_init</code></a></li>
+<li><a href="#uv_rwlock_destroy"><code>uv_rwlock_destroy</code></a></li>
+<li><a href="#uv_rwlock_rdlock"><code>uv_rwlock_rdlock</code></a></li>
+<li><a href="#uv_rwlock_tryrdlock"><code>uv_rwlock_tryrdlock</code></a></li>
+<li><a href="#uv_rwlock_rdunlock"><code>uv_rwlock_rdunlock</code></a></li>
+<li><a href="#uv_rwlock_wrlock"><code>uv_rwlock_wrlock</code></a></li>
+<li><a href="#uv_rwlock_trywrlock"><code>uv_rwlock_trywrlock</code></a></li>
+<li><a href="#uv_rwlock_wrunlock"><code>uv_rwlock_wrunlock</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#semaphores">semaphores</a>
+
+<ul class="task-list">
+<li><a href="#uv_sem_init"><code>uv_sem_init</code></a></li>
+<li><a href="#uv_sem_destroy"><code>uv_sem_destroy</code></a></li>
+<li><a href="#uv_sem_post"><code>uv_sem_post</code></a></li>
+<li><a href="#uv_sem_wait"><code>uv_sem_wait</code></a></li>
+<li><a href="#uv_sem_trywait"><code>uv_sem_trywait</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#condition-variables">condition variables</a>
+
+<ul class="task-list">
+<li><a href="#uv_cond_init"><code>uv_cond_init</code></a></li>
+<li><a href="#uv_cond_destroy"><code>uv_cond_destroy</code></a></li>
+<li><a href="#uv_cond_signal"><code>uv_cond_signal</code></a></li>
+<li><a href="#uv_cond_broadcast"><code>uv_cond_broadcast</code></a></li>
+<li><a href="#uv_cond_wait"><code>uv_cond_wait</code></a></li>
+<li><a href="#uv_cond_timedwait"><code>uv_cond_timedwait</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#barrier">barrier</a>
+
+<ul class="task-list">
+<li><a href="#uv_barrier_init"><code>uv_barrier_init</code></a></li>
+<li><a href="#uv_barrier_destroy"><code>uv_barrier_destroy</code></a></li>
+<li><a href="#uv_barrier_wait"><code>uv_barrier_wait</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#once">once</a>
+
+<ul class="task-list">
+<li><a href="#uv_once"><code>uv_once</code></a></li>
+</ul>
+</li>
+<li>
+<a href="#thread-local-storage">thread local storage</a>
+
+<ul class="task-list">
+<li><a href="#uv_key_create"><code>uv_key_create</code></a></li>
+<li><a href="#uv_key_delete"><code>uv_key_delete</code></a></li>
+<li><a href="#uv_key_get"><code>uv_key_get</code></a></li>
+<li><a href="#uv_key_set"><code>uv_key_set</code></a></li>
+<li><a href="#uv_thread_create"><code>uv_thread_create</code></a></li>
+<li><a href="#long-"><code>long</code></a></li>
+<li><a href="#uv_thread_join"><code>uv_thread_join</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a name="user-content-loop" class="anchor" href="#loop" aria-hidden="true"><span class="octicon octicon-link"></span></a>loop</h1>
+
+<h2>
+<a name="user-content-uv_loop_new" class="anchor" href="#uv_loop_new" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_loop_new</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="nc">uv_loop_t</span>* <span class="nf">uv_loop_new</span>(<span class="kt">void</span>)</pre></div>
+
+<h2>
+<a name="user-content-uv_loop_delete" class="anchor" href="#uv_loop_delete" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_loop_delete</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_loop_delete</span>(<span class="nc">uv_loop_t</span>*);</pre></div>
+
+<h2>
+<a name="user-content-uv_default_loop" class="anchor" href="#uv_default_loop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_default_loop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="nc">uv_loop_t</span>* <span class="nf">uv_default_loop</span>(<span class="kt">void</span>);</pre></div>
+
+<h2>
+<a name="user-content-uv_run" class="anchor" href="#uv_run" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_run</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This function runs the event loop. It will act differently depending on the</span>
+<span class="cm"> * specified mode:</span>
+<span class="cm"> *  - UV_RUN_DEFAULT: Runs the event loop until the reference count drops to</span>
+<span class="cm"> *    zero. Always returns zero.</span>
+<span class="cm"> *  - UV_RUN_ONCE: Poll for new events once. Note that this function blocks if</span>
+<span class="cm"> *    there are no pending events. Returns zero when done (no active handles</span>
+<span class="cm"> *    or requests left), or non-zero if more events are expected (meaning you</span>
+<span class="cm"> *    should run the event loop again sometime in the future).</span>
+<span class="cm"> *  - UV_RUN_NOWAIT: Poll for new events once but don't block if there are no</span>
+<span class="cm"> *    pending events.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_run</span>(<span class="nc">uv_loop_t</span>*, uv_run_mode mode);</pre></div>
+
+<h2>
+<a name="user-content-uv_loop_alive" class="anchor" href="#uv_loop_alive" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_loop_alive</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This function checks whether the reference count, the number of active</span>
+<span class="cm"> * handles or requests left in the event loop, is non-zero.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_loop_alive</span>(<span class="k">const</span> <span class="nc">uv_loop_t</span>* loop);</pre></div>
+
+<h2>
+<a name="user-content-uv_stop" class="anchor" href="#uv_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This function will stop the event loop by forcing uv_run to end</span>
+<span class="cm"> * as soon as possible, but not sooner than the next loop iteration.</span>
+<span class="cm"> * If this function was called before blocking for i/o, the loop won't</span>
+<span class="cm"> * block for i/o on this iteration.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_stop</span>(<span class="nc">uv_loop_t</span>*);</pre></div>
+
+<h2>
+<a name="user-content-examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<div class="highlight highlight-c"><pre><span class="nc">uv_loop_t</span> *loop = uv_loop_new();
+
+<span class="nf">printf</span>(<span class="s2">"Now quitting.<span class="sc">\n</span>"</span>);
+<span class="nf">uv_run</span>(loop, UV_RUN_DEFAULT);</pre></div>
+
+<div class="highlight highlight-c"><pre><span class="nc">uv_idle_t</span> idler;
+
+<span class="nc">uv_loop_t</span> *loop = uv_default_loop();
+<span class="nf">uv_idle_init</span>(loop, &amp;idler);
+<span class="nf">uv_idle_start</span>(&amp;idler, wait_for_a_while);
+
+<span class="nf">printf</span>(<span class="s2">"Idling...<span class="sc">\n</span>"</span>);
+<span class="nf">uv_run</span>(loop, UV_RUN_DEFAULT);</pre></div>
+
+<h2>
+<a name="user-content-reference-count" class="anchor" href="#reference-count" aria-hidden="true"><span class="octicon octicon-link"></span></a>reference count</h2>
+
+<h3>
+<a name="user-content-uv_ref" class="anchor" href="#uv_ref" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_ref</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Manually modify the event loop's reference count. Useful if the user wants</span>
+<span class="cm"> * to have a handle or timeout that doesn't keep the loop alive.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_ref</span>(<span class="nc">uv_handle_t</span>*);</pre></div>
+
+<h3>
+<a name="user-content-uv_unref" class="anchor" href="#uv_unref" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_unref</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_unref</span>(<span class="nc">uv_handle_t</span>*);</pre></div>
+
+<h3>
+<a name="user-content-uv_has_ref" class="anchor" href="#uv_has_ref" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_has_ref</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_has_ref</span>(<span class="k">const</span> <span class="nc">uv_handle_t</span>*);</pre></div>
+
+<h2>
+<a name="user-content-time" class="anchor" href="#time" aria-hidden="true"><span class="octicon octicon-link"></span></a>time</h2>
+
+<h3>
+<a name="user-content-uv_update_time" class="anchor" href="#uv_update_time" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_update_time</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Update the event loop's concept of "now". Libuv caches the current time</span>
+<span class="cm"> * at the start of the event loop tick in order to reduce the number of</span>
+<span class="cm"> * time-related system calls.</span>
+<span class="cm"> *</span>
+<span class="cm"> * You won't normally need to call this function unless you have callbacks</span>
+<span class="cm"> * that block the event loop for longer periods of time, where "longer" is</span>
+<span class="cm"> * somewhat subjective but probably on the order of a millisecond or more.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_update_time</span>(<span class="nc">uv_loop_t</span>*);
+
+### `uv_now`
+
+<span class="cm">/*</span>
+<span class="cm"> * Return the current timestamp in milliseconds. The timestamp is cached at</span>
+<span class="cm"> * the start of the event loop tick, see |uv_update_time()| for details and</span>
+<span class="cm"> * rationale.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The timestamp increases monotonically from some arbitrary point in time.</span>
+<span class="cm"> * Don't make assumptions about the starting point, you will only get</span>
+<span class="cm"> * disappointed.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Use uv_hrtime() if you need sub-millisecond granularity.</span>
+<span class="cm"> */</span>
+<span class="nc">uint64_t</span> <span class="nf">uv_now</span>(<span class="nc">uv_loop_t</span>*);</pre></div>
+
+<h2>
+<a name="user-content-backend---embedding-loop-in-another-loop" class="anchor" href="#backend---embedding-loop-in-another-loop" aria-hidden="true"><span class="octicon octicon-link"></span></a>backend - embedding loop in another loop</h2>
+
+<h3>
+<a name="user-content-uv_backend" class="anchor" href="#uv_backend" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_backend</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Get backend file descriptor. Only kqueue, epoll and event ports are</span>
+<span class="cm"> * supported.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This can be used in conjunction with `uv_run(loop, UV_RUN_NOWAIT)` to</span>
+<span class="cm"> * poll in one thread and run the event loop's event callbacks in another.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Useful for embedding libuv's event loop in another event loop.</span>
+<span class="cm"> * See test/test-embed.c for an example.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note that embedding a kqueue fd in another kqueue pollset doesn't work on</span>
+<span class="cm"> * all platforms. It's not an error to add the fd but it never generates</span>
+<span class="cm"> * events.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_backend_fd</span>(<span class="k">const</span> <span class="nc">uv_loop_t</span>*);
+
+### `uv_backend_timeout`
+
+<span class="cm">/*</span>
+<span class="cm"> * Get the poll timeout. The return value is in milliseconds, or -1 for no</span>
+<span class="cm"> * timeout.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_backend_timeout</span>(<span class="k">const</span> <span class="nc">uv_loop_t</span>*);</pre></div>
+
+<h1>
+<a name="user-content-handles" class="anchor" href="#handles" aria-hidden="true"><span class="octicon octicon-link"></span></a>handles</h1>
+
+<h2>
+<a name="user-content-uv_handle_size" class="anchor" href="#uv_handle_size" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_handle_size</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Returns size of various handle types, useful for FFI</span>
+<span class="cm"> * bindings to allocate correct memory without copying struct</span>
+<span class="cm"> * definitions</span>
+<span class="cm"> */</span>
+<span class="nc">size_t</span> <span class="nf">uv_handle_size</span>(uv_handle_type type);</pre></div>
+
+<h2>
+<a name="user-content-uv_is_active" class="anchor" href="#uv_is_active" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_is_active</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Returns non-zero if the handle is active, zero if it's inactive.</span>
+<span class="cm"> *</span>
+<span class="cm"> * What "active" means depends on the type of handle:</span>
+<span class="cm"> *</span>
+<span class="cm"> *  - A uv_async_t handle is always active and cannot be deactivated, except</span>
+<span class="cm"> *    by closing it with uv_close().</span>
+<span class="cm"> *</span>
+<span class="cm"> *  - A uv_pipe_t, uv_tcp_t, uv_udp_t, etc. handle - basically any handle that</span>
+<span class="cm"> *    deals with I/O - is active when it is doing something that involves I/O,</span>
+<span class="cm"> *    like reading, writing, connecting, accepting new connections, etc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  - A uv_check_t, uv_idle_t, uv_timer_t, etc. handle is active when it has</span>
+<span class="cm"> *    been started with a call to uv_check_start(), uv_idle_start(), etc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *      Rule of thumb: if a handle of type uv_foo_t has a uv_foo_start()</span>
+<span class="cm"> *      function, then it's active from the moment that function is called.</span>
+<span class="cm"> *      Likewise, uv_foo_stop() deactivates the handle again.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_is_active</span>(<span class="k">const</span> <span class="nc">uv_handle_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_walk" class="anchor" href="#uv_walk" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_walk</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Walk the list of open handles.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_walk</span>(<span class="nc">uv_loop_t</span>* loop, uv_walk_cb walk_cb, <span class="kt">void</span>* arg);</pre></div>
+
+<h2>
+<a name="user-content-uv_close" class="anchor" href="#uv_close" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_close</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Request handle to be closed. close_cb will be called asynchronously after</span>
+<span class="cm"> * this call. This MUST be called on each handle before memory is released.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note that handles that wrap file descriptors are closed immediately but</span>
+<span class="cm"> * close_cb will still be deferred to the next iteration of the event loop.</span>
+<span class="cm"> * It gives you a chance to free up any resources associated with the handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * In-progress requests, like uv_connect_t or uv_write_t, are cancelled and</span>
+<span class="cm"> * have their callbacks called asynchronously with status=UV_ECANCELED.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_close</span>(<span class="nc">uv_handle_t</span>* handle, uv_close_cb close_cb);</pre></div>
+
+<h1>
+<a name="user-content-requests" class="anchor" href="#requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>requests</h1>
+
+<h2>
+<a name="user-content-uv_req_size" class="anchor" href="#uv_req_size" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_req_size</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Returns size of request types, useful for dynamic lookup with FFI</span>
+<span class="cm"> */</span>
+<span class="nc">size_t</span> <span class="nf">uv_req_size</span>(uv_req_type type);</pre></div>
+
+<h1>
+<a name="user-content-buffers" class="anchor" href="#buffers" aria-hidden="true"><span class="octicon octicon-link"></span></a>buffers</h1>
+
+<h2>
+<a name="user-content-uv_buf_init" class="anchor" href="#uv_buf_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_buf_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Constructor for uv_buf_t.</span>
+<span class="cm"> * Due to platform differences the user cannot rely on the ordering of the</span>
+<span class="cm"> * base and len members of the uv_buf_t struct. The user is responsible for</span>
+<span class="cm"> * freeing base after the uv_buf_t is done. Return struct passed by value.</span>
+<span class="cm"> */</span>
+<span class="nc">uv_buf_t</span> <span class="nf">uv_buf_init</span>(<span class="kt">char</span>* base, <span class="kt">unsigned</span> <span class="kt">int</span> len);</pre></div>
+
+<h1>
+<a name="user-content-streams" class="anchor" href="#streams" aria-hidden="true"><span class="octicon octicon-link"></span></a>streams</h1>
+
+<h2>
+<a name="user-content-uv_listen" class="anchor" href="#uv_listen" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_listen</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_listen</span>(<span class="nc">uv_stream_t</span>* stream, <span class="kt">int</span> backlog, uv_connection_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_accept" class="anchor" href="#uv_accept" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_accept</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This call is used in conjunction with uv_listen() to accept incoming</span>
+<span class="cm"> * connections. Call uv_accept after receiving a uv_connection_cb to accept</span>
+<span class="cm"> * the connection. Before calling uv_accept use uv_*_init() must be</span>
+<span class="cm"> * called on the client. Non-zero return value indicates an error.</span>
+<span class="cm"> *</span>
+<span class="cm"> * When the uv_connection_cb is called it is guaranteed that uv_accept will</span>
+<span class="cm"> * complete successfully the first time. If you attempt to use it more than</span>
+<span class="cm"> * once, it may fail. It is suggested to only call uv_accept once per</span>
+<span class="cm"> * uv_connection_cb call.</span>
+<span class="cm"> */</span>
+
+<span class="kt">int</span> <span class="nf">uv_accept</span>(<span class="nc">uv_stream_t</span>* server, <span class="nc">uv_stream_t</span>* client);</pre></div>
+
+<h2>
+<a name="user-content-uv_read_start" class="anchor" href="#uv_read_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_read_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Read data from an incoming stream. The callback will be made several</span>
+<span class="cm"> * times until there is no more data to read or uv_read_stop is called.</span>
+<span class="cm"> * When we've reached EOF nread will be set to UV_EOF.</span>
+<span class="cm"> *</span>
+<span class="cm"> * When nread &lt; 0, the buf parameter might not point to a valid buffer;</span>
+<span class="cm"> * in that case buf.len and buf.base are both set to 0.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note that nread might also be 0, which does *not* indicate an error or</span>
+<span class="cm"> * eof; it happens when libuv requested a buffer through the alloc callback</span>
+<span class="cm"> * but then decided that it didn't need that buffer.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_read_start</span>(<span class="nc">uv_stream_t</span>*, uv_alloc_cb alloc_cb, uv_read_cb read_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_read_stop" class="anchor" href="#uv_read_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_read_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_read_stop</span>(<span class="nc">uv_stream_t</span>*);</pre></div>
+
+<h2>
+<a name="user-content-uv_read2_start" class="anchor" href="#uv_read2_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_read2_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Extended read methods for receiving handles over a pipe. The pipe must be</span>
+<span class="cm"> * initialized with ipc == 1.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_read2_start</span>(<span class="nc">uv_stream_t</span>*, uv_alloc_cb alloc_cb, uv_read2_cb read_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_write" class="anchor" href="#uv_write" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_write</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Write data to stream. Buffers are written in order. Example:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   uv_buf_t a[] = {</span>
+<span class="cm"> *     { .base = "1", .len = 1 },</span>
+<span class="cm"> *     { .base = "2", .len = 1 }</span>
+<span class="cm"> *   };</span>
+<span class="cm"> *</span>
+<span class="cm"> *   uv_buf_t b[] = {</span>
+<span class="cm"> *     { .base = "3", .len = 1 },</span>
+<span class="cm"> *     { .base = "4", .len = 1 }</span>
+<span class="cm"> *   };</span>
+<span class="cm"> *</span>
+<span class="cm"> *   uv_write_t req1;</span>
+<span class="cm"> *   uv_write_t req2;</span>
+<span class="cm"> *</span>
+<span class="cm"> *   // writes "1234"</span>
+<span class="cm"> *   uv_write(&amp;req1, stream, a, 2);</span>
+<span class="cm"> *   uv_write(&amp;req2, stream, b, 2);</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_write</span>(<span class="nc">uv_write_t</span>* req,
+             <span class="nc">uv_stream_t</span>* handle,
+             <span class="k">const</span> <span class="nc">uv_buf_t</span> bufs[],
+             <span class="kt">unsigned</span> <span class="kt">int</span> nbufs,
+             uv_write_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_write2" class="anchor" href="#uv_write2" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_write2</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Extended write function for sending handles over a pipe. The pipe must be</span>
+<span class="cm"> * initialized with ipc == 1.</span>
+<span class="cm"> * send_handle must be a TCP socket or pipe, which is a server or a connection</span>
+<span class="cm"> * (listening or connected state).  Bound sockets or pipes will be assumed to</span>
+<span class="cm"> * be servers.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_write2</span>(<span class="nc">uv_write_t</span>* req,
+              <span class="nc">uv_stream_t</span>* handle,
+              <span class="k">const</span> <span class="nc">uv_buf_t</span> bufs[],
+              <span class="kt">unsigned</span> <span class="kt">int</span> nbufs,
+              <span class="nc">uv_stream_t</span>* send_handle,
+              uv_write_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_try_write" class="anchor" href="#uv_try_write" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_try_write</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Same as `uv_write()`, but won't queue write request if it can't be completed</span>
+<span class="cm"> * immediately.</span>
+<span class="cm"> * Will return either:</span>
+<span class="cm"> * - positive number of bytes written</span>
+<span class="cm"> * - zero - if queued write is needed</span>
+<span class="cm"> * - negative error code</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_try_write</span>(<span class="nc">uv_stream_t</span>* handle,
+                 <span class="k">const</span> <span class="nc">uv_buf_t</span> bufs[],
+                 <span class="kt">unsigned</span> <span class="kt">int</span> nbufs);</pre></div>
+
+<h2>
+<a name="user-content-uv_is_readable" class="anchor" href="#uv_is_readable" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_is_readable</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_is_readable</span>(<span class="k">const</span> <span class="nc">uv_stream_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_is_writable" class="anchor" href="#uv_is_writable" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_is_writable</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_is_writable</span>(<span class="k">const</span> <span class="nc">uv_stream_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_stream_set_blocking" class="anchor" href="#uv_stream_set_blocking" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_stream_set_blocking</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Enable or disable blocking mode for a stream.</span>
+<span class="cm"> *</span>
+<span class="cm"> * When blocking mode is enabled all writes complete synchronously. The</span>
+<span class="cm"> * interface remains unchanged otherwise, e.g. completion or failure of the</span>
+<span class="cm"> * operation will still be reported through a callback which is made</span>
+<span class="cm"> * asychronously.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Relying too much on this API is not recommended. It is likely to change</span>
+<span class="cm"> * significantly in the future.</span>
+<span class="cm"> *</span>
+<span class="cm"> * On windows this currently works only for uv_pipe_t instances. On unix it</span>
+<span class="cm"> * works for tcp, pipe and tty instances. Be aware that changing the blocking</span>
+<span class="cm"> * mode on unix sets or clears the O_NONBLOCK bit. If you are sharing a handle</span>
+<span class="cm"> * with another process, the other process is affected by the change too,</span>
+<span class="cm"> * which can lead to unexpected results.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Also libuv currently makes no ordering guarantee when the blocking mode</span>
+<span class="cm"> * is changed after write requests have already been submitted. Therefore it is</span>
+<span class="cm"> * recommended to set the blocking mode immediately after opening or creating</span>
+<span class="cm"> * the stream.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_stream_set_blocking</span>(<span class="nc">uv_stream_t</span>* handle, <span class="kt">int</span> blocking);</pre></div>
+
+<h2>
+<a name="user-content-uv_is_closing" class="anchor" href="#uv_is_closing" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_is_closing</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Used to determine whether a stream is closing or closed.</span>
+<span class="cm"> *</span>
+<span class="cm"> * N.B. is only valid between the initialization of the handle</span>
+<span class="cm"> *      and the arrival of the close callback, and cannot be used</span>
+<span class="cm"> *      to validate the handle.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_is_closing</span>(<span class="k">const</span> <span class="nc">uv_handle_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-tcp" class="anchor" href="#tcp" aria-hidden="true"><span class="octicon octicon-link"></span></a>tcp</h1>
+
+<h2>
+<a name="user-content-uv_tcp_init" class="anchor" href="#uv_tcp_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_tcp_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_tcp_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_open" class="anchor" href="#uv_tcp_open" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_open</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Opens an existing file descriptor or SOCKET as a tcp handle.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_open</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="nc">uv_os_sock_t</span> sock);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_nodelay" class="anchor" href="#uv_tcp_nodelay" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_nodelay</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Enable/disable Nagle's algorithm. */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_nodelay</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="kt">int</span> enable);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_keepalive" class="anchor" href="#uv_tcp_keepalive" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_keepalive</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Enable/disable TCP keep-alive.</span>
+<span class="cm"> *</span>
+<span class="cm"> * `delay` is the initial delay in seconds, ignored when `enable` is zero.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_keepalive</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="kt">int</span> enable, <span class="kt">unsigned</span> <span class="kt">int</span> delay);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_simultaneous_accepts" class="anchor" href="#uv_tcp_simultaneous_accepts" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_simultaneous_accepts</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Enable/disable simultaneous asynchronous accept requests that are</span>
+<span class="cm"> * queued by the operating system when listening for new tcp connections.</span>
+<span class="cm"> * This setting is used to tune a tcp server for the desired performance.</span>
+<span class="cm"> * Having simultaneous accepts can significantly improve the rate of</span>
+<span class="cm"> * accepting connections (which is why it is enabled by default) but</span>
+<span class="cm"> * may lead to uneven load distribution in multi-process setups.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_simultaneous_accepts</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="kt">int</span> enable);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_bind" class="anchor" href="#uv_tcp_bind" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_bind</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Bind the handle to an address and port.  `addr` should point to an</span>
+<span class="cm"> * initialized struct sockaddr_in or struct sockaddr_in6.</span>
+<span class="cm"> *</span>
+<span class="cm"> * When the port is already taken, you can expect to see an UV_EADDRINUSE</span>
+<span class="cm"> * error from either uv_tcp_bind(), uv_listen() or uv_tcp_connect().</span>
+<span class="cm"> *</span>
+<span class="cm"> * That is, a successful call to uv_tcp_bind() does not guarantee that</span>
+<span class="cm"> * the call to uv_listen() or uv_tcp_connect() will succeed as well.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_bind</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="k">const</span> <span class="kt">struct</span> sockaddr* addr);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_getsockname" class="anchor" href="#uv_tcp_getsockname" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_getsockname</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_tcp_getsockname</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="kt">struct</span> sockaddr* name, <span class="kt">int</span>* namelen);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_getpeername" class="anchor" href="#uv_tcp_getpeername" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_getpeername</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_tcp_getpeername</span>(<span class="nc">uv_tcp_t</span>* handle, <span class="kt">struct</span> sockaddr* name, <span class="kt">int</span>* namelen);</pre></div>
+
+<h2>
+<a name="user-content-uv_tcp_connect" class="anchor" href="#uv_tcp_connect" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tcp_connect</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Establish an IPv4 or IPv6 TCP connection.  Provide an initialized TCP handle</span>
+<span class="cm"> * and an uninitialized uv_connect_t*.  `addr` should point to an initialized</span>
+<span class="cm"> * struct sockaddr_in or struct sockaddr_in6.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The callback is made when the connection has been established or when a</span>
+<span class="cm"> * connection error happened.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tcp_connect</span>(<span class="nc">uv_connect_t</span>* req, <span class="nc">uv_tcp_t</span>* handle, <span class="k">const</span> <span class="kt">struct</span> sockaddr* addr, uv_connect_cb cb);</pre></div>
+
+<h1>
+<a name="user-content-udp" class="anchor" href="#udp" aria-hidden="true"><span class="octicon octicon-link"></span></a>udp</h1>
+
+<h2>
+<a name="user-content-uv_udp_init" class="anchor" href="#uv_udp_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Initialize a new UDP handle. The actual socket is created lazily.</span>
+<span class="cm"> * Returns 0 on success.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_udp_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_open" class="anchor" href="#uv_udp_open" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_open</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Opens an existing file descriptor or SOCKET as a udp handle.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Unix only:</span>
+<span class="cm"> *  The only requirement of the sock argument is that it follows the</span>
+<span class="cm"> *  datagram contract (works in unconnected mode, supports sendmsg()/recvmsg(),</span>
+<span class="cm"> *  etc.). In other words, other datagram-type sockets like raw sockets or</span>
+<span class="cm"> *  netlink sockets can also be passed to this function.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This sets the SO_REUSEPORT socket flag on the BSDs and OS X. On other</span>
+<span class="cm"> * UNIX platforms, it sets the SO_REUSEADDR flag.  What that means is that</span>
+<span class="cm"> * multiple threads or processes can bind to the same address without error</span>
+<span class="cm"> * (provided they all set the flag) but only the last one to bind will receive</span>
+<span class="cm"> * any traffic, in effect "stealing" the port from the previous listener.</span>
+<span class="cm"> * This behavior is something of an anomaly and may be replaced by an explicit</span>
+<span class="cm"> * opt-in mechanism in future versions of libuv.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_open</span>(<span class="nc">uv_udp_t</span>* handle, <span class="nc">uv_os_sock_t</span> sock);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_bind" class="anchor" href="#uv_udp_bind" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_bind</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Bind to a IPv4 address and port.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle    UDP handle. Should have been initialized with `uv_udp_init`.</span>
+<span class="cm"> *  addr      struct sockaddr_in or struct sockaddr_in6 with the address and</span>
+<span class="cm"> *            port to bind to.</span>
+<span class="cm"> *  flags     Unused.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This sets the SO_REUSEPORT socket flag on the BSDs and OS X. On other</span>
+<span class="cm"> * UNIX platforms, it sets the SO_REUSEADDR flag.  What that means is that</span>
+<span class="cm"> * multiple threads or processes can bind to the same address without error</span>
+<span class="cm"> * (provided they all set the flag) but only the last one to bind will receive</span>
+<span class="cm"> * any traffic, in effect "stealing" the port from the previous listener.</span>
+<span class="cm"> * This behavior is something of an anomaly and may be replaced by an explicit</span>
+<span class="cm"> * opt-in mechanism in future versions of libuv.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_bind</span>(<span class="nc">uv_udp_t</span>* handle, <span class="k">const</span> <span class="kt">struct</span> sockaddr* addr, <span class="kt">unsigned</span> <span class="kt">int</span> flags);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_getsockname" class="anchor" href="#uv_udp_getsockname" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_getsockname</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_udp_getsockname</span>(<span class="nc">uv_udp_t</span>* handle, <span class="kt">struct</span> sockaddr* name, <span class="kt">int</span>* namelen);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_set_membership" class="anchor" href="#uv_udp_set_membership" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_set_membership</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set membership for a multicast address</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle              UDP handle. Should have been initialized with</span>
+<span class="cm"> *                      `uv_udp_init`.</span>
+<span class="cm"> *  multicast_addr      multicast address to set membership for</span>
+<span class="cm"> *  interface_addr      interface address</span>
+<span class="cm"> *  membership          Should be UV_JOIN_GROUP or UV_LEAVE_GROUP</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_set_membership</span>(<span class="nc">uv_udp_t</span>* handle,
+                          <span class="k">const</span> <span class="kt">char</span>* multicast_addr, 
+                          <span class="k">const</span> <span class="kt">char</span>* interface_addr,
+                          uv_membership membership);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_set_multicast_loop" class="anchor" href="#uv_udp_set_multicast_loop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_set_multicast_loop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set IP multicast loop flag. Makes multicast packets loop back to</span>
+<span class="cm"> * local sockets.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle              UDP handle. Should have been initialized with</span>
+<span class="cm"> *                      `uv_udp_init`.</span>
+<span class="cm"> *  on                  1 for on, 0 for off</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_set_multicast_loop</span>(<span class="nc">uv_udp_t</span>* handle, <span class="kt">int</span> on);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_set_multicast_ttl" class="anchor" href="#uv_udp_set_multicast_ttl" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_set_multicast_ttl</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set the multicast ttl</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle              UDP handle. Should have been initialized with</span>
+<span class="cm"> *                      `uv_udp_init`.</span>
+<span class="cm"> *  ttl                 1 through 255</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_set_multicast_ttl</span>(<span class="nc">uv_udp_t</span>* handle, <span class="kt">int</span> ttl);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_set_broadcast" class="anchor" href="#uv_udp_set_broadcast" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_set_broadcast</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set broadcast on or off</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle              UDP handle. Should have been initialized with</span>
+<span class="cm"> *                      `uv_udp_init`.</span>
+<span class="cm"> *  on                  1 for on, 0 for off</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_set_broadcast</span>(<span class="nc">uv_udp_t</span>* handle, <span class="kt">int</span> on);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_set_ttl" class="anchor" href="#uv_udp_set_ttl" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_set_ttl</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set the time to live</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle              UDP handle. Should have been initialized with</span>
+<span class="cm"> *                      `uv_udp_init`.</span>
+<span class="cm"> *  ttl                 1 through 255</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_set_ttl</span>(<span class="nc">uv_udp_t</span>* handle, <span class="kt">int</span> ttl);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_send" class="anchor" href="#uv_udp_send" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_send</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Send data. If the socket has not previously been bound with `uv_udp_bind`</span>
+<span class="cm"> * or `uv_udp_bind6`, it is bound to 0.0.0.0 (the "all interfaces" address)</span>
+<span class="cm"> * and a random port number.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  req       UDP request handle. Need not be initialized.</span>
+<span class="cm"> *  handle    UDP handle. Should have been initialized with `uv_udp_init`.</span>
+<span class="cm"> *  bufs      List of buffers to send.</span>
+<span class="cm"> *  nbufs     Number of buffers in `bufs`.</span>
+<span class="cm"> *  addr      Address of the remote peer. See `uv_ip4_addr`.</span>
+<span class="cm"> *  send_cb   Callback to invoke when the data has been sent out.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_send</span>(<span class="nc">uv_udp_send_t</span>* req,
+                <span class="nc">uv_udp_t</span>* handle,
+                <span class="k">const</span> <span class="nc">uv_buf_t</span> bufs[],
+                <span class="kt">unsigned</span> <span class="kt">int</span> nbufs,
+                <span class="k">const</span> <span class="kt">struct</span> sockaddr* addr,
+                uv_udp_send_cb send_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_recv_start" class="anchor" href="#uv_udp_recv_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_recv_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Receive data. If the socket has not previously been bound with `uv_udp_bind`</span>
+<span class="cm"> * or `uv_udp_bind6`, it is bound to 0.0.0.0 (the "all interfaces" address)</span>
+<span class="cm"> * and a random port number.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle    UDP handle. Should have been initialized with `uv_udp_init`.</span>
+<span class="cm"> *  alloc_cb  Callback to invoke when temporary storage is needed.</span>
+<span class="cm"> *  recv_cb   Callback to invoke with received data.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_recv_start</span>(<span class="nc">uv_udp_t</span>* handle, uv_alloc_cb alloc_cb, uv_udp_recv_cb recv_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_udp_recv_stop" class="anchor" href="#uv_udp_recv_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_udp_recv_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Stop listening for incoming datagrams.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Arguments:</span>
+<span class="cm"> *  handle    UDP handle. Should have been initialized with `uv_udp_init`.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns:</span>
+<span class="cm"> *  0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_udp_recv_stop</span>(<span class="nc">uv_udp_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-tty" class="anchor" href="#tty" aria-hidden="true"><span class="octicon octicon-link"></span></a>tty</h1>
+
+<h2>
+<a name="user-content-uv_tty_init" class="anchor" href="#uv_tty_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tty_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Initialize a new TTY stream with the given file descriptor. Usually the</span>
+<span class="cm"> * file descriptor will be</span>
+<span class="cm"> *   0 = stdin</span>
+<span class="cm"> *   1 = stdout</span>
+<span class="cm"> *   2 = stderr</span>
+<span class="cm"> * The last argument, readable, specifies if you plan on calling</span>
+<span class="cm"> * uv_read_start with this stream. stdin is readable, stdout is not.</span>
+<span class="cm"> *</span>
+<span class="cm"> * TTY streams which are not readable have blocking writes.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tty_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_tty_t</span>*, uv_file fd, <span class="kt">int</span> readable);</pre></div>
+
+<h2>
+<a name="user-content-uv_tty_set_mode" class="anchor" href="#uv_tty_set_mode" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tty_set_mode</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set mode. 0 for normal, 1 for raw.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tty_set_mode</span>(<span class="nc">uv_tty_t</span>*, <span class="kt">int</span> mode);</pre></div>
+
+<h2>
+<a name="user-content-uv_tty_reset_mode" class="anchor" href="#uv_tty_reset_mode" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tty_reset_mode</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * To be called when the program exits. Resets TTY settings to default</span>
+<span class="cm"> * values for the next process to take over.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This function is async signal-safe on UNIX platforms but can fail with error</span>
+<span class="cm"> * code UV_EBUSY if you call it when execution is inside uv_tty_set_mode().</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tty_reset_mode</span>(<span class="kt">void</span>);</pre></div>
+
+<h2>
+<a name="user-content-uv_tty_get_winsize" class="anchor" href="#uv_tty_get_winsize" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_tty_get_winsize</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Gets the current Window size. On success zero is returned.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_tty_get_winsize</span>(<span class="nc">uv_tty_t</span>*, <span class="kt">int</span>* width, <span class="kt">int</span>* height);</pre></div>
+
+<h1>
+<a name="user-content-pipe" class="anchor" href="#pipe" aria-hidden="true"><span class="octicon octicon-link"></span></a>pipe</h1>
+
+<h2>
+<a name="user-content-uv_pipe_init" class="anchor" href="#uv_pipe_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_pipe_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Initialize a pipe. The last argument is a boolean to indicate if</span>
+<span class="cm"> * this pipe will be used for handle passing between processes.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_pipe_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_pipe_t</span>* handle, <span class="kt">int</span> ipc);</pre></div>
+
+<h2>
+<a name="user-content-uv_pipe_open" class="anchor" href="#uv_pipe_open" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_pipe_open</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Opens an existing file descriptor or HANDLE as a pipe.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_pipe_open</span>(<span class="nc">uv_pipe_t</span>*, uv_file file);</pre></div>
+
+<h2>
+<a name="user-content-uv_pipe_bind" class="anchor" href="#uv_pipe_bind" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_pipe_bind</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Bind the pipe to a file path (UNIX) or a name (Windows.)</span>
+<span class="cm"> *</span>
+<span class="cm"> * Paths on UNIX get truncated to `sizeof(sockaddr_un.sun_path)` bytes,</span>
+<span class="cm"> * typically between 92 and 108 bytes.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_pipe_bind</span>(<span class="nc">uv_pipe_t</span>* handle, <span class="k">const</span> <span class="kt">char</span>* name);</pre></div>
+
+<h2>
+<a name="user-content-uv_pipe_connect" class="anchor" href="#uv_pipe_connect" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_pipe_connect</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Connect to the UNIX domain socket or the named pipe.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Paths on UNIX get truncated to `sizeof(sockaddr_un.sun_path)` bytes,</span>
+<span class="cm"> * typically between 92 and 108 bytes.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_pipe_connect</span>(<span class="nc">uv_connect_t</span>* req, <span class="nc">uv_pipe_t</span>* handle, <span class="k">const</span> <span class="kt">char</span>* name, uv_connect_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_pipe_pending_instances" class="anchor" href="#uv_pipe_pending_instances" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_pipe_pending_instances</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This setting applies to Windows only.</span>
+<span class="cm"> * Set the number of pending pipe instance handles when the pipe server</span>
+<span class="cm"> * is waiting for connections.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_pipe_pending_instances</span>(<span class="nc">uv_pipe_t</span>* handle, <span class="kt">int</span> count);</pre></div>
+
+<h1>
+<a name="user-content-poll" class="anchor" href="#poll" aria-hidden="true"><span class="octicon octicon-link"></span></a>poll</h1>
+
+<h2>
+<a name="user-content-uv_poll_init" class="anchor" href="#uv_poll_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_poll_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Initialize the poll watcher using a file descriptor. */</span>
+<span class="kt">int</span> <span class="nf">uv_poll_init</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_poll_t</span>* handle, <span class="kt">int</span> fd);</pre></div>
+
+<h2>
+<a name="user-content-uv_poll_init_socket" class="anchor" href="#uv_poll_init_socket" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_poll_init_socket</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Initialize the poll watcher using a socket descriptor. On unix this is */</span>
+<span class="cm">/* identical to uv_poll_init. On windows it takes a SOCKET handle. */</span>
+<span class="kt">int</span> <span class="nf">uv_poll_init_socket</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_poll_t</span>* handle, <span class="nc">uv_os_sock_t</span> socket);</pre></div>
+
+<h2>
+<a name="user-content-uv_poll_start" class="anchor" href="#uv_poll_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_poll_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Starts polling the file descriptor. `events` is a bitmask consisting made up</span>
+<span class="cm"> * of UV_READABLE and UV_WRITABLE. As soon as an event is detected the callback</span>
+<span class="cm"> * will be called with `status` set to 0, and the detected events set en the</span>
+<span class="cm"> * `events` field.</span>
+<span class="cm"> *</span>
+<span class="cm"> * If an error happens while polling status, `status` &lt; 0 and corresponds</span>
+<span class="cm"> * with one of the UV_E* error codes. The user should not close the socket</span>
+<span class="cm"> * while uv_poll is active. If the user does that anyway, the callback *may*</span>
+<span class="cm"> * be called reporting an error status, but this is not guaranteed.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Calling uv_poll_start on an uv_poll watcher that is already active is fine.</span>
+<span class="cm"> * Doing so will update the events mask that is being watched for.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_poll_start</span>(<span class="nc">uv_poll_t</span>* handle, <span class="kt">int</span> events, uv_poll_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_poll_stop" class="anchor" href="#uv_poll_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_poll_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Stops polling the file descriptor. */</span>
+<span class="kt">int</span> <span class="nf">uv_poll_stop</span>(<span class="nc">uv_poll_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-prepare" class="anchor" href="#prepare" aria-hidden="true"><span class="octicon octicon-link"></span></a>prepare</h1>
+
+<h2>
+<a name="user-content-uv_prepare_init" class="anchor" href="#uv_prepare_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_prepare_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_prepare_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_prepare_t</span>* prepare);</pre></div>
+
+<h2>
+<a name="user-content-uv_prepare_start" class="anchor" href="#uv_prepare_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_prepare_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_prepare_start</span>(<span class="nc">uv_prepare_t</span>* prepare, uv_prepare_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_prepare_stop" class="anchor" href="#uv_prepare_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_prepare_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_prepare_stop</span>(<span class="nc">uv_prepare_t</span>* prepare);</pre></div>
+
+<h1>
+<a name="user-content-idle" class="anchor" href="#idle" aria-hidden="true"><span class="octicon octicon-link"></span></a>idle</h1>
+
+<h2>
+<a name="user-content-uv_idle_init" class="anchor" href="#uv_idle_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_idle_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_idle_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_idle_t</span>* idle);</pre></div>
+
+<h2>
+<a name="user-content-uv_idle_start" class="anchor" href="#uv_idle_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_idle_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_idle_start</span>(<span class="nc">uv_idle_t</span>* idle, uv_idle_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_idle_stop" class="anchor" href="#uv_idle_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_idle_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_idle_stop</span>(<span class="nc">uv_idle_t</span>* idle);</pre></div>
+
+<h1>
+<a name="user-content-async" class="anchor" href="#async" aria-hidden="true"><span class="octicon octicon-link"></span></a>async</h1>
+
+<h2>
+<a name="user-content-uv_async_init" class="anchor" href="#uv_async_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_async_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Initialize the uv_async_t handle. A NULL callback is allowed.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note that uv_async_init(), unlike other libuv functions, immediately</span>
+<span class="cm"> * starts the handle. To stop the handle again, close it with uv_close().</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_async_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_async_t</span>* async, uv_async_cb async_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_async_send" class="anchor" href="#uv_async_send" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_async_send</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This can be called from other threads to wake up a libuv thread.</span>
+<span class="cm"> *</span>
+<span class="cm"> * libuv is single threaded at the moment.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_async_send</span>(<span class="nc">uv_async_t</span>* async);</pre></div>
+
+<h1>
+<a name="user-content-timer" class="anchor" href="#timer" aria-hidden="true"><span class="octicon octicon-link"></span></a>timer</h1>
+
+<h2>
+<a name="user-content-uv_timer_init" class="anchor" href="#uv_timer_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_timer_init</span>(<span class="nc">uv_loop_t</span>*, <span class="nc">uv_timer_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_timer_start" class="anchor" href="#uv_timer_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Start the timer. `timeout` and `repeat` are in milliseconds.</span>
+<span class="cm"> *</span>
+<span class="cm"> * If timeout is zero, the callback fires on the next tick of the event loop.</span>
+<span class="cm"> *</span>
+<span class="cm"> * If repeat is non-zero, the callback fires first after timeout milliseconds</span>
+<span class="cm"> * and then repeatedly after repeat milliseconds.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_timer_start</span>(<span class="nc">uv_timer_t</span>* handle,
+                   uv_timer_cb cb,
+                   <span class="nc">uint64_t</span> timeout,
+                   <span class="nc">uint64_t</span> repeat);</pre></div>
+
+<h2>
+<a name="user-content-uv_timer_stop" class="anchor" href="#uv_timer_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_timer_stop</span>(<span class="nc">uv_timer_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_timer_again" class="anchor" href="#uv_timer_again" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_again</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Stop the timer, and if it is repeating restart it using the repeat value</span>
+<span class="cm"> * as the timeout. If the timer has never been started before it returns</span>
+<span class="cm"> * UV_EINVAL.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_timer_again</span>(<span class="nc">uv_timer_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_timer_set_repeat" class="anchor" href="#uv_timer_set_repeat" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_set_repeat</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Set the repeat value in milliseconds. Note that if the repeat value is set</span>
+<span class="cm"> * from a timer callback it does not immediately take effect. If the timer was</span>
+<span class="cm"> * non-repeating before, it will have been stopped. If it was repeating, then</span>
+<span class="cm"> * the old repeat value will have been used to schedule the next timeout.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_timer_set_repeat</span>(<span class="nc">uv_timer_t</span>* handle, <span class="nc">uint64_t</span> repeat);</pre></div>
+
+<h2>
+<a name="user-content-uv_timer_get_repeat" class="anchor" href="#uv_timer_get_repeat" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_timer_get_repeat</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="nc">uint64_t</span> <span class="nf">uv_timer_get_repeat</span>(<span class="k">const</span> <span class="nc">uv_timer_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-addrinfo" class="anchor" href="#addrinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a>addrinfo</h1>
+
+<h2>
+<a name="user-content-uv_getaddrinfo" class="anchor" href="#uv_getaddrinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_getaddrinfo</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Asynchronous getaddrinfo(3).</span>
+<span class="cm"> *</span>
+<span class="cm"> * Either node or service may be NULL but not both.</span>
+<span class="cm"> *</span>
+<span class="cm"> * hints is a pointer to a struct addrinfo with additional address type</span>
+<span class="cm"> * constraints, or NULL. Consult `man -s 3 getaddrinfo` for details.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns 0 on success or an error code &lt; 0 on failure.</span>
+<span class="cm"> *</span>
+<span class="cm"> * If successful, your callback gets called sometime in the future with the</span>
+<span class="cm"> * lookup result, which is either:</span>
+<span class="cm"> *</span>
+<span class="cm"> *  a) err == 0, the res argument points to a valid struct addrinfo, or</span>
+<span class="cm"> *  b) err &lt; 0, the res argument is NULL. See the UV_EAI_* constants.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Call uv_freeaddrinfo() to free the addrinfo structure.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_getaddrinfo</span>(<span class="nc">uv_loop_t</span>* loop,
+                    <span class="nc">uv_getaddrinfo_t</span>* req,
+                    uv_getaddrinfo_cb getaddrinfo_cb,
+                    <span class="k">const</span> <span class="kt">char</span>* node,
+                    <span class="k">const</span> <span class="kt">char</span>* service,
+                    <span class="k">const</span> <span class="kt">struct</span> addrinfo* hints);</pre></div>
+
+<h2>
+<a name="user-content-uv_freeaddrinfo" class="anchor" href="#uv_freeaddrinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_freeaddrinfo</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Free the struct addrinfo. Passing NULL is allowed and is a no-op.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_freeaddrinfo</span>(<span class="kt">struct</span> addrinfo* ai);</pre></div>
+
+<h1>
+<a name="user-content-process" class="anchor" href="#process" aria-hidden="true"><span class="octicon octicon-link"></span></a>process</h1>
+
+<h2>
+<a name="user-content-uv_spawn" class="anchor" href="#uv_spawn" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_spawn</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Initializes the uv_process_t and starts the process. If the process is</span>
+<span class="cm"> * successfully spawned, then this function will return 0. Otherwise, the</span>
+<span class="cm"> * negative error code corresponding to the reason it couldn't spawn is</span>
+<span class="cm"> * returned.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Possible reasons for failing to spawn would include (but not be limited to)</span>
+<span class="cm"> * the file to execute not existing, not having permissions to use the setuid or</span>
+<span class="cm"> * setgid specified, or not having enough memory to allocate for the new</span>
+<span class="cm"> * process.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_spawn</span>(<span class="nc">uv_loop_t</span>* loop,
+             <span class="nc">uv_process_t</span>* handle,
+             <span class="k">const</span> <span class="nc">uv_process_options_t</span>* options);</pre></div>
+
+<h2>
+<a name="user-content-uv_process_kill" class="anchor" href="#uv_process_kill" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_process_kill</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Kills the process with the specified signal. The user must still</span>
+<span class="cm"> * call uv_close on the process.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_process_kill</span>(<span class="nc">uv_process_t</span>*, <span class="kt">int</span> signum);</pre></div>
+
+<h2>
+<a name="user-content-uv_kill" class="anchor" href="#uv_kill" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_kill</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Kills the process with the specified signal. */</span>
+<span class="kt">int</span> <span class="nf">uv_kill</span>(<span class="kt">int</span> pid, <span class="kt">int</span> signum);</pre></div>
+
+<h2>
+<a name="user-content-uv_setup_args" class="anchor" href="#uv_setup_args" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_setup_args</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">char</span>** <span class="nf">uv_setup_args</span>(<span class="kt">int</span> argc, <span class="kt">char</span>** argv);</pre></div>
+
+<h2>
+<a name="user-content-uv_get_process_title" class="anchor" href="#uv_get_process_title" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_get_process_title</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_get_process_title</span>(<span class="kt">char</span>* buffer, <span class="nc">size_t</span> size);</pre></div>
+
+<h2>
+<a name="user-content-uv_set_process_title" class="anchor" href="#uv_set_process_title" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_set_process_title</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_set_process_title</span>(<span class="k">const</span> <span class="kt">char</span>* title);</pre></div>
+
+<h2>
+<a name="user-content-uv_resident_set_memory" class="anchor" href="#uv_resident_set_memory" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_resident_set_memory</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_resident_set_memory</span>(<span class="nc">size_t</span>* rss);</pre></div>
+
+<h2>
+<a name="user-content-uv_uptime" class="anchor" href="#uv_uptime" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_uptime</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_uptime</span>(<span class="kt">double</span>* uptime);</pre></div>
+
+<h1>
+<a name="user-content-work-queue" class="anchor" href="#work-queue" aria-hidden="true"><span class="octicon octicon-link"></span></a>work queue</h1>
+
+<h2>
+<a name="user-content-uv_queue_work" class="anchor" href="#uv_queue_work" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_queue_work</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Queues a work request to execute asynchronously on the thread pool. */</span>
+<span class="kt">int</span> <span class="nf">uv_queue_work</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_work_t</span>* req, uv_work_cb work_cb, uv_after_work_cb after_work_cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_cancel" class="anchor" href="#uv_cancel" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cancel</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Cancel a pending request. Fails if the request is executing or has finished</span>
+<span class="cm"> * executing.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Returns 0 on success, or an error code &lt; 0 on failure.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Only cancellation of uv_fs_t, uv_getaddrinfo_t and uv_work_t requests is</span>
+<span class="cm"> * currently supported.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Cancelled requests have their callbacks invoked some time in the future.</span>
+<span class="cm"> * It's _not_ safe to free the memory associated with the request until your</span>
+<span class="cm"> * callback is called.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Here is how cancellation is reported to your callback:</span>
+<span class="cm"> *</span>
+<span class="cm"> * - A uv_fs_t request has its req-&gt;result field set to UV_ECANCELED.</span>
+<span class="cm"> *</span>
+<span class="cm"> * - A uv_work_t or uv_getaddrinfo_t request has its callback invoked with</span>
+<span class="cm"> *   status == UV_ECANCELED.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This function is currently only implemented on UNIX platforms. On Windows,</span>
+<span class="cm"> * it always returns UV_ENOSYS.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_cancel</span>(<span class="nc">uv_req_t</span>* req);</pre></div>
+
+<h1>
+<a name="user-content-cpu-info" class="anchor" href="#cpu-info" aria-hidden="true"><span class="octicon octicon-link"></span></a>cpu info</h1>
+
+<h2>
+<a name="user-content-uv_cpu_info" class="anchor" href="#uv_cpu_info" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cpu_info</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This allocates cpu_infos array, and sets count.  The array</span>
+<span class="cm"> * is freed using uv_free_cpu_info().</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_cpu_info</span>(<span class="nc">uv_cpu_info_t</span>** cpu_infos, <span class="kt">int</span>* count);</pre></div>
+
+<h2>
+<a name="user-content-uv_free_cpu_info" class="anchor" href="#uv_free_cpu_info" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_free_cpu_info</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_free_cpu_info</span>(<span class="nc">uv_cpu_info_t</span>* cpu_infos, <span class="kt">int</span> count);</pre></div>
+
+<h1>
+<a name="user-content-interface-addresses" class="anchor" href="#interface-addresses" aria-hidden="true"><span class="octicon octicon-link"></span></a>interface addresses</h1>
+
+<h2>
+<a name="user-content-uv_interface_addresses" class="anchor" href="#uv_interface_addresses" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_interface_addresses</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This allocates addresses array, and sets count.  The array</span>
+<span class="cm"> * is freed using uv_free_interface_addresses().</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_interface_addresses</span>(<span class="nc">uv_interface_address_t</span>** addresses, <span class="kt">int</span>* count);</pre></div>
+
+<h2>
+<a name="user-content-uv_free_interface_addresses" class="anchor" href="#uv_free_interface_addresses" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_free_interface_addresses</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_free_interface_addresses</span>(<span class="nc">uv_interface_address_t</span>* addresses, <span class="kt">int</span> count);</pre></div>
+
+<h1>
+<a name="user-content-file-system" class="anchor" href="#file-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>file system</h1>
+
+<p>File System Methods.</p>
+
+<p>The <code>uv_fs_*</code> functions execute a blocking system call asynchronously (in a
+thread pool) and call the specified callback in the specified loop after
+completion. If the user gives NULL as the callback the blocking system
+call will be called synchronously. req should be a pointer to an
+uninitialized <code>uv_fs_t</code> object.</p>
+
+<p><code>uv_fs_req_cleanup()</code> must be called after completion of the <code>uv_fs_</code> 
+function to free any internal memory allocations associated with the
+request.</p>
+
+<h2>
+<a name="user-content-uv_fs_req_cleanup" class="anchor" href="#uv_fs_req_cleanup" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_req_cleanup</code>
+</h2>
+
+<p>nulls out <code>req-&gt;path</code>, <code>req-&gt;new_path</code> and <code>req-&gt;ptr</code> (unless it points to <code>req-&gt;statbuf</code>).</p>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_fs_req_cleanup</span>(<span class="nc">uv_fs_t</span>* req);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_close" class="anchor" href="#uv_fs_close" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_close</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_close</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_fs_t</span>* req, uv_file file, uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_open" class="anchor" href="#uv_fs_open" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_open</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_open</span>(<span class="nc">uv_loop_t</span>* loop,
+               <span class="nc">uv_fs_t</span>* req,
+               <span class="k">const</span> <span class="kt">char</span>* path,
+               <span class="kt">int</span> flags,
+               <span class="kt">int</span> mode,
+               uv_fs_cb cb);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_t-req-passed-to-callback" class="anchor" href="#uv_fs_t-req-passed-to-callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>uv_fs_t *req</code> passed to callback</h3>
+
+<p><code>req-&gt;result</code> is error code or <code>uv_file</code> which is passed to <code>uv_fs_read</code>.</p>
+
+<h2>
+<a name="user-content-uv_fs_read" class="anchor" href="#uv_fs_read" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_read</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_read</span>(<span class="nc">uv_loop_t</span>* loop,
+               <span class="nc">uv_fs_t</span>* req,
+               uv_file file,
+               <span class="kt">void</span>* buf,
+               <span class="nc">size_t</span> length,
+               <span class="nc">int64_t</span> offset,
+               uv_fs_cb cb);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_t-req-passed-to-callback-1" class="anchor" href="#uv_fs_t-req-passed-to-callback-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>uv_fs_t *req</code> passed to callback</h3>
+
+<p><code>req-&gt;result</code> is error code or <code>ssize_t</code> number of bytes read.</p>
+
+<h2>
+<a name="user-content-uv_fs_unlink" class="anchor" href="#uv_fs_unlink" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_unlink</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_unlink</span>(<span class="nc">uv_loop_t</span>* loop,
+                 <span class="nc">uv_fs_t</span>* req,
+                 <span class="k">const</span> <span class="kt">char</span>* path,
+                 uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_write" class="anchor" href="#uv_fs_write" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_write</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_write</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                uv_file file,
+                <span class="k">const</span> <span class="kt">void</span>* buf,
+                <span class="nc">size_t</span> length,
+                <span class="nc">int64_t</span> offset,
+                uv_fs_cb cb);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_t-req-passed-to-callback-2" class="anchor" href="#uv_fs_t-req-passed-to-callback-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>uv_fs_t *req</code> passed to callback</h3>
+
+<p><code>req-&gt;result</code> is error code or <code>ssize_t</code> number of bytes written.</p>
+
+<h2>
+<a name="user-content-uv_fs_mkdir" class="anchor" href="#uv_fs_mkdir" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_mkdir</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_mkdir</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                <span class="kt">int</span> mode,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_rmdir" class="anchor" href="#uv_fs_rmdir" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_rmdir</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_rmdir</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_readdir" class="anchor" href="#uv_fs_readdir" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_readdir</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_readdir</span>(<span class="nc">uv_loop_t</span>* loop,
+                  <span class="nc">uv_fs_t</span>* req,
+                  <span class="k">const</span> <span class="kt">char</span>* path,
+                  <span class="kt">int</span> flags,
+                  uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_stat" class="anchor" href="#uv_fs_stat" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_stat</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_stat</span>(<span class="nc">uv_loop_t</span>* loop,
+               <span class="nc">uv_fs_t</span>* req,
+               <span class="k">const</span> <span class="kt">char</span>* path,
+               uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_fstat" class="anchor" href="#uv_fs_fstat" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_fstat</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_fstat</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                uv_file file,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_rename" class="anchor" href="#uv_fs_rename" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_rename</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_rename</span>(<span class="nc">uv_loop_t</span>* loop,
+                 <span class="nc">uv_fs_t</span>* req,
+                 <span class="k">const</span> <span class="kt">char</span>* path,
+                 <span class="k">const</span> <span class="kt">char</span>* new_path,
+                 uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_fsync" class="anchor" href="#uv_fs_fsync" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_fsync</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_fsync</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                uv_file file,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_fdatasync" class="anchor" href="#uv_fs_fdatasync" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_fdatasync</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_fdatasync</span>(<span class="nc">uv_loop_t</span>* loop,
+                    <span class="nc">uv_fs_t</span>* req,
+                    uv_file file,
+                    uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_ftruncate" class="anchor" href="#uv_fs_ftruncate" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_ftruncate</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_ftruncate</span>(<span class="nc">uv_loop_t</span>* loop,
+                    <span class="nc">uv_fs_t</span>* req,
+                    uv_file file,
+                    <span class="nc">int64_t</span> offset,
+                    uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_sendfile" class="anchor" href="#uv_fs_sendfile" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_sendfile</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_sendfile</span>(<span class="nc">uv_loop_t</span>* loop,
+                   <span class="nc">uv_fs_t</span>* req,
+                   uv_file out_fd,
+                   uv_file in_fd,
+                   <span class="nc">int64_t</span> in_offset,
+                   <span class="nc">size_t</span> length,
+                   uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_chmod" class="anchor" href="#uv_fs_chmod" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_chmod</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_chmod</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                <span class="kt">int</span> mode,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_utime" class="anchor" href="#uv_fs_utime" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_utime</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_utime</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                <span class="kt">double</span> atime,
+                <span class="kt">double</span> mtime,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_futime" class="anchor" href="#uv_fs_futime" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_futime</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_futime</span>(<span class="nc">uv_loop_t</span>* loop,
+                 <span class="nc">uv_fs_t</span>* req,
+                 uv_file file,
+                 <span class="kt">double</span> atime,
+                 <span class="kt">double</span> mtime,
+                 uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_lstat" class="anchor" href="#uv_fs_lstat" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_lstat</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_lstat</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_link" class="anchor" href="#uv_fs_link" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_link</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_link</span>(<span class="nc">uv_loop_t</span>* loop,
+               <span class="nc">uv_fs_t</span>* req,
+               <span class="k">const</span> <span class="kt">char</span>* path,
+               <span class="k">const</span> <span class="kt">char</span>* new_path,
+               uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_symlink" class="anchor" href="#uv_fs_symlink" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_symlink</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * This flag can be used with uv_fs_symlink on Windows</span>
+<span class="cm"> * to specify whether path argument points to a directory.</span>
+<span class="cm"> */</span>
+#<span class="k">define</span> <span class="nf">UV_FS_SYMLINK_DIR</span>          0x0001
+
+<span class="cm">/*</span>
+<span class="cm"> * This flag can be used with uv_fs_symlink on Windows</span>
+<span class="cm"> * to specify whether the symlink is to be created using junction points.</span>
+<span class="cm"> */</span>
+#<span class="k">define</span> <span class="nf">UV_FS_SYMLINK_JUNCTION</span>     0x0002</pre></div>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_symlink</span>(<span class="nc">uv_loop_t</span>* loop,
+                  <span class="nc">uv_fs_t</span>* req,
+                  <span class="k">const</span> <span class="kt">char</span>* path,
+                  <span class="k">const</span> <span class="kt">char</span>* new_path,
+                  <span class="kt">int</span> flags,
+                  uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_readlink" class="anchor" href="#uv_fs_readlink" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_readlink</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_readlink</span>(<span class="nc">uv_loop_t</span>* loop,
+                   <span class="nc">uv_fs_t</span>* req,
+                   <span class="k">const</span> <span class="kt">char</span>* path,
+                   uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_fchmod" class="anchor" href="#uv_fs_fchmod" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_fchmod</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_fchmod</span>(<span class="nc">uv_loop_t</span>* loop,
+                 <span class="nc">uv_fs_t</span>* req,
+                 uv_file file,
+                 <span class="kt">int</span> mode,
+                 uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_chown" class="anchor" href="#uv_fs_chown" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_chown</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_chown</span>(<span class="nc">uv_loop_t</span>* loop,
+                <span class="nc">uv_fs_t</span>* req,
+                <span class="k">const</span> <span class="kt">char</span>* path,
+                <span class="nc">uv_uid_t</span> uid,
+                <span class="nc">uv_gid_t</span> gid,
+                uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_fs_fchown" class="anchor" href="#uv_fs_fchown" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_fchown</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_fchown</span>(<span class="nc">uv_loop_t</span>* loop,
+                 <span class="nc">uv_fs_t</span>* req,
+                 uv_file file,
+                 <span class="nc">uv_uid_t</span> uid,
+                 <span class="nc">uv_gid_t</span> gid,
+                 uv_fs_cb cb);</pre></div>
+
+<h2>
+<a name="user-content-uv_guess_handle" class="anchor" href="#uv_guess_handle" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_guess_handle</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Used to detect what type of stream should be used with a given file</span>
+<span class="cm"> * descriptor. Usually this will be used during initialization to guess the</span>
+<span class="cm"> * type of the stdio streams.</span>
+<span class="cm"> * For isatty() functionality use this function and test for UV_TTY.</span>
+<span class="cm"> */</span>
+uv_handle_type <span class="nf">uv_guess_handle</span>(uv_file file);</pre></div>
+
+<h2>
+<a name="user-content-fs-poll" class="anchor" href="#fs-poll" aria-hidden="true"><span class="octicon octicon-link"></span></a>fs poll</h2>
+
+<p><code>uv_fs_stat()</code> based polling file watcher.</p>
+
+<h3>
+<a name="user-content-uv_fs_poll_init" class="anchor" href="#uv_fs_poll_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_poll_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_poll_init</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_fs_poll_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_poll_start" class="anchor" href="#uv_fs_poll_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_poll_start</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Check the file at `path` for changes every `interval` milliseconds.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Your callback is invoked with `status &lt; 0` if `path` does not exist</span>
+<span class="cm"> * or is inaccessible. The watcher is *not* stopped but your callback is</span>
+<span class="cm"> * not called again until something changes (e.g. when the file is created</span>
+<span class="cm"> * or the error reason changes).</span>
+<span class="cm"> *</span>
+<span class="cm"> * When `status == 0`, your callback receives pointers to the old and new</span>
+<span class="cm"> * `uv_stat_t` structs. They are valid for the duration of the callback</span>
+<span class="cm"> * only!</span>
+<span class="cm"> *</span>
+<span class="cm"> * For maximum portability, use multi-second intervals. Sub-second intervals</span>
+<span class="cm"> * will not detect all changes on many file systems.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_fs_poll_start</span>(<span class="nc">uv_fs_poll_t</span>* handle,
+                     uv_fs_poll_cb poll_cb,
+                     <span class="k">const</span> <span class="kt">char</span>* path,
+                     <span class="kt">unsigned</span> <span class="kt">int</span> interval);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_poll_stop" class="anchor" href="#uv_fs_poll_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_poll_stop</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_poll_stop</span>(<span class="nc">uv_fs_poll_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-fs-event" class="anchor" href="#fs-event" aria-hidden="true"><span class="octicon octicon-link"></span></a>fs event</h2>
+
+<h3>
+<a name="user-content-uv_fs_event_init" class="anchor" href="#uv_fs_event_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_event_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_event_init</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_fs_event_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_event_start" class="anchor" href="#uv_fs_event_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_event_start</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_event_start</span>(<span class="nc">uv_fs_event_t</span>* handle,
+                      uv_fs_event_cb cb,
+                      <span class="k">const</span> <span class="kt">char</span>* filename,
+                      <span class="kt">unsigned</span> <span class="kt">int</span> flags);</pre></div>
+
+<h3>
+<a name="user-content-uv_fs_event_stop" class="anchor" href="#uv_fs_event_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_fs_event_stop</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_fs_event_stop</span>(<span class="nc">uv_fs_event_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-signal" class="anchor" href="#signal" aria-hidden="true"><span class="octicon octicon-link"></span></a>signal</h1>
+
+<h2>
+<a name="user-content-uv_signal_init" class="anchor" href="#uv_signal_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_signal_init</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_signal_init</span>(<span class="nc">uv_loop_t</span>* loop, <span class="nc">uv_signal_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-uv_signal_start" class="anchor" href="#uv_signal_start" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_signal_start</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_signal_start</span>(<span class="nc">uv_signal_t</span>* handle, uv_signal_cb signal_cb, <span class="kt">int</span> signum);</pre></div>
+
+<h2>
+<a name="user-content-uv_signal_stop" class="anchor" href="#uv_signal_stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_signal_stop</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_signal_stop</span>(<span class="nc">uv_signal_t</span>* handle);</pre></div>
+
+<h1>
+<a name="user-content-load-average" class="anchor" href="#load-average" aria-hidden="true"><span class="octicon octicon-link"></span></a>load average</h1>
+
+<h2>
+<a name="user-content-uv_loadavg" class="anchor" href="#uv_loadavg" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_loadavg</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="cm">/*</span>
+<span class="cm"> * Gets load average.</span>
+<span class="cm"> * See: http://en.wikipedia.org/wiki/Load_(computing)</span>
+<span class="cm"> * Returns [0,0,0] on Windows.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_loadavg</span>(<span class="kt">double</span> avg[<span class="m">3</span>]);</pre></div>
+
+<h1>
+<a name="user-content-errors" class="anchor" href="#errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>errors</h1>
+
+<p>Most functions return 0 on success or an error code &lt; 0 on failure.</p>
+
+<h2>
+<a name="user-content-uv_strerror" class="anchor" href="#uv_strerror" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_strerror</code>
+</h2>
+
+<div class="highlight highlight-c"><pre><span class="k">const</span> <span class="kt">char</span>* <span class="nf">uv_strerror</span>(<span class="kt">int</span> err);</pre></div>
+
+<h2>
+<a name="user-content-uv_err_name" class="anchor" href="#uv_err_name" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_err_name</code>
+</h2>
+
+<pre><code>const char* uv_err_name(int err);
+</code></pre>
+
+<h1>
+<a name="user-content-utilities" class="anchor" href="#utilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>utilities</h1>
+
+<h2>
+<a name="user-content-ip-address-conversion" class="anchor" href="#ip-address-conversion" aria-hidden="true"><span class="octicon octicon-link"></span></a>ip address conversion</h2>
+
+<p>Convert string ip addresses to binary structures</p>
+
+<h3>
+<a name="user-content-uv_ip4_addr" class="anchor" href="#uv_ip4_addr" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_ip4_addr</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_ip4_addr</span>(<span class="k">const</span> <span class="kt">char</span>* ip, <span class="kt">int</span> port, <span class="kt">struct</span> sockaddr_in* addr);</pre></div>
+
+<h3>
+<a name="user-content-uv_ip6_addr" class="anchor" href="#uv_ip6_addr" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_ip6_addr</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_ip6_addr</span>(<span class="k">const</span> <span class="kt">char</span>* ip, <span class="kt">int</span> port, <span class="kt">struct</span> sockaddr_in6* addr);</pre></div>
+
+<p>Convert binary addresses to strings</p>
+
+<h3>
+<a name="user-content-uv_ip4_name" class="anchor" href="#uv_ip4_name" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_ip4_name</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_ip4_name</span>(<span class="kt">struct</span> sockaddr_in* src, <span class="kt">char</span>* dst, <span class="nc">size_t</span> size);</pre></div>
+
+<h3>
+<a name="user-content-uv_ip6_name" class="anchor" href="#uv_ip6_name" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_ip6_name</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_ip6_name</span>(<span class="kt">struct</span> sockaddr_in6* src, <span class="kt">char</span>* dst, <span class="nc">size_t</span> size);</pre></div>
+
+<h2>
+<a name="user-content-ntop-and-pton" class="anchor" href="#ntop-and-pton" aria-hidden="true"><span class="octicon octicon-link"></span></a>ntop and pton</h2>
+
+<p>Cross-platform IPv6-capable implementation of the 'standard' <code>inet_ntop</code>
+and <code>inet_pton</code> functions. On success they return 0. If an error 
+the target of the <code>dst</code> pointer is unmodified. </p>
+
+<h3>
+<a name="user-content-uv_inet_ntop" class="anchor" href="#uv_inet_ntop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_inet_ntop</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_inet_ntop</span>(<span class="kt">int</span> af, <span class="k">const</span> <span class="kt">void</span>* src, <span class="kt">char</span>* dst, <span class="nc">size_t</span> size);</pre></div>
+
+<h3>
+<a name="user-content-uv_inet_pton" class="anchor" href="#uv_inet_pton" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_inet_pton</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_inet_pton</span>(<span class="kt">int</span> af, <span class="k">const</span> <span class="kt">char</span>* src, <span class="kt">void</span>* dst);</pre></div>
+
+<h2>
+<a name="user-content-path" class="anchor" href="#path" aria-hidden="true"><span class="octicon octicon-link"></span></a>path</h2>
+
+<h3>
+<a name="user-content-uv_exepath" class="anchor" href="#uv_exepath" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_exepath</code>
+</h3>
+
+<p>Gets the executable path </p>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_exepath</span>(<span class="kt">char</span> buffer, <span class="nc">size_t</span> size);</pre></div>
+
+<h3>
+<a name="user-content-uv_cwd" class="anchor" href="#uv_cwd" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cwd</code>
+</h3>
+
+<p>Gets the current working directory </p>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_cwd</span>(<span class="kt">char</span> buffer, <span class="nc">size_t</span> size);</pre></div>
+
+<h3>
+<a name="user-content-uv_chdir" class="anchor" href="#uv_chdir" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_chdir</code>
+</h3>
+
+<p>Changes the current working directory </p>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_chdir</span>(<span class="k">const</span> <span class="kt">char</span>* dir);</pre></div>
+
+<h2>
+<a name="user-content-memory" class="anchor" href="#memory" aria-hidden="true"><span class="octicon octicon-link"></span></a>memory</h2>
+
+<p>Gets memory info in bytes </p>
+
+<h3>
+<a name="user-content-uv_get_free_memory" class="anchor" href="#uv_get_free_memory" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_get_free_memory</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="nc">uint64_t</span> <span class="nf">uv_get_free_memory</span>(<span class="kt">void</span>);</pre></div>
+
+<h3>
+<a name="user-content-uv_get_total_memory" class="anchor" href="#uv_get_total_memory" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_get_total_memory</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="nc">uint64_t</span> <span class="nf">uv_get_total_memory</span>(<span class="kt">void</span>);</pre></div>
+
+<h2>
+<a name="user-content-time-1" class="anchor" href="#time-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>time</h2>
+
+<h3>
+<a name="user-content-uv_hrtime" class="anchor" href="#uv_hrtime" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_hrtime</code>
+</h3>
+
+<p>Returns the current high-resolution real time. This is expressed in
+nanoseconds. It is relative to an arbitrary time in the past. It is not
+related to the time of day and therefore not subject to clock drift. The
+primary use is for measuring performance between intervals.</p>
+
+<p>Note not every platform can support nanosecond resolution; however, this
+value will always be in nanoseconds.</p>
+
+<div class="highlight highlight-c"><pre><span class="k">extern</span> <span class="nc">uint64_t</span> <span class="nf">uv_hrtime</span>(<span class="kt">void</span>);</pre></div>
+
+<h2>
+<a name="user-content-stdio" class="anchor" href="#stdio" aria-hidden="true"><span class="octicon octicon-link"></span></a>stdio</h2>
+
+<h3>
+<a name="user-content-uv_disable_stdio_inheritance" class="anchor" href="#uv_disable_stdio_inheritance" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_disable_stdio_inheritance</code>
+</h3>
+
+<p>Disables inheritance for file descriptors  handles that this process
+inherited from its parent. The effect is that child processes spawned by
+this process don't accidentally inherit these handles.</p>
+
+<p>It is recommended to call this function as early in your program as possible,
+before the inherited file descriptors can be closed or duplicated.</p>
+
+<p>Note that this function works on a best-effort basis: there is no guarantee
+that libuv can discover all file descriptors that were inherited. In general
+it does a better job on Windows than it does on unix.</p>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_disable_stdio_inheritance</span>(<span class="kt">void</span>);</pre></div>
+
+<h2>
+<a name="user-content-dynamic-library-access" class="anchor" href="#dynamic-library-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>dynamic library access</h2>
+
+<h3>
+<a name="user-content-uv_dlopen" class="anchor" href="#uv_dlopen" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_dlopen</code>
+</h3>
+
+<p>Opens a shared library. The filename is in utf-8. Returns 0 on success and
+-1 on error. Call <code>uv_dlerror(uv_lib_t)</code> to get the error message.</p>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_dlopen</span>(<span class="k">const</span> <span class="kt">char</span>* filename, <span class="nc">uv_lib_t</span>* lib);</pre></div>
+
+<h3>
+<a name="user-content-uv_dlclose" class="anchor" href="#uv_dlclose" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_dlclose</code>
+</h3>
+
+<p>Close the shared library.</p>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_dlclose</span>(<span class="nc">uv_lib_t</span>* lib);</pre></div>
+
+<h3>
+<a name="user-content-uv_dlsym" class="anchor" href="#uv_dlsym" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_dlsym</code>
+</h3>
+
+<p>Retrieves a data pointer from a dynamic library. It is legal for a symbol to
+map to NULL. Returns 0 on success and -1 if the symbol was not found.</p>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_dlsym</span>(<span class="nc">uv_lib_t</span>* lib, <span class="k">const</span> <span class="kt">char</span>* name, <span class="kt">void</span>** ptr);</pre></div>
+
+<h3>
+<a name="user-content-uv_dlerror" class="anchor" href="#uv_dlerror" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_dlerror</code>
+</h3>
+
+<p>Returns the last uv_dlopen() or uv_dlsym() error message.</p>
+
+<div class="highlight highlight-c"><pre><span class="k">const</span> <span class="kt">char</span>* <span class="nf">uv_dlerror</span>(<span class="nc">uv_lib_t</span>* lib);</pre></div>
+
+<h2>
+<a name="user-content-mutex" class="anchor" href="#mutex" aria-hidden="true"><span class="octicon octicon-link"></span></a>mutex</h2>
+
+<p>The mutex functions return 0 on success or an error code &lt; 0
+(unless the return type is void, of course).</p>
+
+<h3>
+<a name="user-content-uv_mutex_init" class="anchor" href="#uv_mutex_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_mutex_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_mutex_init</span>(<span class="nc">uv_mutex_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_mutex_destroy" class="anchor" href="#uv_mutex_destroy" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_mutex_destroy</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_mutex_destroy</span>(<span class="nc">uv_mutex_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_mutex_lock" class="anchor" href="#uv_mutex_lock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_mutex_lock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_mutex_lock</span>(<span class="nc">uv_mutex_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_mutex_trylock" class="anchor" href="#uv_mutex_trylock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_mutex_trylock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_mutex_trylock</span>(<span class="nc">uv_mutex_t</span>* handle);</pre></div>
+
+<h3>
+<a name="user-content-uv_mutex_unlock" class="anchor" href="#uv_mutex_unlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_mutex_unlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_mutex_unlock</span>(<span class="nc">uv_mutex_t</span>* handle);</pre></div>
+
+<h2>
+<a name="user-content-rwlock" class="anchor" href="#rwlock" aria-hidden="true"><span class="octicon octicon-link"></span></a>rwlock</h2>
+
+<p>The rwlock functions return 0 on success or an error code &lt; 0
+(unless the return type is void, of course).</p>
+
+<h3>
+<a name="user-content-uv_rwlock_init" class="anchor" href="#uv_rwlock_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_rwlock_init</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_destroy" class="anchor" href="#uv_rwlock_destroy" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_destroy</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_rwlock_destroy</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_rdlock" class="anchor" href="#uv_rwlock_rdlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_rdlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_rwlock_rdlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_tryrdlock" class="anchor" href="#uv_rwlock_tryrdlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_tryrdlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_rwlock_tryrdlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_rdunlock" class="anchor" href="#uv_rwlock_rdunlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_rdunlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_rwlock_rdunlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_wrlock" class="anchor" href="#uv_rwlock_wrlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_wrlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_rwlock_wrlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_trywrlock" class="anchor" href="#uv_rwlock_trywrlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_trywrlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_rwlock_trywrlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h3>
+<a name="user-content-uv_rwlock_wrunlock" class="anchor" href="#uv_rwlock_wrunlock" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_rwlock_wrunlock</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_rwlock_wrunlock</span>(<span class="nc">uv_rwlock_t</span>* rwlock);</pre></div>
+
+<h2>
+<a name="user-content-semaphores" class="anchor" href="#semaphores" aria-hidden="true"><span class="octicon octicon-link"></span></a>semaphores</h2>
+
+<p>The sempaphore functions return 0 on success or an error code &lt; 0
+(unless the return type is void, of course).</p>
+
+<h3>
+<a name="user-content-uv_sem_init" class="anchor" href="#uv_sem_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_sem_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_sem_init</span>(<span class="nc">uv_sem_t</span>* sem, <span class="kt">unsigned</span> <span class="kt">int</span> value);</pre></div>
+
+<h3>
+<a name="user-content-uv_sem_destroy" class="anchor" href="#uv_sem_destroy" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_sem_destroy</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_sem_destroy</span>(<span class="nc">uv_sem_t</span>* sem);</pre></div>
+
+<h3>
+<a name="user-content-uv_sem_post" class="anchor" href="#uv_sem_post" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_sem_post</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_sem_post</span>(<span class="nc">uv_sem_t</span>* sem);</pre></div>
+
+<h3>
+<a name="user-content-uv_sem_wait" class="anchor" href="#uv_sem_wait" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_sem_wait</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_sem_wait</span>(<span class="nc">uv_sem_t</span>* sem);</pre></div>
+
+<h3>
+<a name="user-content-uv_sem_trywait" class="anchor" href="#uv_sem_trywait" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_sem_trywait</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_sem_trywait</span>(<span class="nc">uv_sem_t</span>* sem);</pre></div>
+
+<h2>
+<a name="user-content-condition-variables" class="anchor" href="#condition-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>condition variables</h2>
+
+<p>The condition variable functions return 0 on success or an error code &lt; 0
+(unless the return type is void, of course).</p>
+
+<h3>
+<a name="user-content-uv_cond_init" class="anchor" href="#uv_cond_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_cond_init</span>(<span class="nc">uv_cond_t</span>* cond);</pre></div>
+
+<h3>
+<a name="user-content-uv_cond_destroy" class="anchor" href="#uv_cond_destroy" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_destroy</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_cond_destroy</span>(<span class="nc">uv_cond_t</span>* cond);</pre></div>
+
+<h3>
+<a name="user-content-uv_cond_signal" class="anchor" href="#uv_cond_signal" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_signal</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_cond_signal</span>(<span class="nc">uv_cond_t</span>* cond);</pre></div>
+
+<h3>
+<a name="user-content-uv_cond_broadcast" class="anchor" href="#uv_cond_broadcast" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_broadcast</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_cond_broadcast</span>(<span class="nc">uv_cond_t</span>* cond);</pre></div>
+
+<h3>
+<a name="user-content-uv_cond_wait" class="anchor" href="#uv_cond_wait" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_wait</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Waits on a condition variable without a timeout.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note:</span>
+<span class="cm"> * 1. callers should be prepared to deal with spurious wakeups.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_cond_wait</span>(<span class="nc">uv_cond_t</span>* cond, <span class="nc">uv_mutex_t</span>* mutex);</pre></div>
+
+<h3>
+<a name="user-content-uv_cond_timedwait" class="anchor" href="#uv_cond_timedwait" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_cond_timedwait</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Waits on a condition variable with a timeout in nano seconds.</span>
+<span class="cm"> * Returns 0 for success or UV_ETIMEDOUT on timeout, It aborts when other</span>
+<span class="cm"> * errors happen.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Note:</span>
+<span class="cm"> * 1. callers should be prepared to deal with spurious wakeups.</span>
+<span class="cm"> * 2. the granularity of timeout on Windows is never less than one millisecond.</span>
+<span class="cm"> * 3. uv_cond_timedwait takes a relative timeout, not an absolute time.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">uv_cond_timedwait</span>(<span class="nc">uv_cond_t</span>* cond, <span class="nc">uv_mutex_t</span>* mutex, <span class="nc">uint64_t</span> timeout);</pre></div>
+
+<h2>
+<a name="user-content-barrier" class="anchor" href="#barrier" aria-hidden="true"><span class="octicon octicon-link"></span></a>barrier</h2>
+
+<h3>
+<a name="user-content-uv_barrier_init" class="anchor" href="#uv_barrier_init" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_barrier_init</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_barrier_init</span>(<span class="nc">uv_barrier_t</span>* barrier, <span class="kt">unsigned</span> <span class="kt">int</span> count);</pre></div>
+
+<h3>
+<a name="user-content-uv_barrier_destroy" class="anchor" href="#uv_barrier_destroy" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_barrier_destroy</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_barrier_destroy</span>(<span class="nc">uv_barrier_t</span>* barrier);</pre></div>
+
+<h3>
+<a name="user-content-uv_barrier_wait" class="anchor" href="#uv_barrier_wait" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_barrier_wait</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_barrier_wait</span>(<span class="nc">uv_barrier_t</span>* barrier);</pre></div>
+
+<h2>
+<a name="user-content-once" class="anchor" href="#once" aria-hidden="true"><span class="octicon octicon-link"></span></a>once</h2>
+
+<h3>
+<a name="user-content-uv_once" class="anchor" href="#uv_once" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_once</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="cm">/* Runs a function once and only once. Concurrent calls to uv_once() with the</span>
+<span class="cm"> * same guard will block all callers except one (it's unspecified which one).</span>
+<span class="cm"> * The guard should be initialized statically with the UV_ONCE_INIT macro.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">uv_once</span>(<span class="nc">uv_once_t</span>* guard, <span class="kt">void</span> (*callback)(<span class="kt">void</span>));</pre></div>
+
+<h2>
+<a name="user-content-thread-local-storage" class="anchor" href="#thread-local-storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>thread local storage</h2>
+
+<p>Thread-local storage.  These functions largely follow the semantics of
+<code>pthread_key_create()</code>, <code>pthread_key_delete()</code>, <code>pthread_getspecific()</code> and
+<code>pthread_setspecific()</code>.</p>
+
+<p>Note that the total thread-local storage size may be limited.
+That is, it may not be possible to create many TLS keys.</p>
+
+<h3>
+<a name="user-content-uv_key_create" class="anchor" href="#uv_key_create" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_key_create</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_key_create</span>(<span class="nc">uv_key_t</span>* key);</pre></div>
+
+<h3>
+<a name="user-content-uv_key_delete" class="anchor" href="#uv_key_delete" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_key_delete</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_key_delete</span>(<span class="nc">uv_key_t</span>* key);</pre></div>
+
+<h3>
+<a name="user-content-uv_key_get" class="anchor" href="#uv_key_get" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_key_get</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span>* <span class="nf">uv_key_get</span>(<span class="nc">uv_key_t</span>* key);</pre></div>
+
+<h3>
+<a name="user-content-uv_key_set" class="anchor" href="#uv_key_set" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_key_set</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">void</span> <span class="nf">uv_key_set</span>(<span class="nc">uv_key_t</span>* key, <span class="kt">void</span>* value);</pre></div>
+
+<h3>
+<a name="user-content-uv_thread_create" class="anchor" href="#uv_thread_create" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_thread_create</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_thread_create</span>(<span class="nc">uv_thread_t</span> *tid, <span class="kt">void</span> (*entry)(<span class="kt">void</span> *arg), void *arg);</pre></div>
+
+<h3>
+<a name="user-content-long" class="anchor" href="#long" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>long</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">unsigned</span> <span class="kt">long</span> <span class="nf">uv_thread_self</span>(<span class="kt">void</span>);</pre></div>
+
+<h3>
+<a name="user-content-uv_thread_join" class="anchor" href="#uv_thread_join" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>uv_thread_join</code>
+</h3>
+
+<div class="highlight highlight-c"><pre><span class="kt">int</span> <span class="nf">uv_thread_join</span>(<span class="nc">uv_thread_t</span> *tid);</pre></div>
+</article>
+  </div>
+
+  </div>
+</div>
+
+<a href="#jump-to-line" rel="facebox[.linejump]" data-hotkey="l" style="display:none">Jump to Line</a>
+<div id="jump-to-line" style="display:none">
+  <form accept-charset="UTF-8" class="js-jump-to-line-form">
+    <input class="linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line…" autofocus="">
+    <button type="submit" class="button">Go</button>
+  </form>
+</div>
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="https://developer.github.com/">API</a></li>
+      <li><a href="http://training.github.com/">Training</a></li>
+      <li><a href="http://shop.github.com/">Shop</a></li>
+      <li><a href="https://github.com/blog">Blog</a></li>
+      <li><a href="https://github.com/about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>© 2014 <span title="0.61217s from github-fe127-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy">Privacy</a></li>
+        <li><a href="https://github.com/security">Security</a></li>
+        <li><a href="https://github.com/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-suggester-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents js-suggester-field" placeholder=""></textarea>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w" aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-x flash-close js-ajax-error-dismiss" aria-label="Dismiss error"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="./methods_files/frameworks-15f10010d7ea9e4d5b9f20455abfb143a279c44fe8decefa4ab0af3a11c2e0fe.js" type="text/javascript"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-32b736baea9ab5d376df386d5e12d9bf3bd5489bb6b81288408097a767e0bf17.js" type="text/javascript"></script>
+      
+      
+  
+
+
+</body></html>
