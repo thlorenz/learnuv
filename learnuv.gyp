@@ -41,6 +41,9 @@
           'ldflags': [ '-lncurses' ],
           'cflags': [ '--std=gnu99' ],
         }],
+        ['OS in "linux"', {
+          'libraries': [ '-lncurses' ]
+        }]
       ],
       'xcode_settings': {
         'OTHER_LDFLAGS': [
@@ -62,6 +65,9 @@
           'ldflags': [ '-lncurses' ],
           'cflags': [ '--std=gnu99' ],
         }],
+        ['OS in "linux"', {
+          'libraries': [ '-lncurses' ]
+        }]
       ],
       'xcode_settings': {
         'OTHER_LDFLAGS': [
