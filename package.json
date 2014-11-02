@@ -4,7 +4,8 @@
     "description" : " Learn uv for fun and profit, a self guided workshop to the library that powers Node.js.",
     "main" : "index.js",
     "scripts" : {
-      "build": "./build.sh"
+      "build": "./build.sh",
+      "start": "cd book && http-server -p 3000 -c-1"
     },
     "repository" : {
       "type" : "git",
