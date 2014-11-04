@@ -2,6 +2,8 @@
 
 Learn uv for fun and profit, a self guided workshop to [the library](https://github.com/joyent/libuv) that powers Node.js.
 
+![screenshot](assets/screenshot.png)
+
 ## Before You Start
 
 Read the [learnuv gitbook](http://thlorenz.github.io/learnuv/book) which exlains some libuv and related C language
