@@ -6,7 +6,7 @@ Learn uv for fun and profit, a self guided workshop to [the library](https://git
 
 ## Before You Start
 
-Read the [learnuv gitbook](http://thlorenz.github.io/learnuv/book) which exlains some libuv and related C language
+Read the [learnuv gitbook](http://thlorenz.github.io/learnuv/book) which explains some libuv and related C language
 concepts that will help you complete the exercises.
 
 ## Installation
