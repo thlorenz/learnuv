@@ -49,7 +49,7 @@ and do:
 ```sh
 ./gyp_learnuv.py -f ninja
 ninja -C out/Debug
-./out//Debug/learnuv_ex01
+./out/Debug/01_system_info
 ```
 
 ### Make
@@ -59,7 +59,7 @@ Works on Linux and OSX.
 ```sh
 ./gyp_learnuv.py -f make
 make -C out
-./out/Debug/learnuv_ex01
+./out/Debug/01_system_info
 ```
 
 ### Xcode
