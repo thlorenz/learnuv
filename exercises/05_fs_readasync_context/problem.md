@@ -18,7 +18,7 @@ void init(uv_loop_t *loop) {
 }
 ```
 
-We need to `malloc` these requests because if we would use **automatice variables** instead, they would be
+We need to `malloc` these requests because if we would use **automatic variables** instead, they would be
 "automatically" deallocated once we leave the `init` function body.
 However we need them to stay around since the `read_cb` will be invoked asynchronously.
 

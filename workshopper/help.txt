@@ -5,7 +5,7 @@
     - http://www.learn-c.org/
     - or this book: http://www.amazon.com/dp/0131103628/ 
 
-  Trouble understanding livuv? Review either of the below:
+  Trouble understanding libuv? Review either of the below:
     - http://nikhilm.github.io/uvbook/ (although examples are outdated this is still an awesome resource)
     - https://github.com/thlorenz/libuv-dox (provides docs and updated examples)
     - https://github.com/joyent/libuv/blob/master/include/uv.h (header file which will answer all your questions if you're patient)

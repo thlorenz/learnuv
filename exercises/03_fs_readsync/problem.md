@@ -16,7 +16,7 @@ However this is **not** the best solution and therefore we will improve on it in
 You should keep the following resources open and refer to them repeatedly:
 
 - [official libuv documentation](http://libuv.readthedocs.org/en/latest/index.html) *you should make use of the searchbox*
-- [the inoffical libuv dox](https://github.com/thlorenz/libuv-dox) 
+- [the unoffical libuv dox](https://github.com/thlorenz/libuv-dox) 
 
 **libuv-dox** was created manually, structured differently than the official docs site and is preferred in some
 cases. It is organized into three main sections:
