@@ -40,7 +40,7 @@ function checkClientResponse(mode, cb) {
 
     var arr = Object.keys(progress)
       .reduce(function key(acc, k) {
-        if (k === 'error') { fail = !!progress[k]; return acc }
+        if (k === 'error') { fail = fail || !!progress[k]; return acc }
         fail = fail || !progress[k]
         var label = colors.blue(k[0].toUpperCase() + k.slice(1));
         acc.push([ label, progress[k] ? colors.green('OK') : colors.red('NOT OK') ])
