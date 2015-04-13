@@ -11,10 +11,10 @@ Instead you are to fill in the 4 steps outlined in the comments.
 You may find the following links useful:
 
 **initializing and starting an idle handler**
-- https://github.com/thlorenz/libuv-dox/blob/master/methods.md#idle
+- http://docs.libuv.org/en/latest/idle.html
 
 **creating and running the event loop**
-- https://github.com/thlorenz/libuv-dox/blob/master/methods.md#loop
+- http://docs.libuv.org/en/latest/loop.html
 
 ### Hints
 
