@@ -15,15 +15,8 @@ However this is **not** the best solution and therefore we will improve on it in
 
 You should keep the following resources open and refer to them repeatedly:
 
-- [official libuv documentation](http://libuv.readthedocs.org/en/latest/index.html) *you should make use of the searchbox*
-- [the unoffical libuv dox](https://github.com/thlorenz/libuv-dox) 
-
-**libuv-dox** was created manually, structured differently than the official docs site and is preferred in some
-cases. It is organized into three main sections:
-
-  - [methods](https://github.com/thlorenz/libuv-dox/blob/master/methods.md)
-  - [types](https://github.com/thlorenz/libuv-dox/blob/master/types.md)
-  - [callbacks](https://github.com/thlorenz/libuv-dox/blob/master/callbacks.md)
+- [official libuv documentation](http://docs.libuv.org/en/latest/index.html) *you should make use of the "Quick Search" box*
+- [Unoffical libuv dox examples](https://github.com/thlorenz/libuv-dox/tree/master/examples)
 
 From now on each exercise will have a **Resource** section towards the bottom of the instruction which guide you to the libuv
 API you will need.
@@ -62,10 +55,10 @@ After you filled in the missing pieces, you shouldn't get any warnings related t
 
 ## Resources
 
-- [`uv_fs_open`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_open)
-- [`uv_buf_init`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_buf_init)
-- [`uv_fs_read`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_read)
-- [`uv_fs_close`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_close)
+- [`uv_fs_open`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_open)
+- [`uv_buf_init`](http://docs.libuv.org/en/latest/misc.html#c.uv_buf_init)
+- [`uv_fs_read`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_read)
+- [`uv_fs_close`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_close)
 
 ## Hints
 

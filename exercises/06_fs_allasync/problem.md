@@ -49,9 +49,9 @@ works since the buffer we are reading is very small but may not be true when rea
 
 ## Resources
 
-- [`uv_fs_open`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_open)
-- [`uv_buf_init`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_buf_init)
-- [`uv_fs_read`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_read)
-- [`uv_fs_close`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_close)
-- [`uv_read_cb`](https://github.com/thlorenz/libuv-dox/blob/master/callbacks.md#uv_read_cb)
-- [`uv_fs_req_cleanup`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_fs_req_cleanup)
+- [`uv_fs_open`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_open)
+- [`uv_buf_init`](http://docs.libuv.org/en/latest/misc.html#c.uv_buf_init)
+- [`uv_fs_read`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_read)
+- [`uv_fs_close`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_close)
+- [`uv_read_cb`](http://docs.libuv.org/en/latest/stream.html#c.uv_read_cb)
+- [`uv_fs_req_cleanup`](http://docs.libuv.org/en/latest/fs.html#c.uv_fs_req_cleanup)
