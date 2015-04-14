@@ -13,7 +13,10 @@ int main() {
   if (r < 0) CHECK(r, "uv_fs_open");
 
   /* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds length field */
-  char buf[BUF_SIZE];
+  /*    The + 1 is for the string null terminator, because log_report and log_info need it */
+  /*    Make sure you set your uv_buf_t size to BUF_SIZE instead of sizeof(buf) */
+  char buf[BUF_SIZE + 1];
+  memset(buf, 0, sizeof(buf));
 
   /* 3. Use the file descriptor (the .result of the open_req) to read from the file into the buffer */
   uv_fs_t read_req;
