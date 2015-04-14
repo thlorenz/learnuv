@@ -16,9 +16,7 @@ You may find the following links useful:
 **creating and running the event loop**
 - http://docs.libuv.org/en/latest/loop.html
 
-### Hints
+### Hint
 
 Create a `default` loop and Use the `UV_RUN_DEFAULT` mode when running it.
 
-This example may also help you if you get stuck (ignore the fact that we are creating a `new` loop in it).
-- https://github.com/thlorenz/libuv-dox/blob/master/methods.md#examples
