@@ -14,17 +14,17 @@ So lets start with the easy part.
 ### Starting the Server and Listening on a Port
 
 First of all we need to initialize our server `tcp_server`. 
-This is done via [`uv_tcp_init`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_tcp_init).
+This is done via [`uv_tcp_init`](http://docs.libuv.org/en/latest/tcp.html#c.uv_tcp_init).
 Our server represents the TCP `handle`.
 
 Next we need to obtain a socket address for the given host and port and then bind it to our server.
 You should have a look at the following to methods provided by libuv:
 
-- [`uv_ip4_addr`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_ip4_addr)
-- [`uv_tcp_bind`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_tcp_bind)
+- [`uv_ip4_addr`](http://docs.libuv.org/en/latest/misc.html#c.uv_ip4_addr)
+- [`uv_tcp_bind`](http://docs.libuv.org/en/latest/tcp.html#c.uv_tcp_bind)
 
 Finally we listen for connections via
-[`uv_listen`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_listen).
+[`uv_listen`](http://docs.libuv.org/en/latest/stream.html#c.uv_listen).
 
 ### C Inheritance Technique
 
@@ -34,9 +34,9 @@ This works because `uv_tcp_t` inherits `uv_stream_t` via a technique explained i
 
 You should make sure you review how this works by investigating the following:
 
-- [`uv_tcp_t`](https://github.com/thlorenz/libuv-dox/blob/master/types.md#uv_tcp_t--uv_stream_t)
-- [`uv_stream_t`](https://github.com/thlorenz/libuv-dox/blob/master/types.md#streams)
-- [`uv_handle_t`](https://github.com/thlorenz/libuv-dox/blob/master/types.md#uv_handle_t)
+- [`uv_tcp_t`](http://docs.libuv.org/en/latest/tcp.html)
+- [`uv_stream_t`](http://docs.libuv.org/en/latest/stream.html)
+- [`uv_handle_t`](http://docs.libuv.org/en/latest/handle.html)
 
 We are using this technique in our code as well to wrap the `uv_write_req` in order to add the `buf` field:
 
@@ -64,10 +64,10 @@ On windows you may have to use telnet or putty.
 
 ## Resources (not yet mentioned)
 
-- [`uv_tcp_init`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_tcp_init)
-- [`uv_accept`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_accept)
-- [`uv_read_start`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_read_start)
-- [`uv_close`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_close)
+- [`uv_tcp_init`](http://docs.libuv.org/en/latest/tcp.html#c.uv_tcp_init)
+- [`uv_accept`](http://docs.libuv.org/en/latest/stream.html#c.uv_accept)
+- [`uv_read_start`](http://docs.libuv.org/en/latest/stream.html#c.uv_read_start)
+- [`uv_close`](http://docs.libuv.org/en/latest/handle.html#c.uv_close)
 
 ## Verification
 

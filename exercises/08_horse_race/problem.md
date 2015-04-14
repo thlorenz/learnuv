@@ -23,8 +23,8 @@ Whenever we add a horse we create an async worker, initialize it and put it on t
 
 **Part of your task** is to complete these steps and I'd suggest looking at the following:
 
-- [`uv_async_init`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_async_init)
-- [`uv_queue_work`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_queue_work)
+- [`uv_async_init`](http://docs.libuv.org/en/latest/async.html#c.uv_async_init)
+- [`uv_queue_work`](http://docs.libuv.org/en/latest/threadpool.html#c.uv_queue_work)
 
 Note that the `race_cb` ("do work"), `finish_cb` and `progress_cb` have already been implemented for you.
 
@@ -40,7 +40,7 @@ Drawing the horses from different threads results in flickering, funky symbols a
 The solution is to draw all horses on the main thread.
 
 But how do we tell the main thread to draw the horse in a different location if it moved?
-Have a look at [`uv_async_send`](https://github.com/thlorenz/libuv-dox/blob/master/methods.md#uv_async_send).
+Have a look at [`uv_async_send`](http://docs.libuv.org/en/latest/async.html#c.uv_async_send).
 This method allows us to report progress. It ends up invoking our `progress_cb` on the **main thread**, passing along
 our `async` worker. As before we use its the `data` field to pass along the context we need.
 
