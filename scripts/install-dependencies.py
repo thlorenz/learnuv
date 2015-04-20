@@ -32,7 +32,7 @@ run('git clone --depth 1 --branch v1.0.0-rc1 https://github.com/libuv/libuv ' + 
 
 # gyp
 mkdirp(build_dir)
-run('git clone https://git.chromium.org/external/gyp.git ' + gyp_dir)
+run('git clone https://chromium.googlesource.com/external/gyp ' + gyp_dir)
 
 # log.h
 run ('git clone --depth 1 https://github.com/thlorenz/log.h ' + logh_dir) 
