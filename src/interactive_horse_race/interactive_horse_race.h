@@ -7,6 +7,8 @@
 
 /* set to 0 in order to not draw but log messages instead */
 #define DRAW 1
+#define MAX_MSG 1024
+
 #if DRAW == 1
 #define LOGLEVEL 0
 #endif
@@ -21,6 +23,14 @@
  */
 
 #define MAX_CLIENTS 5
+
+#define luv_server_broadcast(s, fmt, ...) do {          \
+  int i, len;                                           \
+  char msg[MAX_MSG];                                    \
+  len = snprintf(msg, MAX_MSG, fmt, ##__VA_ARGS__);     \
+  for (i = 0; i < (s)->num_clients; i++)                \
+    luv_server_send((s), (s)->clients[i], msg, len);    \
+} while(0)
 
 typedef struct luv_server_s luv_server_t;
 
@@ -58,8 +68,7 @@ struct luv_server_s {
   luv_onclient_msg onclient_msg;
 };
 
-void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg);
-void luv_server_broadcast(luv_server_t*, char*);
+void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg, int len);
 void luv_server_destroy(luv_server_t*);
 void luv_server_start(luv_server_t*, uv_loop_t*);
 

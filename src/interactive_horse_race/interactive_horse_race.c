@@ -3,7 +3,6 @@
 #include <string.h>
 
 #define TIME_TO_ANSWER 1E7 * 4
-#define MAX_MSG 1024
 #define TRACKS MAX_CLIENTS
 #define to_s(x) #x
 #define THREADS to_s(TRACKS)
@@ -38,9 +37,7 @@ static void question_handler(uv_idle_t* handle) {
   game->question_asked = 1;
   game->time_to_answer = TIME_TO_ANSWER;
 
-  char msg[256];
-  sprintf(msg, "\n%s\n ? ", game->question.question);
-  luv_server_broadcast(server, msg);
+  luv_server_broadcast(server, "\n%s\n ? ", game->question.question);
 }
 
 static void onclient_connected(luv_client_t* client, int total_connections) {
@@ -53,21 +50,21 @@ static void onclient_connected(luv_client_t* client, int total_connections) {
   player->track = client->slot;
 
   log_info("New player, %d total now.", total_connections);
-  char msg[MAX_MSG];
-  sprintf(msg, "Welcome player %d!\nWe now have a total of %d players.\n", client->id, total_connections);
-
-  luv_server_broadcast(client->server, msg);
+  luv_server_broadcast(client->server,
+      "Welcome player %d!\nWe now have a total of %d players.\n",
+      client->id, total_connections);
 
   char client_msg[MAX_MSG];
-  sprintf(client_msg, "Welcome to the game, you are on track %d\n", player->track + 1);
-  luv_server_send(server, client, msg);
+  int len = snprintf(client_msg, MAX_MSG,
+    "Welcome to the game, you are on track %d\n", player->track + 1);
+  luv_server_send(server, client, client_msg, len);
 }
 
 static void onclient_disconnected(luv_client_t* client, int total_connections) {
   log_info("Player %d quit, %d total now.", client->id, total_connections);
-  char msg[MAX_MSG];
-  sprintf(msg, "Player quit %d :(\nWe have %d players left.\n", client->id, total_connections);
-  luv_server_broadcast(client->server, msg);
+  luv_server_broadcast(client->server,
+    "Player quit %d :(\nWe have %d players left.\n",
+    client->id, total_connections);
 }
 
 static void onclient_msg(luv_client_msg_t* msg, luv_onclient_msg_processed respond) {
