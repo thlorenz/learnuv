@@ -133,8 +133,9 @@ static void onclient_msg_processed(luv_client_msg_t* msg, char* response) {
   free(msg->buf);
 }
 
-void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg) {
-  int r, len;
+void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg, int len)
+{
+  int r;
   uv_write_t* write_req;
 
   if (client == NULL) {
@@ -142,19 +143,10 @@ void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg) {
     return;
   }
 
-  len = strlen(msg);
   uv_buf_t buf = uv_buf_init(msg, len);
   write_req = malloc(sizeof(uv_write_t));
   r = uv_write(write_req, (uv_stream_t*) client, &buf, 1, write_cb);
   CHECK(r, "uv_write");
-}
-
-void luv_server_broadcast(luv_server_t* self, char* msg) {
-  int i;
-
-  for (i = 0; i < self->num_clients; i++) {
-    luv_server_send(self, self->clients[i], msg);
-  }
 }
 
 void luv_server_destroy(luv_server_t* self) {
