@@ -35,17 +35,13 @@ static void init_math_questions() {
   static const char *ops = "+-*";
   int i, p1, p2, result, max;
   char op;
-  luv_question_t* question;
-  char *q, *a;
+  luv_question_t* qs;
 
   for (i = 0; i < MATH_QUESTIONS_LEN; i++) {
     op = ops[rand() % 3];
     max = op == '*' ? 10 : 100;
     p1 = rand() % max;
     p2 = rand() % max;
-
-    q = malloc(sizeof(char) * 256);
-    a = malloc(sizeof(char) * 256);
 
     switch(op) {
       case '+' : {
@@ -59,40 +55,25 @@ static void init_math_questions() {
       default  : result = p1 * p2;
     }
 
-    sprintf(q, "%d %c %d =", p1, op, p2);
-    sprintf(a, "%d", result);
-
-    question = &math_questions[i];
-    question->question = q;
-    question->answer = a;
+    qs = &math_questions[i];
+    snprintf(qs->question, QUESTION_LEN, "%d %c %d =", p1, op, p2);
+    snprintf(qs->answer, QUESTION_LEN, "%d", result);
   }
 }
 
 static void init_conversion_questions() {
   int i;
-  char *q, *a;
-  luv_question_t* question;
+  luv_question_t* qs;
 
   for (i = 0; i < CONVERSION_QUESTIONS_LEN; i += 2) {
-    q = malloc(sizeof(char) * 256);
-    a = malloc(sizeof(char) * 256);
+    qs = &conversion_questions[i];
 
-    sprintf(q, "%d converted to HEXADECIMAL", i);
-    sprintf(a, "%x", i);
+    snprintf(qs->question, QUESTION_LEN, "%d converted to HEXADECIMAL", i);
+    snprintf(qs->answer, QUESTION_LEN, "%x", i);
 
-    question = &conversion_questions[i];
-    question->question = q;
-    question->answer = a;
-
-    q = malloc(sizeof(char) * 256);
-    a = malloc(sizeof(char) * 256);
-
-    sprintf(q, "0x%x converted to DECIMAL", i);
-    sprintf(a, "%d", i);
-
-    question = &conversion_questions[i + 1];
-    question->question = q;
-    question->answer = a;
+    qs = &conversion_questions[i + 1];
+    snprintf(qs->question, QUESTION_LEN, "0x%x converted to DECIMAL", i);
+    snprintf(qs->answer, QUESTION_LEN, "%d", i);
   }
 }
 

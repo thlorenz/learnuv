@@ -17,12 +17,13 @@
 
 #define DELAY        1E6
 #define MAX_SPEED    20
+#define QUESTION_LEN 256
 
 /*
  * TCP server
  */
 
-#define MAX_CLIENTS 5
+#define MAX_CLIENTS 2
 
 #define luv_server_broadcast(s, fmt, ...) do {          \
   int i, len;                                           \
@@ -85,8 +86,8 @@ luv_server_t* luv_server_create(
  */
 
 typedef struct {
-  char* question;
-  char* answer;
+  char question[QUESTION_LEN];
+  char answer[QUESTION_LEN];
 } luv_question_t;
 
 void luv_questions_init();
