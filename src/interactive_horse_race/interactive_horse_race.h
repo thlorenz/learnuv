@@ -28,7 +28,8 @@
 #define luv_server_broadcast(s, fmt, ...) do {          \
   int i, len;                                           \
   char msg[MAX_MSG];                                    \
-  len = snprintf(msg, MAX_MSG, fmt, ##__VA_ARGS__);     \
+  snprintf(msg, MAX_MSG, fmt, ##__VA_ARGS__);           \
+  len = strlen(msg);                                    \
   for (i = 0; i < (s)->num_clients; i++)                \
     luv_server_send((s), (s)->clients[i], msg, len);    \
 } while(0)
