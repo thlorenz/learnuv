@@ -55,9 +55,9 @@ static void onclient_connected(luv_client_t* client, int total_connections) {
       client->id, total_connections);
 
   char client_msg[MAX_MSG];
-  int len = snprintf(client_msg, MAX_MSG,
+  snprintf(client_msg, MAX_MSG,
     "Welcome to the game, you are on track %d\n", player->track + 1);
-  luv_server_send(server, client, client_msg, len);
+  luv_server_send(server, client, client_msg, strlen(client_msg));
 }
 
 static void onclient_disconnected(luv_client_t* client, int total_connections) {

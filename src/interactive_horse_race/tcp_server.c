@@ -10,6 +10,7 @@ static void read_cb(uv_stream_t*, ssize_t, const uv_buf_t*);
 static void onclient_msg_processed(luv_client_msg_t*, char*);
 
 static void close_cb(uv_handle_t* client) {
+  free(client->data); // free the player variable
   free(client);
   log_info("Closed connection");
 }
