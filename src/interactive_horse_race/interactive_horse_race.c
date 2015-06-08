@@ -111,8 +111,10 @@ int main(void) {
   luv_questions_init();
 
   log_info("Creating server");
-  luv_server_t *server = luv_server_create(
-      loop
+  luv_server_t server;
+  luv_server_init(
+      &server
+    , loop
     , HOST
     , PORT
     , onclient_connected
@@ -120,11 +122,11 @@ int main(void) {
     , onclient_msg);
 
   log_info("Starting server");
-  luv_server_start(server, loop);
+  luv_server_start(&server, loop);
 
   log_info("Initializing game loop");
-  luv_game_t game = { .server = server, .delay = DELAY };
-  server->data = &game;
+  luv_game_t game = { .server = &server, .delay = DELAY };
+  server.data = &game;
 
   uv_idle_t question_handle;
   uv_idle_init(loop, &question_handle);
