@@ -26,12 +26,12 @@
 #define MAX_CLIENTS 2
 
 #define luv_server_broadcast(s, fmt, ...) do {          \
-  int i, len;                                           \
+  int i, __len;                                         \
   char msg[MAX_MSG];                                    \
   snprintf(msg, MAX_MSG, fmt, ##__VA_ARGS__);           \
-  len = strlen(msg);                                    \
+  __len = strlen(msg);                                  \
   for (i = 0; i < (s)->num_clients; i++)                \
-    luv_server_send((s), (s)->clients[i], msg, len);    \
+    luv_server_send((s), (s)->clients[i], msg, __len);  \
 } while(0)
 
 typedef struct luv_server_s luv_server_t;
