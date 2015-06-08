@@ -169,8 +169,9 @@ void luv_server_start(luv_server_t* self, uv_loop_t *loop) {
   log_info("Listening on %s:%d", self->host, self->port);
 }
 
-luv_server_t* luv_server_create(
-      uv_loop_t *loop
+void luv_server_init(
+      luv_server_t* self
+    , uv_loop_t *loop
     , const char* host
     , int port
     , luv_onclient_connected onclient_connected
@@ -178,7 +179,6 @@ luv_server_t* luv_server_create(
     , luv_onclient_msg onclient_msg) {
   int r;
 
-  luv_server_t *self          = malloc(sizeof(luv_server_t));
   self->host                  = host;
   self->port                  = port;
   self->num_clients           = 0;
@@ -197,6 +197,4 @@ luv_server_t* luv_server_create(
 
   r = uv_tcp_bind(&self->tcp, (struct sockaddr*) &addr, AF_INET);
   CHECK(r, "uv_tcp_bind");
-
-  return self;
 }

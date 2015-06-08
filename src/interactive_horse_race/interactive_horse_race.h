@@ -73,8 +73,9 @@ void luv_server_send(luv_server_t* self, luv_client_t* client, char* msg, int le
 void luv_server_destroy(luv_server_t*);
 void luv_server_start(luv_server_t*, uv_loop_t*);
 
-luv_server_t* luv_server_create(
-    uv_loop_t *loop
+void luv_server_init(
+    luv_server_t* self
+  , uv_loop_t *loop
   , const char* host
   , int port
   , luv_onclient_connected onclient_connected
