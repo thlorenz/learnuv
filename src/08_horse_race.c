@@ -1,3 +1,4 @@
+#define _BSD_SOURCE
 
 #include "learnuv.h"
 #include <ncurses.h>
