@@ -28,7 +28,7 @@ def run(cmd):
 # libuv
 mkdirp(deps_dir)
 ## todo: This may not work with older git versions (http://stackoverflow.com/questions/20280726/how-to-git-clone-a-specific-tag)
-run('git clone --depth 1 --branch v1.0.0-rc1 https://github.com/libuv/libuv ' + libuv_dir)
+run('git clone --depth 1 --branch v1.7.5 https://github.com/libuv/libuv ' + libuv_dir)
 
 # gyp
 mkdirp(build_dir)
