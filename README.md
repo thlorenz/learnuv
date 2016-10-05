@@ -43,7 +43,7 @@ Ninja and Make do not work on windows except via [cygwin](https://www.cygwin.com
 
 ### Ninja
 
-Highly recommended since it builds faster than any of the other options, so [get ninja](http://martine.github.io/ninja/)
+Highly recommended since it builds faster than any of the other options, so [get ninja](https://ninja-build.org/)
 and do:
 
 ```sh
