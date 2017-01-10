@@ -5,6 +5,7 @@ static const char *filename = __MAGIC_FILE__;
 
 typedef struct context_struct {
   uv_fs_t *open_req;
+  uv_buf_t iov;
 } context_t;
 
 void read_cb(uv_fs_t* read_req) {
@@ -15,10 +16,10 @@ void read_cb(uv_fs_t* read_req) {
   context_t* context = read_req->data;
 
   /* 4. Report the contents of the buffer */
-  log_report("%s", read_req->bufs->base);
-  log_info("%s", read_req->bufs->base);
+  log_report("%s", context->iov.base);
+  log_info("%s", context->iov.base);
 
-  free(read_req->bufs->base);
+  free(context->iov.base);
 
   /* 5. Close the file descriptor (synchronously) */
   uv_fs_t close_req;

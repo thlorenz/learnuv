@@ -11,6 +11,7 @@ void close_cb(uv_fs_t*);
 typedef struct context_struct {
   uv_fs_t *open_req;
   uv_fs_t *read_req;
+  uv_buf_t iov;
 } context_t;
 
 void open_cb(uv_fs_t* open_req) {
@@ -22,7 +23,7 @@ void open_cb(uv_fs_t* open_req) {
   /* 3. Create buffer and initialize it */
   size_t buf_len = sizeof(char) * BUF_SIZE;
   char *buf = malloc(buf_len);
-  uv_buf_t iov = uv_buf_init(buf, buf_len);
+  context->iov = uv_buf_init(buf, buf_len);
 
   /* 4. Setup read request */
   uv_fs_t *read_req = malloc(sizeof(uv_fs_t));
@@ -30,7 +31,7 @@ void open_cb(uv_fs_t* open_req) {
   read_req->data = context;
 
   /* 5. Read from the file into the buffer */
-  r = uv_fs_read(uv_default_loop(), read_req, open_req->result, &iov, 1, 0, read_cb);
+  r = uv_fs_read(uv_default_loop(), read_req, open_req->result, &context->iov, 1, 0, read_cb);
   if (r < 0) CHECK(r, "uv_fs_read");
 }
 
@@ -40,13 +41,13 @@ void read_cb(uv_fs_t* read_req) {
 
   context_t* context = read_req->data;
 
-  /* 7. Report the contents of the buffer */
-  log_report("%s", read_req->bufs->base);
-  log_info("%s", read_req->bufs->base);
+  /* 6. Report the contents of the buffer */
+  log_report("%s", context->iov.base);
+  log_info("%s", context->iov.base);
 
-  free(read_req->bufs->base);
+  free(context->iov.base);
 
-  /* 6. Setup close request */
+  /* 7. Setup close request */
   uv_fs_t *close_req = malloc(sizeof(uv_fs_t));
   close_req->data = context;
 

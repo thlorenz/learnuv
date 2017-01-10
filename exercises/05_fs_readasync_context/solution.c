@@ -5,6 +5,7 @@ static const char *filename = __MAGIC_FILE__;
 
 typedef struct context_struct {
   uv_fs_t *open_req;
+  uv_buf_t iov;
 } context_t;
 
 void read_cb(uv_fs_t* read_req) {
@@ -15,10 +16,10 @@ void read_cb(uv_fs_t* read_req) {
   context_t* context = read_req->data;
 
   /* 4. Report the contents of the buffer */
-  log_report("%s", read_req->bufs->base);
-  log_info("%s", read_req->bufs->base);
+  log_report("%s", context->iov.base);
+  log_info("%s", context->iov.base);
 
-  free(read_req->bufs->base);
+  free(context->iov.base);
 
   /* 5. Close the file descriptor (synchronously) */
   uv_fs_t close_req;
@@ -49,13 +50,13 @@ void init(uv_loop_t *loop) {
   /* 2. Create buffer and initialize it to turn it into a a uv_buf_t */
   size_t buf_len = sizeof(char) * BUF_SIZE;
   char *buf = malloc(buf_len);
-  uv_buf_t iov = uv_buf_init(buf, buf_len);
+  context->iov = uv_buf_init(buf, buf_len);
 
   /* allow us to access the context inside read_cb */
   read_req->data = context;
 
   /* 3. Read from the file into the buffer */
-  r = uv_fs_read(loop, read_req, open_req->result, &iov, 1, 0, read_cb);
+  r = uv_fs_read(loop, read_req, open_req->result, &context->iov, 1, 0, read_cb);
   if (r < 0) CHECK(r, "uv_fs_read");
 }
 
