@@ -5,14 +5,15 @@ static const char *filename = __MAGIC_FILE__;
 
 /* Making our lifes a bit easier by using this global, a better solution in the next exercise ;) */
 static uv_fs_t open_req;
+static uv_buf_t iov;
 
 void read_cb(uv_fs_t* read_req) {
   int r = 0;
   if (read_req->result < 0) CHECK(read_req->result, "uv_fs_read callback");
 
   /* 4. Report the contents of the buffer */
-  log_report("%s", read_req->bufs->base);
-  log_info("%s", read_req->bufs->base);
+  log_report("%s", iov.base);
+  log_info("%s", iov.base);
 
   /* 5. Close the file descriptor */
   uv_fs_t close_req;
