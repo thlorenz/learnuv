@@ -1,6 +1,6 @@
 # learnuv
 
-Learn uv for fun and profit, a self guided workshop to [the library](https://github.com/joyent/libuv) that powers Node.js.
+Learn uv for fun and profit, a self guided workshop to [the library](https://github.com/libuv/libuv) that powers Node.js.
 
 ![screenshot](assets/screenshot.png)
 
