@@ -1,7 +1,7 @@
 ## Idle
 
 OK, it's time to have some **fun with the event loop**.
-In this exercise you will learn you to create an event loop and make it run a function when it is idle.
+In this exercise you will learn to create an event loop and make it run a function when it is idle.
 
 You are provided an `idle_cb` which is the function you want to have run whenever libuv is idle. 
 **You do not have to change that function at all.**
