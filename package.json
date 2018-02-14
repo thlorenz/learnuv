@@ -1,6 +1,6 @@
 {
   "name": "learnuv",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": " Learn uv for fun and profit, a self guided workshop to the library that powers Node.js.",
   "main": "index.js",
   "scripts": {
