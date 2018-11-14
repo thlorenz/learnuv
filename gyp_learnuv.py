@@ -43,7 +43,7 @@ def host_arch():
 def compiler_version():
   proc = subprocess.Popen(CC.split() + ['--version'], stdout=subprocess.PIPE)
   is_clang = 'clang' in proc.communicate()[0].split('\n')[0]
-  proc = subprocess.Popen(CC.split() + ['-dumpversion'], stdout=subprocess.PIPE)
+  proc = subprocess.Popen(CC.split() + ['-dumpfullversion','-dumpversion'], stdout=subprocess.PIPE)
   version = proc.communicate()[0].split('.')
   version = map(int, version[:2])
   version = tuple(version)
