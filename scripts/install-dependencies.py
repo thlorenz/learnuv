@@ -13,7 +13,7 @@ home        = os.path.expanduser('~')
 dot_learnuv = os.path.join(home, '.learnuv')
 
 def log_info(msg):
-    print '\033[0;32mlearnuv\033[0m ' + msg
+    print('\033[0;32mlearnuv\033[0m ' + msg)
 
 def mkdirp(dir):
     try:
