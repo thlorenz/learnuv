@@ -34,14 +34,14 @@ You are to implement the missing pieces of each step, usually just **one** call 
 As an example:
 
 ```c
-/* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds length field */
+/* 2. Create a buffer and initialize it to turn it into a uv_buf_t which adds length field */
 char buf[BUF_SIZE];
 ```
 
 is missing the call to `uv_buf_init`, so you'd complete it as follows:
 
 ```c
-/* 2. Create buffer and initialize it to turn it into a a uv_buf_t which adds length field */
+/* 2. Create a buffer and initialize it to turn it into a uv_buf_t which adds length field */
 char buf[BUF_SIZE];
 uv_buf_t iov = uv_buf_init(buf, sizeof(buf));
 ```
