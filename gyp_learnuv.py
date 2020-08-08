@@ -46,6 +46,8 @@ def compiler_version():
   proc = subprocess.Popen(CC.split() + ['-dumpversion'], stdout=subprocess.PIPE)
   version = proc.communicate()[0].split('.')
   version = map(int, version[:2])
+  if len(version) == 1:
+    version.append(0)
   version = tuple(version)
   return (version, is_clang)
 
