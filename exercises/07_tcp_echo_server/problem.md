@@ -28,7 +28,7 @@ Finally we listen for connections via
 
 ### C Inheritance Technique
 
-Note that `uv_listen` actually takes a `uv_stream_t*` argument since it works not only `uv_tcp_t*` types, but any
+Note that `uv_listen` actually takes a `uv_stream_t*` argument since it works not only on `uv_tcp_t*` types, but any
 stream.
 This works because `uv_tcp_t` inherits `uv_stream_t` via a technique explained in the introduction to this workshopper.
 
