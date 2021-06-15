@@ -1,7 +1,5 @@
 # learnuv
 
-<a href="https://www.patreon.com/bePatron?u=8663953"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="35px"></a>
-
 Learn uv for fun and profit, a self guided workshop to [the library](https://github.com/libuv/libuv) that powers Node.js.
 
 ![screenshot](assets/screenshot.png)
