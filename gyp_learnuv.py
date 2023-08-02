@@ -42,9 +42,9 @@ def host_arch():
 
 def compiler_version():
   proc = subprocess.Popen(CC.split() + ['--version'], stdout=subprocess.PIPE)
-  is_clang = 'clang' in proc.communicate()[0].split('\n')[0]
+  is_clang = 'clang' in proc.communicate()[0].decode().split('\n')[0]
   proc = subprocess.Popen(CC.split() + ['-dumpfullversion','-dumpversion'], stdout=subprocess.PIPE)
-  version = proc.communicate()[0].split('.')
+  version = proc.communicate()[0].decode().split('.')
   version = map(int, version[:2])
   version = tuple(version)
   return (version, is_clang)
@@ -53,7 +53,7 @@ def compiler_version():
 def run_gyp(args):
   rc = gyp.main(args)
   if rc != 0:
-    print 'Error running GYP'
+    print('Error running GYP')
     sys.exit(rc)
 
 
@@ -117,5 +117,5 @@ if __name__ == '__main__':
   args.append('-Dlearnuv_config=' + learnuv_config)
 
   gyp_args = list(args)
-  print gyp_args
+  print(gyp_args)
   run_gyp(gyp_args)
